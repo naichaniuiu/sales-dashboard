@@ -7,10 +7,15 @@ echo.
 
 cd /d "%~dp0"
 
-REM 配置GitHub认证（使用Token）
-set GH_TOKEN=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
+REM 配置GitHub认证
+echo 请输入您的GitHub Personal Access Token（以ghp_开头）:
+set /p GH_TOKEN=
+if "%GH_TOKEN%"=="" (
+    echo [错误] Token不能为空！
+    pause
+    exit /b 1
+)
 git config credential.helper store
-git config credential.helper "store --file .git/credentials"
 git remote set-url origin https://naichaniunu:%GH_TOKEN%@github.com/naichaniuiu/sales-dashboard.git
 
 echo [1/5] 提取最新数据...
