@@ -1,5 +1,7 @@
 @echo off
 chcp 65001 >nul
+setlocal EnableDelayedExpansion
+
 echo ======================================
 echo   中西部大区销售看板 - 一键更新
 echo ======================================
@@ -7,17 +9,27 @@ echo.
 
 cd /d "%~dp0"
 
-REM 配置GitHub认证
-echo 请输入您的GitHub Personal Access Token（以ghp_开头）:
+REM 检查是否已有保存的Token
+if exist ".github_token" (
+    set /p GH_TOKEN=<.github_token
+    echo [Token] 使用已保存的Token
+    goto :run_update
+)
+
+echo 首次使用，请输入您的GitHub Personal Access Token（以ghp_开头）:
 set /p GH_TOKEN=
-if "%GH_TOKEN%"=="" (
+if "!GH_TOKEN!"=="" (
     echo [错误] Token不能为空！
     pause
     exit /b 1
 )
-git config credential.helper store
-git remote set-url origin https://naichaniunu:%GH_TOKEN%@github.com/naichaniuiu/sales-dashboard.git
+echo !GH_TOKEN!>.github_token
+echo [Token] 已保存，下次运行无需再输入
 
+:run_update
+git remote set-url origin https://naichaniuiu:!GH_TOKEN!@github.com/naichaniuiu/sales-dashboard.git
+
+echo.
 echo [1/5] 提取最新数据...
 python extract_all_data.py
 if %errorlevel% neq 0 goto error

@@ -14,3 +14,6 @@ Thumbs.db
 
 # Exclude Windows-specific files
 desktop.ini
+
+# Exclude sensitive token file
+.github_token
