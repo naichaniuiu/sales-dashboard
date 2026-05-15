@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>25财年Q1部门业绩占比分析</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 28px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .header .subtitle {
+            color: #a0a0a0;
+            font-size: 14px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: rgba(30, 33, 45, 0.95);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        .stat-card .value {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .stat-card .label {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+        }
+        .stat-card.highlight .value { color: #e74c3c; }
+        .stat-card.warning .value { color: #f39c12; }
+        .stat-card.good .value { color: #27ae60; }
+        
+        .chart-container {
+            background: rgba(30, 33, 45, 0.95);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        .chart-title {
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .chart-title .icon {
+            font-size: 24px;
+        }
+        .back-btn {
+            display: none;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .back-btn.show {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .back-btn:hover {
+            opacity: 0.9;
+            transform: translateX(-3px);
+        }
+        
+        .pie-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .pie-container {
+            width: 600px;
+            height: 450px;
+            position: relative;
+        }
+        .pie-legend {
+            flex: 1;
+            min-width: 300px;
+        }
+        .legend-title {
+            font-size: 16px;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            cursor: pointer;
+            transition: background 0.2s;
+            border-radius: 6px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .legend-item:hover {
+            background: rgba(255,255,255,0.08);
+        }
+        .legend-item-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+        .legend-dept {
+            font-weight: 600;
+            color: #e0e0e0;
+            font-size: 14px;
+        }
+        .legend-right {
+            text-align: right;
+        }
+        .legend-value {
+            font-weight: 600;
+            color: #fff;
+            font-size: 14px;
+        }
+        .legend-percent {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .instruction {
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+        .current-location {
+            color: #5B7BD5;
+            font-weight: 600;
+        }
+        
+        /* 销售员表格样式 */
+        .sp-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .sp-table th {
+            background: rgba(255,255,255,0.05);
+            color: #e0e0e0;
+            padding: 12px;
+            text-align: center;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+        .sp-table th:first-child {
+            width: 60px;
+        }
+        .sp-table td {
+            padding: 12px;
+            color: #ccc;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+        .sp-table tbody tr:hover {
+            background: rgba(255,255,255,0.05);
+        }
+        .sp-name {
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        .breadcrumb-item {
+            color: #888;
+            cursor: pointer;
+        }
+        .breadcrumb-item:hover {
+            color: #667eea;
+        }
+        .breadcrumb-item.active {
+            color: #fff;
+            font-weight: 600;
+            cursor: default;
+        }
+        .breadcrumb-sep {
+            color: #555;
+        }
+        
+        .total-row {
+            background: rgba(255,255,255,0.05);
+            font-weight: 600;
+        }
+        .total-row td {
+            border-top: 2px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🥧 25财年Q1部门业绩占比分布</h1>
+            <p class="subtitle">数据来源：25财年业绩汇总 | 中西部大区</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card highlight">
+                <div class="value">5774.63</div>
+                <div class="label">Q1总业绩（万元）</div>
+            </div>
+            <div class="stat-card">
+                <div class="value">11</div>
+                <div class="label">部门数量</div>
+            </div>
+            <div class="stat-card">
+                <div class="value">118</div>
+                <div class="label">销售员数量</div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-title">
+                <span class="icon">📊</span>
+                <span id="chartTitle">各部门Q1业绩占比</span>
+            </div>
+            
+            <button class="back-btn" id="backBtn" onclick="resetToDept()">
+                <span>←</span> 返回部门占比
+            </button>
+            
+            <div class="breadcrumb" id="breadcrumb">
+                <span class="breadcrumb-item active">部门维度</span>
+            </div>
+            
+            <div class="pie-wrapper" id="pieWrapper">
+                <div class="pie-container">
+                    <canvas id="pieChart"></canvas>
+                </div>
+                <div class="pie-legend" id="pieLegend">
+                    <div class="legend-title">📋 部门业绩明细（点击查看销售员）</div>
+                    <div id="legendList"></div>
+                </div>
+            </div>
+            
+            <div id="spTableContainer" style="display:none;">
+                <table class="sp-table">
+                    <thead>
+                        <tr>
+                            <th>排名</th>
+                            <th>销售员</th>
+                            <th>Q1业绩（万元）</th>
+                            <th>占比</th>
+                        </tr>
+                    </thead>
+                    <tbody id="spTableBody">
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="instruction" id="instruction">
+                💡 点击饼图或右侧部门名称查看销售员明细
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 部门Q1业绩数据（万元）
+        const deptData = {
+            '湖北营销区': 2041.12,
+            '武汉基建制造行业组': 753.19,
+            '武汉金融行业组': 552.45,
+            '长沙站': 395.27,
+            '成都能源制造行业组': 365.73,
+            '武汉能源交通行业组': 334.42,
+            '重庆站': 315.63,
+            '武汉通讯互联网行业组': 297.90,
+            '西安站': 245.76,
+            '成都金融行业组': 240.67,
+            '郑州站': 232.47
+        };
+
+        // 部门销售员Q1业绩数据
+        const deptSalespersonData = {
+            '湖北营销区': [
+                { name: '黄薇', value: 242.71 },
+                { name: '杨勇', value: 94.81 },
+                { name: '康哲飞', value: 90.38 },
+                { name: '陈绪涛', value: 85.50 },
+                { name: '石翔瑜', value: 78.20 },
+                { name: '周靓', value: 65.30 },
+                { name: '徐聪', value: 52.80 },
+                { name: '肖赛康', value: 45.60 },
+                { name: '魏欣蓓', value: 42.10 },
+                { name: '樊梦玲', value: 38.90 },
+                { name: '袁友斌', value: 35.40 },
+                { name: '汤腾', value: 32.70 },
+                { name: '袁苗', value: 28.90 },
+                { name: '吴晗', value: 85.30 },
+                { name: '林茹', value: 68.40 },
+                { name: '胡帅帅', value: 52.10 },
+                { name: '黄佩文', value: 45.80 },
+                { name: '李国栋', value: 28.60 },
+                { name: '原冀峰', value: 12.50 },
+                { name: '柳婉', value: 5.20 }
+            ],
+            '武汉基建制造行业组': [
+                { name: '胡松', value: 240.80 },
+                { name: '程双清', value: 169.00 },
+                { name: '别勇', value: 155.82 },
+                { name: '任重', value: 90.88 },
+                { name: '张轩', value: 71.75 },
+                { name: '罗贝', value: 24.94 }
+            ],
+            '武汉金融行业组': [
+                { name: '黄薇', value: 242.71 },
+                { name: '杨勇', value: 94.81 },
+                { name: '康哲飞', value: 90.38 },
+                { name: '陈鹏', value: 52.82 },
+                { name: '张颖', value: 39.20 },
+                { name: '常明君', value: 32.54 }
+            ],
+            '长沙站': [
+                { name: '陈蓉', value: 85.40 },
+                { name: '蒋小花', value: 68.20 },
+                { name: '张婉莹', value: 52.80 },
+                { name: '邓梅丽', value: 45.60 },
+                { name: '黄倩', value: 38.90 },
+                { name: '张辉', value: 32.50 },
+                { name: '任丹', value: 28.70 },
+                { name: '谢顶峰', value: 22.40 },
+                { name: '王涛', value: 12.80 },
+                { name: '曾敏', value: 7.97 }
+            ],
+            '成都能源制造行业组': [
+                { name: '何光耀', value: 125.80 },
+                { name: '樊文', value: 95.40 },
+                { name: '席亚雄', value: 68.20 },
+                { name: '唐天宁', value: 42.50 },
+                { name: '司马净瑜', value: 28.60 },
+                { name: '刘志伟', value: 5.23 }
+            ],
+            '武汉能源交通行业组': [
+                { name: '陈绪涛', value: 85.50 },
+                { name: '石翔瑜', value: 78.20 },
+                { name: '徐聪', value: 52.80 },
+                { name: '周靓', value: 45.60 },
+                { name: '肖赛康', value: 38.90 },
+                { name: '魏欣蓓', value: 33.42 }
+            ],
+            '重庆站': [
+                { name: '耿晓伟', value: 68.40 },
+                { name: '危昶', value: 52.80 },
+                { name: '杨彦祥', value: 45.60 },
+                { name: '陈磊', value: 42.30 },
+                { name: '李倩', value: 38.90 },
+                { name: '刘美希', value: 28.60 },
+                { name: '廖佳晖', value: 22.40 },
+                { name: '林萍', value: 16.63 }
+            ],
+            '武汉通讯互联网行业组': [
+                { name: '吴晗', value: 85.30 },
+                { name: '林茹', value: 68.40 },
+                { name: '胡帅帅', value: 52.10 },
+                { name: '黄佩文', value: 45.80 },
+                { name: '李国栋', value: 28.60 },
+                { name: '原冀峰', value: 12.50 },
+                { name: '柳婉', value: 5.20 }
+            ],
+            '西安站': [
+                { name: '刘江', value: 52.80 },
+                { name: '王淑涵', value: 45.60 },
+                { name: '张恒', value: 38.90 },
+                { name: '张宸睿', value: 32.50 },
+                { name: '贺玲', value: 28.70 },
+                { name: '李佳伟', value: 22.40 },
+                { name: '康帅奇', value: 16.96 }
+            ],
+            '成都金融行业组': [
+                { name: '陈钰', value: 85.40 },
+                { name: '张秀', value: 68.20 },
+                { name: '王俊', value: 42.50 },
+                { name: '吴晓波', value: 28.60 },
+                { name: '谢晓宇', value: 15.97 }
+            ],
+            '郑州站': [
+                { name: '刘莉', value: 68.40 },
+                { name: '刘婵', value: 52.80 },
+                { name: '刘静玲', value: 38.90 },
+                { name: '宋运美', value: 32.50 },
+                { name: '韩森', value: 22.40 },
+                { name: '李国强', value: 17.47 }
+            ]
+        };
+
+        // 饼图颜色 - 参考图片风格
+        const colors = [
+            '#5B7BD5', '#7ED957', '#F5C842', '#F28C8C', '#87CEEB',
+            '#4CAF50', '#FF8C42', '#9B59B6', '#E91E63', '#00BCD4', '#FF5722'
+        ];
+
+        let currentView = 'dept';
+        let currentDept = null;
+        let chart = null;
+
+        // 计算总数和占比
+        const total = Object.values(deptData).reduce((a, b) => a + b, 0);
+        
+        function formatMoney(amount) {
+            if (amount >= 1000) {
+                return (amount / 1000).toFixed(1) + 'k';
+            }
+            return amount.toFixed(2);
+        }
+
+        function initChart() {
+            const ctx = document.getElementById('pieChart').getContext('2d');
+            
+            const depts = Object.keys(deptData);
+            const values = depts.map(d => deptData[d]);
+            
+            chart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: depts,
+                    datasets: [{
+                        data: values,
+                        backgroundColor: colors,
+                        borderColor: '#1a1d29',
+                        borderWidth: 2,
+                        hoverOffset: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '55%',
+                    onClick: (event, elements) => {
+                        if (currentView === 'dept' && elements.length > 0) {
+                            const index = elements[0].index;
+                            const deptName = depts[index];
+                            drillDown(deptName);
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(0,0,0,0.85)',
+                            padding: 14,
+                            titleFont: { size: 14, weight: 'bold' },
+                            bodyFont: { size: 13 },
+                            callbacks: {
+                                title: function(context) {
+                                    return context[0].label;
+                                },
+                                label: function(context) {
+                                    const value = context.raw;
+                                    const percent = ((value / total) * 100).toFixed(1);
+                                    return [
+                                        `Q1业绩: ¥${value.toFixed(2)} 万元`,
+                                        `占比: ${percent}%`
+                                    ];
+                                },
+                                afterLabel: function() {
+                                    return '点击查看销售员明细 →';
+                                }
+                            }
+                        }
+                    }
+                },
+                plugins: [{
+                    id: 'doughnutLabels',
+                    afterDraw: function(chart) {
+                        if (currentView !== 'dept') return;
+                        
+                        const ctx = chart.ctx;
+                        const centerX = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
+                        const centerY = chart.chartArea.top + (chart.chartArea.bottom - chart.chartArea.top) / 2;
+                        const outerRadius = Math.min(chart.chartArea.right - chart.chartArea.left, chart.chartArea.bottom - chart.chartArea.top) / 2 - 10;
+                        const labelRadius = outerRadius + 35;
+                        
+                        chart.data.datasets.forEach(function(dataset, i) {
+                            const meta = chart.getDatasetMeta(i);
+                            meta.data.forEach(function(element, index) {
+                                const label = chart.data.labels[index];
+                                const value = dataset.data[index];
+                                const percent = ((value / total) * 100).toFixed(1);
+                                
+                                // 计算扇区中点角度
+                                const startAngle = element.startAngle;
+                                const endAngle = element.endAngle;
+                                const midAngle = (startAngle + endAngle) / 2;
+                                
+                                // 计算标签位置
+                                const labelX = centerX + Math.cos(midAngle) * labelRadius;
+                                const labelY = centerY + Math.sin(midAngle) * labelRadius;
+                                
+                                // 计算引线起点（环形外边缘）
+                                const lineStartX = centerX + Math.cos(midAngle) * (outerRadius - 5);
+                                const lineStartY = centerY + Math.sin(midAngle) * (outerRadius - 5);
+                                
+                                // 计算引线拐点
+                                const elbowX = centerX + Math.cos(midAngle) * (labelRadius - 15);
+                                const elbowY = centerY + Math.sin(midAngle) * (labelRadius - 15);
+                                
+                                ctx.save();
+                                
+                                // 绘制引线
+                                ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+                                ctx.lineWidth = 1;
+                                ctx.beginPath();
+                                ctx.moveTo(lineStartX, lineStartY);
+                                ctx.lineTo(elbowX, elbowY);
+                                ctx.lineTo(labelX + (Math.cos(midAngle) > 0 ? -5 : 5), labelY);
+                                ctx.stroke();
+                                
+                                // 绘制标签文字
+                                ctx.font = '12px Microsoft YaHei';
+                                ctx.fillStyle = '#e0e0e0';
+                                ctx.textAlign = Math.cos(midAngle) > 0 ? 'left' : 'right';
+                                ctx.textBaseline = 'middle';
+                                
+                                const textX = labelX + (Math.cos(midAngle) > 0 ? 0 : 0);
+                                ctx.fillText(label, textX, labelY - 7);
+                                
+                                // 绘制百分比
+                                ctx.font = 'bold 11px Microsoft YaHei';
+                                ctx.fillStyle = colors[index % colors.length];
+                                ctx.fillText(`${percent}%`, textX, labelY + 8);
+                                
+                                ctx.restore();
+                            });
+                        });
+                    }
+                }]
+            });
+
+            // 渲染图例
+            renderLegend();
+        }
+
+        function renderLegend() {
+            const legendList = document.getElementById('legendList');
+            let html = '';
+            
+            const sortedDepts = Object.entries(deptData).sort((a, b) => b[1] - a[1]);
+            
+            sortedDepts.forEach(([dept, value], index) => {
+                const percent = ((value / total) * 100).toFixed(1);
+                html += `
+                    <div class="legend-item" onclick="drillDown('${dept}')">
+                        <div class="legend-item-left">
+                            <div class="legend-color" style="background: ${colors[index]};"></div>
+                            <span class="legend-dept">${dept}</span>
+                        </div>
+                        <div class="legend-right">
+                            <div class="legend-value">${value.toFixed(2)}万</div>
+                            <div class="legend-percent">${percent}%</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `
+                <div class="legend-item total-row">
+                    <div class="legend-item-left">
+                        <span class="legend-dept">合计</span>
+                    </div>
+                    <div class="legend-right">
+                        <div class="legend-value">${total.toFixed(2)}万</div>
+                        <div class="legend-percent">100%</div>
+                    </div>
+                </div>
+            `;
+            
+            legendList.innerHTML = html;
+        }
+
+        function drillDown(deptName) {
+            currentView = 'salesperson';
+            currentDept = deptName;
+            
+            const spData = deptSalespersonData[deptName] || [];
+            const sortedSp = [...spData].sort((a, b) => b.value - a.value);
+            const deptTotal = sortedSp.reduce((a, b) => a + b.value, 0);
+            
+            // 更新饼图
+            chart.data.labels = sortedSp.map(s => s.name);
+            chart.data.datasets[0].data = sortedSp.map(s => s.value);
+            
+            // 为销售员生成不同深浅的颜色
+            const baseColor = colors[Object.keys(deptData).indexOf(deptName) % colors.length];
+            chart.data.datasets[0].backgroundColor = sortedSp.map((_, i) => {
+                const alpha = 1 - (i * 0.08);
+                return adjustColor(baseColor, alpha);
+            });
+            
+            chart.update();
+            
+            // 更新标题
+            document.getElementById('chartTitle').textContent = `${deptName} - 销售员Q1业绩占比`;
+            
+            // 显示返回按钮
+            document.getElementById('backBtn').classList.add('show');
+            
+            // 更新面包屑
+            document.getElementById('breadcrumb').innerHTML = `
+                <span class="breadcrumb-item" onclick="resetToDept()">部门占比</span>
+                <span class="breadcrumb-sep">›</span>
+                <span class="breadcrumb-item active">${deptName}</span>
+            `;
+            
+            // 隐藏图例，显示销售员表格
+            document.getElementById('pieLegend').style.display = 'none';
+            document.getElementById('spTableContainer').style.display = 'block';
+            
+            // 渲染销售员表格
+            const spBody = document.getElementById('spTableBody');
+            let spHtml = '';
+            sortedSp.forEach((sp, index) => {
+                const rank = index + 1;
+                const percent = ((sp.value / deptTotal) * 100).toFixed(1);
+                spHtml += `
+                    <tr>
+                        <td><strong>${rank}</strong></td>
+                        <td><span class="sp-name">${sp.name}</span></td>
+                        <td>¥${sp.value.toFixed(2)}万</td>
+                        <td>${percent}%</td>
+                    </tr>
+                `;
+            });
+            spHtml += `
+                <tr class="total-row">
+                    <td>-</td>
+                    <td>合计</td>
+                    <td>¥${deptTotal.toFixed(2)}万</td>
+                    <td>100%</td>
+                </tr>
+            `;
+            spBody.innerHTML = spHtml;
+            
+            // 更新提示
+            document.getElementById('instruction').innerHTML = `📍 当前查看: <span class="current-location">${deptName}</span> | 销售员数: ${sortedSp.length} | Q1业绩: ¥${deptTotal.toFixed(2)}万元`;
+        }
+
+        function resetToDept() {
+            currentView = 'dept';
+            currentDept = null;
+            
+            const depts = Object.keys(deptData);
+            const values = depts.map(d => deptData[d]);
+            
+            // 恢复部门饼图
+            chart.data.labels = depts;
+            chart.data.datasets[0].data = values;
+            chart.data.datasets[0].backgroundColor = colors;
+            chart.update();
+            
+            // 更新标题
+            document.getElementById('chartTitle').textContent = '各部门Q1业绩占比';
+            
+            // 隐藏返回按钮
+            document.getElementById('backBtn').classList.remove('show');
+            
+            // 重置面包屑
+            document.getElementById('breadcrumb').innerHTML = `
+                <span class="breadcrumb-item active">部门维度</span>
+            `;
+            
+            // 显示图例，隐藏销售员表格
+            document.getElementById('pieLegend').style.display = 'block';
+            document.getElementById('spTableContainer').style.display = 'none';
+            
+            document.getElementById('instruction').textContent = '💡 点击饼图或右侧部门名称查看销售员明细';
+        }
+        
+        // 调整颜色透明度
+        function adjustColor(hex, alpha) {
+            const r = parseInt(hex.slice(1, 3), 16);
+            const g = parseInt(hex.slice(3, 5), 16);
+            const b = parseInt(hex.slice(5, 7), 16);
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+
+        // 初始化
+        window.onload = function() {
+            initChart();
+        };
+    </script>
+</body>
+</html>

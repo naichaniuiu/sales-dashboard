@@ -1,0 +1,16 @@
+# Keep only data files and scripts
+# Upload all other files to GitHub
+
+# Exclude temporary files
+*.pyc
+__pycache__/
+*.log
+.DS_Store
+Thumbs.db
+
+# Exclude Excel source files (sensitive business data)
+*.xlsx
+*.xls
+
+# Exclude Windows-specific files
+desktop.ini

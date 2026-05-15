@@ -1,0 +1,28 @@
+{
+    "lastUpdate": "2026-05-13",
+    "region": "中西部大区",
+    "totalDebt": 1028.34,
+    "periodBreakdown": {
+        "labels": ["30天内", "30-90天", "90-180天", "180天以上"],
+        "values": [580.35, 215.64, 117.15, 115.20],
+        "colors": ["#00ff88", "#00d4ff", "#ffa502", "#ff4757"]
+    },
+    "departments": [
+        {"name": "武汉基建制造行业组", "total": 335.66, "trend": "up", "status": "健康"},
+        {"name": "武汉能源交通行业组", "total": 145.68, "trend": "up", "status": "健康"},
+        {"name": "武汉金融行业组", "total": 120.45, "trend": "up", "status": "需关注"},
+        {"name": "成都站", "total": 98.32, "trend": "up", "status": "需关注"},
+        {"name": "长沙站", "total": 85.20, "trend": "up", "status": "需关注"},
+        {"name": "郑州站", "total": 72.15, "trend": "up", "status": "需关注"},
+        {"name": "重庆站", "total": 68.45, "trend": "up", "status": "需关注"},
+        {"name": "西安站", "total": 52.80, "trend": "up", "status": "需关注"},
+        {"name": "湖北营销区", "total": 32.45, "trend": "up", "status": "需关注"},
+        {"name": "解决方案部", "total": 17.18, "trend": "up", "status": "需关注"}
+    ],
+    "collectionMetrics": {
+        "avgCycle": 35.9,
+        "maxCycle": 70.8,
+        "minCycle": 13.8,
+        "over90DaysDepts": 2
+    }
+}

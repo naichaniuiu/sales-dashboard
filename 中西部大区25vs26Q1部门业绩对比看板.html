@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中西部大区 25财年 vs 26财年Q1 部门业绩对比看板</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2.2em;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        .header .subtitle {
+            color: #a0aec0;
+            font-size: 1.1em;
+        }
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 25px 40px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 200px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+        .stat-card .value {
+            font-size: 2.2em;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .stat-card .label {
+            color: #a0aec0;
+            font-size: 0.95em;
+        }
+        .stat-card.positive .value {
+            color: #10b981;
+        }
+        .stat-card.negative .value {
+            color: #ef4444;
+        }
+        .stat-card.neutral .value {
+            color: #00d4ff;
+        }
+        .chart-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .chart-title {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            color: #e2e8f0;
+            text-align: center;
+        }
+        .chart-wrapper {
+            position: relative;
+            height: 500px;
+        }
+        .data-table-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-x: auto;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .data-table th {
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            color: #fff;
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .data-table td {
+            padding: 14px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .data-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .data-table .number {
+            font-family: 'Consolas', monospace;
+            text-align: right;
+        }
+        .data-table .dept-name {
+            font-weight: 500;
+        }
+        .growth-up {
+            color: #10b981;
+            font-weight: bold;
+        }
+        .growth-down {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        .rank-badge {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .rank-1 { background: linear-gradient(135deg, #ffd700, #ffaa00); color: #1a1a2e; }
+        .rank-2 { background: linear-gradient(135deg, #c0c0c0, #a0a0a0); color: #1a1a2e; }
+        .rank-3 { background: linear-gradient(135deg, #cd7f32, #b8860b); color: #fff; }
+        .rank-default { background: rgba(255, 255, 255, 0.2); }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #718096;
+            font-size: 0.9em;
+        }
+        .legend-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        @media (max-width: 768px) {
+            .stats-row {
+                gap: 15px;
+            }
+            .stat-card {
+                min-width: 150px;
+                padding: 15px 20px;
+            }
+            .stat-card .value {
+                font-size: 1.6em;
+            }
+            .chart-wrapper {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>中西部大区 25财年 vs 26财年Q1 部门业绩对比</h1>
+        <p class="subtitle">数据来源：业绩欠款看板 | 统计口径：审核通过业绩</p>
+    </div>
+
+    <div class="stats-row">
+        <div class="stat-card neutral">
+            <div class="value">38,356,433</div>
+            <div class="label">25财年Q1业绩（元）</div>
+        </div>
+        <div class="stat-card negative">
+            <div class="value">6,305,159</div>
+            <div class="label">26财年Q1业绩（元）</div>
+        </div>
+        <div class="stat-card negative">
+            <div class="value">-83.56%</div>
+            <div class="label">同比变化</div>
+        </div>
+        <div class="stat-card">
+            <div class="value">-32,051,274</div>
+            <div class="label">业绩差额（元）</div>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <h2 class="chart-title">📊 部门业绩对比柱状图</h2>
+        <div class="chart-wrapper">
+            <canvas id="comparisonChart"></canvas>
+        </div>
+        <div class="legend-container">
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #3b82f6, #2563eb);"></div>
+                <span>25财年Q1</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #f59e0b, #d97706);"></div>
+                <span>26财年Q1</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <h2 class="chart-title">📈 同比变化率</h2>
+        <div class="chart-wrapper">
+            <canvas id="growthChart"></canvas>
+        </div>
+    </div>
+
+    <div class="data-table-container">
+        <h2 class="chart-title">📋 部门业绩明细表</h2>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>排名</th>
+                    <th>部门</th>
+                    <th>25Q1业绩</th>
+                    <th>26Q1业绩</th>
+                    <th>同比差额</th>
+                    <th>同比%</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="rank-badge rank-1">1</span></td>
+                    <td class="dept-name">武汉基建制造行业组</td>
+                    <td class="number">7,531,931.21</td>
+                    <td class="number">2,356,748.98</td>
+                    <td class="number growth-down">-5,175,182.23</td>
+                    <td class="number growth-down">-68.71%</td>
+                </tr>
+                <tr>
+                    <td><span class="rank-badge rank-2">2</span></td>
+                    <td class="dept-name">成都站</td>
+                    <td class="number">6,064,029.03</td>
+                    <td class="number">1,125,395.77</td>
+                    <td class="number growth-down">-4,938,633.26</td>
+                    <td class="number growth-down">-81.44%</td>
+                </tr>
+                <tr>
+                    <td><span class="rank-badge rank-3">3</span></td>
+                    <td class="dept-name">武汉金融行业组</td>
+                    <td class="number">5,523,402.40</td>
+                    <td class="number">192,179.02</td>
+                    <td class="number growth-down">-5,331,223.38</td>
+                    <td class="number growth-down">-96.52%</td>
+                </tr>
+                <tr>
+                    <td><span class="rank-badge rank-default">4</span></td>
+                    <td class="dept-name">武汉能源交通行业组</td>
+                    <td class="number">5,136,359.82</td>
+                    <td class="number">437,572.61</td>
+                    <td class="number growth-down">-4,698,787.21</td>
+                    <td class="number growth-down">-91.48%</td>
+                </tr>
+                <tr>
+                    <td><span class="rank-badge rank-default">5</span></td>
+                    <td class="dept-name">长沙站</td>
+                    <td class="number">3,950,502.36</td>
+                    <td class="number">642,808.13</td>
+                    <td class="number growth-down">-3,307,694.23</td>
+                    <td class="number growth-down">-83.73%</td>
+                </tr>
+                <tr>
+                    <td><span class="rank-badge rank-default">6</span></td>
+                    <td class="dept-name">重庆站</td>
+                    <td class="number">3,156,348.28</td>
+                    <td class="number">615,628.27</td>
+                    <td class="number growth-down">-2,540,720.01</td>
+                    <td class="number growth-down">-80.50%</td>
+                </tr>
+                <tr>
+                    <td><span class="rank-badge rank-default">7</span></td>
+                    <td class="dept-name">西安站</td>
+                    <td class="number">2,457,734.52</td>
+                    <td class="number">711,622.55</td>
+                    <td class="number growth-down">-1,746,111.97</td>
+                    <td class="number growth-down">-71.05%</td>
+                </tr>
+                <tr>
+                    <td><span class="rank-badge rank-default">8</span></td>
+                    <td class="dept-name">郑州站</td>
+                    <td class="number">2,324,667.94</td>
+                    <td class="number">280,158.55</td>
+                    <td class="number growth-down">-2,044,509.39</td>
+                    <td class="number growth-down">-87.95%</td>
+                </tr>
+                <tr>
+                    <td><span class="rank-badge rank-default">9</span></td>
+                    <td class="dept-name">湖北营销区</td>
+                    <td class="number">1,862,459.50</td>
+                    <td class="number">-62,381.14</td>
+                    <td class="number growth-down">-1,924,840.64</td>
+                    <td class="number growth-down">-103.35%</td>
+                </tr>
+                <tr>
+                    <td><span class="rank-badge rank-default">10</span></td>
+                    <td class="dept-name">解决方案部</td>
+                    <td class="number">348,997.83</td>
+                    <td class="number">5,426.46</td>
+                    <td class="number growth-down">-343,571.37</td>
+                    <td class="number growth-down">-98.45%</td>
+                </tr>
+                <tr style="background: rgba(255, 255, 255, 0.1); font-weight: bold;">
+                    <td>-</td>
+                    <td class="dept-name">合计</td>
+                    <td class="number">38,356,432.89</td>
+                    <td class="number">6,305,159.20</td>
+                    <td class="number growth-down">-32,051,273.69</td>
+                    <td class="number growth-down">-83.56%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        <p>数据更新时间：2026年5月13日 | 制作：WorkBuddy数据分析</p>
+    </div>
+
+    <script>
+        // 柱状图数据
+        const deptData = {
+            labels: [
+                '武汉基建制造行业组', '成都站', '武汉金融行业组', '武汉能源交通行业组',
+                '长沙站', '重庆站', '西安站', '郑州站', '湖北营销区', '解决方案部'
+            ],
+            data25: [7531931.21, 6064029.03, 5523402.40, 5136359.82, 3950502.36, 3156348.28, 2457734.52, 2324667.94, 1862459.50, 348997.83],
+            data26: [2356748.98, 1125395.77, 192179.02, 437572.61, 642808.13, 615628.27, 711622.55, 280158.55, -62381.14, 5426.46],
+            growth: [-68.71, -81.44, -96.52, -91.48, -83.73, -80.50, -71.05, -87.95, -103.35, -98.45]
+        };
+
+        // 部门业绩对比柱状图
+        new Chart(document.getElementById('comparisonChart'), {
+            type: 'bar',
+            data: {
+                labels: deptData.labels,
+                datasets: [
+                    {
+                        label: '25财年Q1',
+                        data: deptData.data25,
+                        backgroundColor: 'rgba(59, 130, 246, 0.8)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 1,
+                        borderRadius: 6,
+                        order: 2
+                    },
+                    {
+                        label: '26财年Q1',
+                        data: deptData.data26,
+                        backgroundColor: 'rgba(245, 158, 11, 0.8)',
+                        borderColor: 'rgba(245, 158, 11, 1)',
+                        borderWidth: 1,
+                        borderRadius: 6,
+                        order: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        titleFont: { size: 14 },
+                        bodyFont: { size: 13 },
+                        padding: 12,
+                        callbacks: {
+                            label: function(context) {
+                                const value = context.raw;
+                                return context.dataset.label + ': ¥' + value.toLocaleString('zh-CN', {minimumFractionDigits: 2});
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        ticks: { 
+                            color: '#a0aec0',
+                            font: { size: 11 },
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    },
+                    y: {
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        ticks: {
+                            color: '#a0aec0',
+                            callback: function(value) {
+                                return '¥' + (value / 1000000).toFixed(1) + 'M';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // 同比变化率柱状图
+        new Chart(document.getElementById('growthChart'), {
+            type: 'bar',
+            data: {
+                labels: deptData.labels,
+                datasets: [{
+                    label: '同比变化率',
+                    data: deptData.growth,
+                    backgroundColor: deptData.growth.map(v => 
+                        v >= 0 ? 'rgba(16, 185, 129, 0.8)' : 'rgba(239, 68, 68, 0.8)'
+                    ),
+                    borderColor: deptData.growth.map(v =>
+                        v >= 0 ? 'rgba(16, 185, 129, 1)' : 'rgba(239, 68, 68, 1)'
+                    ),
+                    borderWidth: 1,
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        callbacks: {
+                            label: function(context) {
+                                return '同比: ' + context.raw.toFixed(2) + '%';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        ticks: {
+                            color: '#a0aec0',
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        },
+                        min: -110,
+                        max: 0
+                    },
+                    y: {
+                        grid: { display: false },
+                        ticks: { 
+                            color: '#a0aec0',
+                            font: { size: 12 }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
