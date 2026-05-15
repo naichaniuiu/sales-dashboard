@@ -7,6 +7,12 @@ echo.
 
 cd /d "%~dp0"
 
+REM 配置GitHub认证（使用Token）
+set GH_TOKEN=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
+git config credential.helper store
+git config credential.helper "store --file .git/credentials"
+git remote set-url origin https://naichaniunu:%GH_TOKEN%@github.com/naichaniuiu/sales-dashboard.git
+
 echo [1/5] 提取最新数据...
 python extract_all_data.py
 if %errorlevel% neq 0 goto error
