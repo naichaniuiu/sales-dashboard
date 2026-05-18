@@ -460,7 +460,7 @@ def generate_html(data, sales_detail):
 <script>
 // ===== 数据 =====
 const deptData = [
-    {dept_js}
+    {dept_js_str}
 ];
 
 // ===== Tab切换 =====
