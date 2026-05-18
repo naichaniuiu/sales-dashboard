@@ -56,11 +56,8 @@ print()
 # ===== 4. 欠款数据 =====
 df_debt_r = df_debt[df_debt['一级部门'] == REGION].copy()
 
-# 欠款金额用 提取正负数欠款 字段（如果有），否则用欠款金额
-if '提取正负数欠款' in df_debt_r.columns:
-    df_debt_r['欠款净额'] = pd.to_numeric(df_debt_r['提取正负数欠款'], errors='coerce').fillna(0)
-else:
-    df_debt_r['欠款净额'] = pd.to_numeric(df_debt_r['欠款金额'], errors='coerce').fillna(0)
+# 欠款金额用 欠款金额 字段（带符号相加，正负相抵）
+df_debt_r['欠款净额'] = pd.to_numeric(df_debt_r['欠款金额'], errors='coerce').fillna(0)
 
 # 账龄分级（按天数字段）
 def classify_age(days):
