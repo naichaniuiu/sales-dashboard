@@ -41,7 +41,7 @@ if %errorlevel% neq 0 goto error
 
 echo.
 echo [3/5] 更新看板HTML...
-python generate_dashboard.py
+python generate_html.py
 if %errorlevel% neq 0 goto error
 
 echo.
