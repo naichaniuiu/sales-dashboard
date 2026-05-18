@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>中西部大区 26财年Q1 数据看板</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #0a0e27; color: #fff; line-height: 1.6; min-height: 100vh; }
@@ -12,6 +13,7 @@
         .header { text-align: center; margin-bottom: 40px; }
         .header h1 { font-size: 2.2em; background: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; }
         .header p { color: #8892b0; font-size: 1.1em; }
+
         .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
         .kpi-card { background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%); border-radius: 16px; padding: 24px; text-align: center; border: 1px solid rgba(255,255,255,0.1); transition: transform 0.3s, box-shadow 0.3s; }
         .kpi-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,212,255,0.15); }
@@ -19,15 +21,30 @@
         .kpi-card h3 { color: #8892b0; font-size: 0.9em; font-weight: 500; margin-bottom: 8px; }
         .kpi-card .value { font-size: 2.2em; font-weight: 700; color: #00d4ff; }
         .kpi-card .sub { font-size: 0.85em; color: #8892b0; margin-top: 5px; }
+
         .highlight { color: #00ff88 !important; }
         .negative { color: #ff4757 !important; }
         .warning { color: #ffa502 !important; }
+
+        .tab-nav { display: flex; gap: 10px; margin-bottom: 25px; padding: 8px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); overflow-x: auto; scrollbar-width: none; }
+        .tab-nav::-webkit-scrollbar { display: none; }
+        .tab-btn { display: flex; align-items: center; gap: 8px; padding: 12px 24px; background: transparent; border: none; border-radius: 8px; color: #8892b0; font-size: 0.95em; font-weight: 500; cursor: pointer; transition: all 0.3s; white-space: nowrap; }
+        .tab-btn:hover { background: rgba(255,255,255,0.05); color: #ccd6f6; }
+        .tab-btn.active { background: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 100%); color: #fff; box-shadow: 0 4px 15px rgba(0,212,255,0.3); }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
         .module { background: rgba(255,255,255,0.05); border-radius: 20px; padding: 30px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 25px; }
         .module-title { font-size: 1.3em; margin-bottom: 10px; color: #00d4ff; display: flex; align-items: center; gap: 10px; }
+        .module-desc { color: #8892b0; margin-bottom: 20px; font-size: 0.9em; }
+
         .charts-section { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px; }
         .chart-box { background: rgba(255,255,255,0.03); border-radius: 16px; padding: 20px; border: 1px solid rgba(255,255,255,0.08); }
         .chart-box h3 { color: #00d4ff; margin-bottom: 15px; font-size: 1.1em; text-align: center; }
         .chart-container { position: relative; height: 320px; }
+
         .dept-table { width: 100%; border-collapse: collapse; font-size: 0.9em; }
         .dept-table thead th { background: rgba(0,212,255,0.1); color: #00d4ff; padding: 12px 8px; text-align: center; font-weight: 500; border-bottom: 1px solid rgba(0,212,255,0.2); white-space: nowrap; }
         .dept-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.2s; cursor: pointer; }
@@ -37,16 +54,17 @@
         .dept-table tfoot tr { background: rgba(0,212,255,0.08); border-top: 2px solid rgba(0,212,255,0.3); }
         .dept-table tfoot td { padding: 12px 8px; text-align: center; color: #00d4ff; font-weight: 600; }
         .dept-table tfoot td:first-child { text-align: left; padding-left: 12px; }
+
         .trend-down { color: #ff4757; font-weight: 600; }
         .trend-up { color: #00ff88; font-weight: 600; }
+        .trend-neutral { color: #ffa502; }
         .status-badge { padding: 3px 10px; border-radius: 12px; font-size: 0.8em; font-weight: 600; }
         .badge-down { background: rgba(255,71,87,0.2); color: #ff4757; border: 1px solid rgba(255,71,87,0.3); }
         .badge-warning { background: rgba(255,165,2,0.2); color: #ffa502; border: 1px solid rgba(255,165,2,0.3); }
+        .badge-new { background: rgba(0,255,136,0.2); color: #00ff88; border: 1px solid rgba(0,255,136,0.3); }
         .badge-good { background: rgba(0,212,255,0.2); color: #00d4ff; border: 1px solid rgba(0,212,255,0.3); }
-        .risk-list { list-style: none; padding: 0; }
-        .risk-item { display: flex; justify-content: space-between; padding: 12px 15px; background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 8px; border-left: 3px solid #ff4757; }
-        .risk-name { color: #ccd6f6; }
-        .risk-amount { font-weight: 600; }
+
+        /* 下钻弹窗 */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; }
         .modal-overlay.active { display: flex; align-items: center; justify-content: center; }
         .modal { background: #1a2040; border-radius: 20px; padding: 30px; max-width: 900px; width: 90%; max-height: 80vh; overflow-y: auto; border: 1px solid rgba(0,212,255,0.3); }
@@ -54,9 +72,7 @@
         .modal-title { color: #00d4ff; font-size: 1.2em; font-weight: 600; }
         .modal-close { background: rgba(255,255,255,0.1); border: none; color: #fff; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 1.2em; display: flex; align-items: center; justify-content: center; }
         .modal-close:hover { background: rgba(255,71,87,0.3); }
-        .modal-table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
-        .modal-table th { background: rgba(0,212,255,0.1); color: #00d4ff; padding: 10px 8px; text-align: center; }
-        .modal-table td { padding: 8px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+
         @media (max-width: 768px) { .charts-section { grid-template-columns: 1fr; } .kpi-grid { grid-template-columns: repeat(2, 1fr); } .dept-table { font-size: 0.8em; } }
     </style>
 </head>
@@ -79,276 +95,664 @@
             <div class="kpi-icon">🎯</div>
             <h3>Q1目标完成率</h3>
             <div class="value negative">12.4%</div>
-            <div class="sub">同比 trend-down 81.9%</div>
+            <div class="sub">距目标还差 4893.17万</div>
         </div>
         <div class="kpi-card">
-            <div class="kpi-icon">📊</div>
-            <h3>总欠款金额</h3>
-            <div class="value negative">1674.79<span style="font-size:0.5em;">万</span></div>
-            <div class="sub">认款：2226.84万</div>
+            <div class="kpi-icon">📉</div>
+            <h3>同比25Q1</h3>
+            <div class="value negative">-81.9%</div>
+            <div class="sub">25Q1：3835.63万</div>
         </div>
         <div class="kpi-card">
             <div class="kpi-icon">👥</div>
-            <h3>在职销售员</h3>
-            <div class="value">68</div>
+            <h3>在职销售员总数</h3>
+            <div class="value" style="color:#ffa502;">68</div>
             <div class="sub">人</div>
         </div>
-    </div>
-
-    <!-- 图表区域 -->
-    <div class="charts-section">
-        <div class="chart-box">
-            <h3>📈 26Q1 vs 25Q1 业绩对比</h3>
-            <div class="chart-container"><canvas id="perfChart"></canvas></div>
-        </div>
-        <div class="chart-box">
-            <h3>📊 26Q1 目标完成率</h3>
-            <div class="chart-container"><canvas id="targetChart"></canvas></div>
+        <div class="kpi-card">
+            <div class="kpi-icon">⚠️</div>
+            <h3>逾期欠款总额</h3>
+            <div class="value negative">1674.79<span style="font-size:0.5em;">万</span></div>
+            <div class="sub">90天以上：755.95万</div>
         </div>
     </div>
 
-    <!-- 部门明细表 -->
-    <div class="module">
-        <div class="module-title">📋 部门业绩明细</div>
-        <table class="dept-table">
-            <thead>
-                <tr>
-                    <th>部门</th>
-                    <th>26Q1业绩</th>
-                    <th>25Q1业绩</th>
-                    <th>同比</th>
-                    <th>目标</th>
-                    <th>完成率</th>
-                    <th>销售员</th>
-                    <th>欠款</th>
-                    <th>认款</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr onclick="showSalesDetail('武汉基建制造行业组')" style="cursor:pointer;">
-            <td>🏢 武汉基建制造行业组</td>
-            <td>234.08</td>
-            <td>753.19</td>
-            <td class="trend-down">↓68.9%</td>
-            <td>1302.0</td>
-            <td class="negative">18.0%</td>
-            <td>7</td>
-            <td>319.00</td>
-            <td>596.63</td>
-        </tr><tr onclick="showSalesDetail('成都站')" style="cursor:pointer;">
-            <td>🏢 成都站</td>
-            <td>117.28</td>
-            <td>606.40</td>
-            <td class="trend-down">↓80.7%</td>
-            <td>1155.0</td>
-            <td class="negative">10.2%</td>
-            <td>16</td>
-            <td>247.45</td>
-            <td>266.99</td>
-        </tr><tr onclick="showSalesDetail('西安站')" style="cursor:pointer;">
-            <td>🏢 西安站</td>
-            <td>92.10</td>
-            <td>245.77</td>
-            <td class="trend-down">↓62.5%</td>
-            <td>441.0</td>
-            <td class="negative">20.9%</td>
-            <td>5</td>
-            <td>347.63</td>
-            <td>256.99</td>
-        </tr><tr onclick="showSalesDetail('长沙站')" style="cursor:pointer;">
-            <td>🏢 长沙站</td>
-            <td>65.12</td>
-            <td>395.05</td>
-            <td class="trend-down">↓83.5%</td>
-            <td>525.0</td>
-            <td class="negative">12.4%</td>
-            <td>8</td>
-            <td>66.79</td>
-            <td>264.92</td>
-        </tr><tr onclick="showSalesDetail('武汉能源交通行业组')" style="cursor:pointer;">
-            <td>🏢 武汉能源交通行业组</td>
-            <td>62.67</td>
-            <td>504.07</td>
-            <td class="trend-down">↓87.6%</td>
-            <td>630.0</td>
-            <td class="negative">9.9%</td>
-            <td>9</td>
-            <td>147.80</td>
-            <td>371.47</td>
-        </tr><tr onclick="showSalesDetail('重庆站')" style="cursor:pointer;">
-            <td>🏢 重庆站</td>
-            <td>62.30</td>
-            <td>315.63</td>
-            <td class="trend-down">↓80.3%</td>
-            <td>525.0</td>
-            <td class="negative">11.9%</td>
-            <td>8</td>
-            <td>113.57</td>
-            <td>166.11</td>
-        </tr><tr onclick="showSalesDetail('郑州站')" style="cursor:pointer;">
-            <td>🏢 郑州站</td>
-            <td>29.34</td>
-            <td>232.47</td>
-            <td class="trend-down">↓87.4%</td>
-            <td>441.0</td>
-            <td class="negative">6.7%</td>
-            <td>8</td>
-            <td>161.15</td>
-            <td>70.18</td>
-        </tr><tr onclick="showSalesDetail('武汉金融行业组')" style="cursor:pointer;">
-            <td>🏢 武汉金融行业组</td>
-            <td>20.31</td>
-            <td>552.34</td>
-            <td class="trend-down">↓96.3%</td>
-            <td>567.0</td>
-            <td class="negative">3.6%</td>
-            <td>5</td>
-            <td>248.11</td>
-            <td>229.28</td>
-        </tr><tr onclick="showSalesDetail('其他')" style="cursor:pointer;">
-            <td>🏢 其他</td>
-            <td>9.63</td>
-            <td>230.71</td>
-            <td class="trend-down">↓95.8%</td>
-            <td>0.0</td>
-            <td class="negative">0.0%</td>
-            <td>2</td>
-            <td>23.29</td>
-            <td>4.27</td>
-        </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td>合计</td>
-                    <td>692.83</td>
-                    <td>3835.63</td>
-                    <td class="trend-down">-81.9%</td>
-                    <td>5586.0</td>
-                    <td>12.4%</td>
-                    <td>68</td>
-                    <td>1674.79</td>
-                    <td>2226.84</td>
-                </tr>
-            </tfoot>
-        </table>
+    <!-- Tab导航 -->
+    <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('performance', this)"><span class="tab-icon">📊</span>业绩分析</button>
+        <button class="tab-btn" onclick="switchTab('debt', this)"><span class="tab-icon">💳</span>欠款分析</button>
+        <button class="tab-btn" onclick="switchTab('collection', this)"><span class="tab-icon">⏱️</span>回款周期分析</button>
     </div>
 
-    <!-- 回款周期分析 -->
-    <div class="module">
-        <div class="module-title">⏱️ 部门回款周期分析</div>
-        <table class="dept-table">
-            <thead>
-                <tr><th>部门</th><th>平均回款周期</th><th>状态</th></tr>
-            </thead>
-            <tbody><tr>
-            <td>🏢 武汉金融行业组</td>
-            <td class="negative">128.9天</td>
-            <td><span class="status-badge badge-down">需关注</span></td>
-        </tr><tr>
-            <td>🏢 重庆站</td>
-            <td class="negative">95.6天</td>
-            <td><span class="status-badge badge-down">需关注</span></td>
-        </tr><tr>
-            <td>🏢 西安站</td>
-            <td class="negative">93.6天</td>
-            <td><span class="status-badge badge-down">需关注</span></td>
-        </tr><tr>
-            <td>🏢 郑州站</td>
-            <td class="negative">92.8天</td>
-            <td><span class="status-badge badge-down">需关注</span></td>
-        </tr><tr>
-            <td>🏢 武汉能源交通行业组</td>
-            <td class="warning">84.7天</td>
-            <td><span class="status-badge badge-warning">一般</span></td>
-        </tr><tr>
-            <td>🏢 成都站</td>
-            <td class="warning">82.1天</td>
-            <td><span class="status-badge badge-warning">一般</span></td>
-        </tr><tr>
-            <td>🏢 长沙站</td>
-            <td class="highlight">39.8天</td>
-            <td><span class="status-badge badge-good">良好</span></td>
-        </tr><tr>
-            <td>🏢 其他</td>
-            <td class="highlight">39.8天</td>
-            <td><span class="status-badge badge-good">良好</span></td>
-        </tr><tr>
-            <td>🏢 武汉基建制造行业组</td>
-            <td class="highlight">34.6天</td>
-            <td><span class="status-badge badge-good">良好</span></td>
-        </tr></tbody>
-        </table>
+    <!-- ===== 业绩分析 Tab ===== -->
+    <div id="tab-performance" class="tab-content active">
+        <div class="module">
+            <h2 class="module-title">📊 26财年Q1 部门业绩总览</h2>
+            <div class="charts-section">
+                <div class="chart-box">
+                    <h3>25Q1 vs 26Q1 部门业绩对比（万元）</h3>
+                    <div class="chart-container"><canvas id="perfBarChart"></canvas></div>
+                </div>
+                <div class="chart-box">
+                    <h3>26Q1 部门业绩占比分布</h3>
+                    <div class="chart-container"><canvas id="perfPieChart"></canvas></div>
+                </div>
+            </div>
+            <p class="module-desc" style="color:#00d4ff;font-weight:600;">🔽 点击任意部门行 → 查看该部门销售员明细</p>
+            <table class="dept-table">
+                <thead>
+                    <tr>
+                        <th>部门</th>
+                        <th>26Q1业绩(万)</th>
+                        <th>Q1目标(万)</th>
+                        <th>目标完成率</th>
+                        <th>25Q1同期(万)</th>
+                        <th>同比%</th>
+                        <th>销售员数</th>
+                        <th>状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr onclick="showSalesDetail('武汉基建制造行业组','perf')" style="cursor:pointer;" title="点击查看销售员业绩明细">
+                        <td>🏢 武汉基建制造行业组</td>
+                        <td class="highlight">234.08</td><td>1302.0</td><td>18.0%</td><td>753.19</td>
+                        <td class="trend-down">▼ -68.9%</td><td>7</td>
+                        <td><span class="status-badge badge-down">严重下滑</span></td>
+                    </tr><tr onclick="showSalesDetail('成都站','perf')" style="cursor:pointer;" title="点击查看销售员业绩明细">
+                        <td>🏢 成都站</td>
+                        <td class="highlight">117.28</td><td>1155.0</td><td>10.2%</td><td>606.40</td>
+                        <td class="trend-down">▼ -80.7%</td><td>16</td>
+                        <td><span class="status-badge badge-down">严重下滑</span></td>
+                    </tr><tr onclick="showSalesDetail('西安站','perf')" style="cursor:pointer;" title="点击查看销售员业绩明细">
+                        <td>🏢 西安站</td>
+                        <td class="highlight">92.10</td><td>441.0</td><td>20.9%</td><td>245.77</td>
+                        <td class="trend-down">▼ -62.5%</td><td>5</td>
+                        <td><span class="status-badge badge-down">严重下滑</span></td>
+                    </tr><tr onclick="showSalesDetail('长沙站','perf')" style="cursor:pointer;" title="点击查看销售员业绩明细">
+                        <td>🏢 长沙站</td>
+                        <td class="highlight">65.12</td><td>525.0</td><td>12.4%</td><td>395.05</td>
+                        <td class="trend-down">▼ -83.5%</td><td>8</td>
+                        <td><span class="status-badge badge-down">严重下滑</span></td>
+                    </tr><tr onclick="showSalesDetail('武汉能源交通行业组','perf')" style="cursor:pointer;" title="点击查看销售员业绩明细">
+                        <td>🏢 武汉能源交通行业组</td>
+                        <td class="highlight">62.67</td><td>630.0</td><td>9.9%</td><td>504.07</td>
+                        <td class="trend-down">▼ -87.6%</td><td>9</td>
+                        <td><span class="status-badge badge-down">严重下滑</span></td>
+                    </tr><tr onclick="showSalesDetail('重庆站','perf')" style="cursor:pointer;" title="点击查看销售员业绩明细">
+                        <td>🏢 重庆站</td>
+                        <td class="highlight">62.30</td><td>525.0</td><td>11.9%</td><td>315.63</td>
+                        <td class="trend-down">▼ -80.3%</td><td>8</td>
+                        <td><span class="status-badge badge-down">严重下滑</span></td>
+                    </tr><tr onclick="showSalesDetail('郑州站','perf')" style="cursor:pointer;" title="点击查看销售员业绩明细">
+                        <td>🏢 郑州站</td>
+                        <td class="highlight">29.34</td><td>441.0</td><td>6.7%</td><td>232.47</td>
+                        <td class="trend-down">▼ -87.4%</td><td>8</td>
+                        <td><span class="status-badge badge-down">严重下滑</span></td>
+                    </tr><tr onclick="showSalesDetail('武汉金融行业组','perf')" style="cursor:pointer;" title="点击查看销售员业绩明细">
+                        <td>🏢 武汉金融行业组</td>
+                        <td class="highlight">20.31</td><td>567.0</td><td>3.6%</td><td>552.34</td>
+                        <td class="trend-down">▼ -96.3%</td><td>5</td>
+                        <td><span class="status-badge badge-down">严重下滑</span></td>
+                    </tr><tr onclick="showSalesDetail('其他','perf')" style="cursor:pointer;" title="点击查看销售员业绩明细">
+                        <td>🏢 其他</td>
+                        <td class="highlight">9.63</td><td>-</td><td>0.0%</td><td>230.71</td>
+                        <td class="trend-down">▼ -95.8%</td><td>2</td>
+                        <td><span class="status-badge badge-down">严重下滑</span></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>合计</td><td>692.83</td><td>5586.0</td><td>12.4%</td>
+                        <td>3835.63</td><td class="trend-down">▼ -81.9%</td><td>68</td><td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
     </div>
 
-    <!-- 高风险客户 -->
-    <div class="module">
-        <div class="module-title">⚠️ 高风险客户（90天以上欠款）</div>
-        <ul class="risk-list">
-            <li class="risk-item"><span class="risk-name">武汉惠码通科技有限公司（武汉金融行业组）</span><span class="risk-amount negative">97.67万</span></li><li class="risk-item"><span class="risk-name">西安天翼新商务酒店有限公司（西安站）</span><span class="risk-amount negative">97.53万</span></li><li class="risk-item"><span class="risk-name">四川省肿瘤医院工会委员会（成都站）</span><span class="risk-amount negative">68.0万</span></li><li class="risk-item"><span class="risk-name">华夏银行股份有限公司西安分行工会委员会（西安站）</span><span class="risk-amount negative">43.46万</span></li><li class="risk-item"><span class="risk-name">中国建设银行远程智能银行中心武汉分中心（武汉金融行业组）</span><span class="risk-amount negative">39.6万</span></li>
-        </ul>
+    <!-- ===== 欠款分析 Tab ===== -->
+    <div id="tab-debt" class="tab-content">
+        <div class="module">
+            <h2 class="module-title">💳 欠款分析总览</h2>
+
+            <!-- 欠款KPI -->
+            <div class="kpi-grid" style="margin-bottom:25px;">
+                <div class="kpi-card">
+                    <div class="kpi-icon">📋</div>
+                    <h3>欠款总额</h3>
+                    <div class="value negative">1674.79<span style="font-size:0.5em;">万</span></div>
+                    <div class="sub">全大区逾期欠款合计</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">🟢</div>
+                    <h3>30天内</h3>
+                    <div class="value highlight">607.43<span style="font-size:0.5em;">万</span></div>
+                    <div class="sub">占比 36.3%</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">🟡</div>
+                    <h3>30-90天</h3>
+                    <div class="value warning">311.41<span style="font-size:0.5em;">万</span></div>
+                    <div class="sub">占比 18.6%</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">🔴</div>
+                    <h3>90天以上</h3>
+                    <div class="value negative">755.95<span style="font-size:0.5em;">万</span></div>
+                    <div class="sub">90-180天：650.10万 | 180天+：105.85万</div>
+                </div>
+            </div>
+
+            <!-- 图表 -->
+            <div class="charts-section">
+                <div class="chart-box">
+                    <h3>逾期欠款金额占比分布</h3>
+                    <div class="chart-container"><canvas id="debtPieChart"></canvas></div>
+                </div>
+                <div class="chart-box">
+                    <h3>各部门欠款总额排名（万元）</h3>
+                    <div class="chart-container"><canvas id="debtBarChart"></canvas></div>
+                </div>
+            </div>
+
+            <!-- 欠款明细表 -->
+            <h3 style="color:#00d4ff;margin-bottom:15px;font-size:1.1em;">各部门分账龄欠款明细 <span style="color:#8892b0;font-size:0.8em;font-weight:normal;">（点击部门查看销售员明细）</span></h3>
+            <table class="dept-table">
+                <thead>
+                    <tr>
+                        <th>部门（点击查看明细）</th>
+                        <th>30天内(万)</th>
+                        <th>30-90天(万)</th>
+                        <th>90-180天(万)</th>
+                        <th>180天以上(万)</th>
+                        <th>合计(万)</th>
+                        <th>状态</th>
+                    </tr>
+                </thead>
+                <tbody id="debtTableBody"><tr onclick="showSalesDetail('西安站','debt')" style="cursor:pointer;"><td>🏢 西安站</td><td>81.14</td><td>78.06</td><td class="warning">172.57</td><td class="negative">15.86</td><td class="negative">347.63</td><td><span class="status-badge badge-down">高风险</span></td></tr><tr onclick="showSalesDetail('武汉基建制造行业组','debt')" style="cursor:pointer;"><td>🏢 武汉基建制造行业组</td><td>232.61</td><td>56.21</td><td class="warning">28.69</td><td class="negative">1.49</td><td class="negative">319.00</td><td><span class="status-badge badge-warning">关注</span></td></tr><tr onclick="showSalesDetail('武汉金融行业组','debt')" style="cursor:pointer;"><td>🏢 武汉金融行业组</td><td>18.11</td><td>49.64</td><td class="warning">122.04</td><td class="negative">58.32</td><td class="negative">248.11</td><td><span class="status-badge badge-down">高风险</span></td></tr><tr onclick="showSalesDetail('成都站','debt')" style="cursor:pointer;"><td>🏢 成都站</td><td>99.69</td><td>29.58</td><td class="warning">103.62</td><td class="negative">14.56</td><td class="negative">247.45</td><td><span class="status-badge badge-down">高风险</span></td></tr><tr onclick="showSalesDetail('郑州站','debt')" style="cursor:pointer;"><td>🏢 郑州站</td><td>26.58</td><td>50.46</td><td class="warning">81.81</td><td class="negative">2.30</td><td class="negative">161.15</td><td><span class="status-badge badge-down">高风险</span></td></tr><tr onclick="showSalesDetail('武汉能源交通行业组','debt')" style="cursor:pointer;"><td>🏢 武汉能源交通行业组</td><td>53.23</td><td>13.99</td><td class="warning">80.51</td><td class="negative">0.07</td><td class="negative">147.80</td><td><span class="status-badge badge-down">高风险</span></td></tr><tr onclick="showSalesDetail('重庆站','debt')" style="cursor:pointer;"><td>🏢 重庆站</td><td>35.88</td><td>13.95</td><td class="warning">51.99</td><td class="negative">11.75</td><td class="negative">113.57</td><td><span class="status-badge badge-down">高风险</span></td></tr><tr onclick="showSalesDetail('长沙站','debt')" style="cursor:pointer;"><td>🏢 长沙站</td><td>43.61</td><td>16.10</td><td class="warning">5.95</td><td class="negative">1.13</td><td class="negative">66.79</td><td><span class="status-badge badge-good">较好</span></td></tr><tr onclick="showSalesDetail('其他','debt')" style="cursor:pointer;"><td>🏢 其他</td><td>16.58</td><td>3.42</td><td class="warning">2.92</td><td class="negative">0.37</td><td class="negative">23.29</td><td><span class="status-badge badge-good">较好</span></td></tr></tbody>
+                <tfoot id="debtTableFoot"><tr><td>合计</td><td>607.43</td><td>311.41</td><td>650.10</td><td>105.85</td><td>1674.79</td><td></td></tr></tfoot>
+            </table>
+
+            <!-- 高风险客户 -->
+            <h3 style="color:#ff4757;margin:25px 0 15px;font-size:1.1em;">🚨 高风险客户（90天以上欠款，前15名）</h3>
+            <table class="dept-table">
+                <thead>
+                    <tr><th>排名</th><th>客户名称（所属部门）</th><th>欠款金额(万)</th><th>风险等级</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td style="text-align:left;">武汉惠码通科技有限公司（武汉金融行业组）</td><td class="negative">97.67</td><td><span class="status-badge badge-down">极高风险</span></td></tr><tr><td>2</td><td style="text-align:left;">西安天翼新商务酒店有限公司（西安站）</td><td class="negative">97.53</td><td><span class="status-badge badge-down">极高风险</span></td></tr><tr><td>3</td><td style="text-align:left;">四川省肿瘤医院工会委员会（成都站）</td><td class="negative">68.00</td><td><span class="status-badge badge-down">高风险</span></td></tr><tr><td>4</td><td style="text-align:left;">华夏银行股份有限公司西安分行工会委员会（西安站）</td><td class="negative">43.46</td><td><span class="status-badge badge-down">高风险</span></td></tr><tr><td>5</td><td style="text-align:left;">中国建设银行远程智能银行中心武汉分中心（武汉金融行业组）</td><td class="warning">39.60</td><td><span class="status-badge badge-warning">关注</span></td></tr><tr><td>6</td><td style="text-align:left;">中车长江运输设备集团有限公司（武汉金融行业组）</td><td class="warning">37.00</td><td><span class="status-badge badge-warning">关注</span></td></tr><tr><td>7</td><td style="text-align:left;">华北水利水电大学（郑州站）</td><td class="warning">34.88</td><td><span class="status-badge badge-warning">关注</span></td></tr><tr><td>8</td><td style="text-align:left;">焦作市宏亮电力技术咨询有限公司（郑州站）</td><td class="warning">29.82</td><td><span class="status-badge badge-warning">关注</span></td></tr><tr><td>9</td><td style="text-align:left;">陕西高一生医疗美容医院有限公司（西安站）</td><td class="warning">22.30</td><td><span class="status-badge badge-warning">关注</span></td></tr><tr><td>10</td><td style="text-align:left;">重庆通邑卫士智慧生活服务有限公司金通会议服务分公司（重庆站）</td><td class="warning">16.42</td><td><span class="status-badge badge-warning">关注</span></td></tr><tr><td>11</td><td style="text-align:left;">若尔盖有礼贸易有限责任公司（成都站）</td><td class="warning">16.16</td><td><span class="status-badge badge-warning">关注</span></td></tr><tr><td>12</td><td style="text-align:left;">中国葛洲坝集团股份有限公司直属机关工会委员会（武汉能源交通行业组）</td><td class="warning">15.97</td><td><span class="status-badge badge-warning">关注</span></td></tr><tr><td>13</td><td style="text-align:left;">中国建设银行股份有限公司重庆市分行机关工会委员会（重庆站）</td><td class="warning">15.69</td><td><span class="status-badge badge-warning">关注</span></td></tr><tr><td>14</td><td style="text-align:left;">平安银行股份有限公司贵阳分行工会委员会（重庆站）</td><td class="warning">15.32</td><td><span class="status-badge badge-warning">关注</span></td></tr><tr><td>15</td><td style="text-align:left;">采招云（湖北）信息科技有限公司（武汉能源交通行业组）</td><td class="warning">14.61</td><td><span class="status-badge badge-warning">关注</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ===== 回款周期分析 Tab ===== -->
+    <div id="tab-collection" class="tab-content">
+        <div class="module">
+            <h2 class="module-title">⏱️ 回款周期分析</h2>
+            <div class="kpi-grid" style="margin-bottom:25px;">
+                <div class="kpi-card">
+                    <div class="kpi-icon">📊</div>
+                    <h3>全大区平均回款周期</h3>
+                    <div class="value warning">76.9</div>
+                    <div class="sub">天（欠款加权综合）</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">🔴</div>
+                    <h3>最长部门回款周期</h3>
+                    <div class="value negative">128.9</div>
+                    <div class="sub">武汉金融行业组</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">🟢</div>
+                    <h3>最短部门回款周期</h3>
+                    <div class="value highlight">34.6</div>
+                    <div class="sub">武汉基建制造行业组</div>
+                </div>
+                <div class="kpi-card" onclick="showOver90Depts()" style="cursor:pointer;" title="点击查看回款周期大于90天的部门">
+                    <div class="kpi-icon">⚠️</div>
+                    <h3>超90天部门数</h3>
+                    <div class="value negative">4</div>
+                    <div class="sub">回款周期大于90天的部门（点击查看）</div>
+                </div>
+            </div>
+
+            <!-- 图例 -->
+            <div style="background:rgba(255, 255, 255, 0.03);border-radius:12px;padding:15px 20px;margin-bottom:20px;border:1px solid rgba(255, 255, 255, 0.08);">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+                    <span style="font-weight:600;color:#00d4ff;">部门平均回款周期（天）</span>
+                    <span style="color:#8892b0;font-size:0.9em;">| 基于欠款账龄中点加权计算</span>
+                </div>
+                <div style="display:flex;gap:20px;flex-wrap:wrap;">
+                    <div style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:50%;background:#00ff88;display:inline-block;"></span><span style="color:#ccd6f6;font-size:0.9em;">≤60天（良好）</span></div>
+                    <div style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:50%;background:#ffa502;display:inline-block;"></span><span style="color:#ccd6f6;font-size:0.9em;">61-90天（一般）</span></div>
+                    <div style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:50%;background:#ff4757;display:inline-block;"></span><span style="color:#ccd6f6;font-size:0.9em;">&gt;90天（需关注）</span></div>
+                </div>
+            </div>
+
+            <div class="chart-box" style="margin-bottom:25px;">
+                <h3>📊 部门平均回款周期排名</h3>
+                <div class="chart-container" style="height:380px;"><canvas id="cycleChart"></canvas></div>
+            </div>
+
+            <!-- 回款周期表格 -->
+            <table class="dept-table">
+                <thead>
+                    <tr>
+                        <th>部门（点击查看明细）</th>
+                        <th>欠款总额(万)</th>
+                        <th>回款金额(万)</th>
+                        <th>回款周期(天)</th>
+                        <th>状态</th>
+                    </tr>
+                </thead>
+                <tbody id="cycleTableBody"><tr onclick="showSalesDetail('武汉金融行业组','cycle')" style="cursor:pointer;"><td>🏢 武汉金融行业组</td><td>248.11</td><td>229.28</td><td class="negative">128.9</td><td><span class="status-badge badge-down">需关注</span></td></tr><tr onclick="showSalesDetail('重庆站','cycle')" style="cursor:pointer;"><td>🏢 重庆站</td><td>113.57</td><td>166.11</td><td class="negative">95.6</td><td><span class="status-badge badge-down">需关注</span></td></tr><tr onclick="showSalesDetail('西安站','cycle')" style="cursor:pointer;"><td>🏢 西安站</td><td>347.63</td><td>256.99</td><td class="negative">93.6</td><td><span class="status-badge badge-down">需关注</span></td></tr><tr onclick="showSalesDetail('郑州站','cycle')" style="cursor:pointer;"><td>🏢 郑州站</td><td>161.15</td><td>70.18</td><td class="negative">92.8</td><td><span class="status-badge badge-down">需关注</span></td></tr><tr onclick="showSalesDetail('武汉能源交通行业组','cycle')" style="cursor:pointer;"><td>🏢 武汉能源交通行业组</td><td>147.80</td><td>371.47</td><td class="warning">84.7</td><td><span class="status-badge badge-warning">一般</span></td></tr><tr onclick="showSalesDetail('成都站','cycle')" style="cursor:pointer;"><td>🏢 成都站</td><td>247.45</td><td>266.99</td><td class="warning">82.1</td><td><span class="status-badge badge-warning">一般</span></td></tr><tr onclick="showSalesDetail('长沙站','cycle')" style="cursor:pointer;"><td>🏢 长沙站</td><td>66.79</td><td>264.92</td><td class="highlight">39.8</td><td><span class="status-badge badge-good">良好</span></td></tr><tr onclick="showSalesDetail('其他','cycle')" style="cursor:pointer;"><td>🏢 其他</td><td>23.29</td><td>4.27</td><td class="highlight">39.8</td><td><span class="status-badge badge-good">良好</span></td></tr><tr onclick="showSalesDetail('武汉基建制造行业组','cycle')" style="cursor:pointer;"><td>🏢 武汉基建制造行业组</td><td>319.00</td><td>596.63</td><td class="highlight">34.6</td><td><span class="status-badge badge-good">良好</span></td></tr></tbody>
+                <tfoot id="cycleTableFoot"><tr><td>合计</td><td>1674.79</td><td>2226.84</td><td>76.9</td><td></td></tr></tfoot>
+            </table>
+        </div>
     </div>
 </div>
 
-<!-- 销售员明细弹窗 -->
-<div class="modal-overlay" id="salesModal">
+<!-- 弹窗 -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
     <div class="modal">
         <div class="modal-header">
-            <div class="modal-title" id="modalTitle">销售员明细</div>
-            <button class="modal-close" onclick="closeModal()">×</button>
+            <div class="modal-title" id="modalTitle">部门详情</div>
+            <button class="modal-close" onclick="closeModal()">✕</button>
         </div>
         <div id="modalContent"></div>
     </div>
 </div>
 
+<!-- 销售员明细弹窗 -->
+<div class="modal-overlay" id="salesModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0, 0, 0, 0.8);z-index:1001;align-items:center;justify-content:center;">
+    <div style="background:#1a2040;border-radius:20px;padding:30px;max-width:1100px;width:95%;max-height:85vh;overflow-y:auto;border:1px solid rgba(0,212,255,0.3);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+            <div class="modal-title" id="salesModalTitle">销售员明细</div>
+            <button class="modal-close" onclick="closeSalesModal()">✕</button>
+        </div>
+        <div id="salesTableContainer"></div>
+    </div>
+</div>
+
 <script>
-// 图表数据
-const deptLabels = ["\u6b66\u6c49\u57fa\u5efa\u5236\u9020\u884c\u4e1a\u7ec4", "\u6210\u90fd\u7ad9", "\u897f\u5b89\u7ad9", "\u957f\u6c99\u7ad9", "\u6b66\u6c49\u80fd\u6e90\u4ea4\u901a\u884c\u4e1a\u7ec4", "\u91cd\u5e86\u7ad9", "\u90d1\u5dde\u7ad9", "\u6b66\u6c49\u91d1\u878d\u884c\u4e1a\u7ec4", "\u5176\u4ed6"];
-const perf26Data = [234.08, 117.28, 92.1, 65.12, 62.67, 62.3, 29.34, 20.31, 9.63];
-const perf25Data = [753.19, 606.4, 245.77, 395.05, 504.07, 315.63, 232.47, 552.34, 230.71];
-const completionData = [18.0, 10.2, 20.9, 12.4, 9.9, 11.9, 6.7, 3.6, 0];
+// ===== 数据 =====
+const deptData = [
+    ["{dept:'武汉基建制造行业组',v26:234.08,v25:753.19,yoy:-68.9,target:1302.0,completion:18.0,sales:7,d30:232.61,d30_90:56.21,d90_180:28.69,d180:1.49,total_debt:319.0,collect:596.63,cycle:34.6}", "{dept:'成都站',v26:117.28,v25:606.4,yoy:-80.7,target:1155.0,completion:10.2,sales:16,d30:99.69,d30_90:29.58,d90_180:103.62,d180:14.56,total_debt:247.45,collect:266.99,cycle:82.1}", "{dept:'西安站',v26:92.1,v25:245.77,yoy:-62.5,target:441.0,completion:20.9,sales:5,d30:81.14,d30_90:78.06,d90_180:172.57,d180:15.86,total_debt:347.63,collect:256.99,cycle:93.6}", "{dept:'长沙站',v26:65.12,v25:395.05,yoy:-83.5,target:525.0,completion:12.4,sales:8,d30:43.61,d30_90:16.1,d90_180:5.95,d180:1.13,total_debt:66.79,collect:264.92,cycle:39.8}", "{dept:'武汉能源交通行业组',v26:62.67,v25:504.07,yoy:-87.6,target:630.0,completion:9.9,sales:9,d30:53.23,d30_90:13.99,d90_180:80.51,d180:0.07,total_debt:147.8,collect:371.47,cycle:84.7}", "{dept:'重庆站',v26:62.3,v25:315.63,yoy:-80.3,target:525.0,completion:11.9,sales:8,d30:35.88,d30_90:13.95,d90_180:51.99,d180:11.75,total_debt:113.57,collect:166.11,cycle:95.6}", "{dept:'郑州站',v26:29.34,v25:232.47,yoy:-87.4,target:441.0,completion:6.7,sales:8,d30:26.58,d30_90:50.46,d90_180:81.81,d180:2.3,total_debt:161.15,collect:70.18,cycle:92.8}", "{dept:'武汉金融行业组',v26:20.31,v25:552.34,yoy:-96.3,target:567.0,completion:3.6,sales:5,d30:18.11,d30_90:49.64,d90_180:122.04,d180:58.32,total_debt:248.11,collect:229.28,cycle:128.9}", "{dept:'其他',v26:9.63,v25:230.71,yoy:-95.8,target:0,completion:0,sales:2,d30:16.58,d30_90:3.42,d90_180:2.92,d180:0.37,total_debt:23.29,collect:4.27,cycle:39.8}"]
+];
 
-// 业绩对比图
-new Chart(document.getElementById('perfChart'), {
-    type: 'bar',
-    data: {
-        labels: deptLabels,
-        datasets: [
-            { label: '26Q1', data: perf26Data, backgroundColor: 'rgba(0,212,255,0.8)' },
-            { label: '25Q1', data: perf25Data, backgroundColor: 'rgba(123,47,247,0.6)' }
-        ]
-    },
-    options: { responsive: true, plugins: { legend: { position: 'top' } } }
-});
-
-// 目标完成率图
-new Chart(document.getElementById('targetChart'), {
-    type: 'bar',
-    data: {
-        labels: deptLabels,
-        datasets: [{ label: '完成率%', data: completionData, backgroundColor: completionData.map(v => v >= 80 ? 'rgba(0,255,136,0.8)' : v >= 50 ? 'rgba(255,165,2,0.8)' : 'rgba(255,71,87,0.8)') }]
-    },
-    options: { responsive: true, indexAxis: 'y', plugins: { legend: { display: false } } }
-});
-
-// 销售员明细（从sales_detail.json加载）
-let salesData = {};
-fetch('sales_detail.json')
-    .then(r => r.json())
-    .then(d => { salesData = d; });
-
-function showSalesDetail(dept) {
-    document.getElementById('modalTitle').textContent = dept + ' 销售员明细';
-    const people = salesData[dept] || [];
-    let html = '<table class="modal-table"><thead><tr><th>姓名</th><th>状态</th><th>26Q1业绩</th><th>欠款合计</th></tr></thead><tbody>';
-    for (const p of people) {
-        html += `<tr><td>${p.name}</td><td>${p.status}</td><td>${p.perf.toFixed(2)}</td><td class="${p.total_debt > 0 ? 'negative' : ''}">${p.total_debt.toFixed(2)}</td></tr>`;
-    }
-    html += '</tbody></table>';
-    document.getElementById('modalContent').innerHTML = html;
-    document.getElementById('salesModal').classList.add('active');
+// ===== Tab切换 =====
+let currentTabType = 'perf';
+function switchTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+    if (id === 'performance') currentTabType = 'perf';
+    else if (id === 'debt') currentTabType = 'debt';
+    else if (id === 'collection') currentTabType = 'cycle';
 }
-function closeModal() { document.getElementById('salesModal').classList.remove('active'); }
-document.getElementById('salesModal').addEventListener('click', e => { if(e.target.id === 'salesModal') closeModal(); });
+function getCurrentTab() { return currentTabType; }
+
+// ===== 销售员明细数据 =====
+let salesDetailData = {"其他":[{"name":"刘传凤","perf":0.0,"collect":0.0,"debt":0.45,"orders":0,"d30":0.45,"d30_90":0.0,"d90_180":0.0,"d180":0.0,"total_debt":0.45,"collect_amt":0.0},{"name":"吴晗","perf":9.08,"collect":0.78,"debt":20.86,"orders":0,"d30":15.65,"d30_90":2.82,"d90_180":2.39,"d180":0.0,"total_debt":20.86,"collect_amt":0.78},{"name":"李国栋","perf":0.54,"collect":0.05,"debt":1.21,"orders":0,"d30":0.49,"d30_90":0.6,"d90_180":0.12,"d180":0.0,"total_debt":1.21,"collect_amt":0.05},{"name":"白雨","perf":0.0,"collect":0.0,"debt":0.3,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":0.0,"d180":0.3,"total_debt":0.3,"collect_amt":0.0}],"成都站":[{"name":"何光耀","perf":9.29,"collect":0.38,"debt":15.94,"orders":0,"d30":8.51,"d30_90":2.96,"d90_180":3.47,"d180":1.0,"total_debt":15.94,"collect_amt":0.38},{"name":"卓毓涛","perf":8.39,"collect":2.61,"debt":17.7,"orders":0,"d30":5.78,"d30_90":9.73,"d90_180":2.19,"d180":0.0,"total_debt":17.7,"collect_amt":2.61},{"name":"司马净瑜","perf":0.08,"collect":0.0,"debt":4.88,"orders":0,"d30":0.0,"d30_90":1.74,"d90_180":3.14,"d180":0.0,"total_debt":4.88,"collect_amt":0.0},{"name":"吴晓波","perf":38.35,"collect":0.0,"debt":45.72,"orders":0,"d30":38.35,"d30_90":0.5,"d90_180":1.25,"d180":5.62,"total_debt":45.72,"collect_amt":0.0},{"name":"唐天宁","perf":1.36,"collect":-0.11,"debt":1.47,"orders":0,"d30":1.46,"d30_90":0.01,"d90_180":0.0,"d180":0.0,"total_debt":1.47,"collect_amt":-0.11},{"name":"巨晨逸","perf":-0.08,"collect":-0.08,"debt":5.05,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":5.05,"d180":0.0,"total_debt":5.05,"collect_amt":-0.08},{"name":"席亚雄","perf":1.38,"collect":0.0,"debt":9.73,"orders":0,"d30":1.38,"d30_90":2.68,"d90_180":5.67,"d180":0.0,"total_debt":9.73,"collect_amt":0.0},{"name":"张鹏成","perf":3.56,"collect":0.28,"debt":5.39,"orders":0,"d30":3.28,"d30_90":0.73,"d90_180":0.37,"d180":1.01,"total_debt":5.39,"collect_amt":0.28},{"name":"徐晓荣","perf":14.61,"collect":0.04,"debt":14.53,"orders":0,"d30":14.56,"d30_90":-0.03,"d90_180":0.0,"d180":0.0,"total_debt":14.53,"collect_amt":0.04},{"name":"李浩铭","perf":10.79,"collect":0.0,"debt":10.79,"orders":0,"d30":10.79,"d30_90":0.0,"d90_180":0.0,"d180":0.0,"total_debt":10.79,"collect_amt":0.0},{"name":"杨程","perf":-0.68,"collect":-0.68,"debt":0.09,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":0.0,"d180":0.09,"total_debt":0.09,"collect_amt":-0.68},{"name":"杨莉萍","perf":9.36,"collect":2.28,"debt":7.19,"orders":0,"d30":5.27,"d30_90":1.92,"d90_180":0.0,"d180":0.0,"total_debt":7.19,"collect_amt":2.28},{"name":"樊文","perf":13.71,"collect":0.4,"debt":19.91,"orders":0,"d30":8.38,"d30_90":-50.52,"d90_180":62.05,"d180":0.0,"total_debt":19.91,"collect_amt":0.4},{"name":"王俊","perf":0.0,"collect":0.0,"debt":0.01,"orders":0,"d30":0.01,"d30_90":0.0,"d90_180":0.0,"d180":0.0,"total_debt":0.01,"collect_amt":0.0},{"name":"蒋君霞","perf":0.34,"collect":0.0,"debt":2.38,"orders":0,"d30":0.34,"d30_90":-6.1,"d90_180":8.14,"d180":0.0,"total_debt":2.38,"collect_amt":0.0},{"name":"谢晓宇","perf":6.34,"collect":4.02,"debt":19.12,"orders":0,"d30":1.47,"d30_90":1.49,"d90_180":11.54,"d180":4.62,"total_debt":19.12,"collect_amt":4.02},{"name":"郑波","perf":0.46,"collect":0.46,"debt":0.02,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":0.02,"d180":0.0,"total_debt":0.02,"collect_amt":0.46},{"name":"陈钰","perf":0.0,"collect":0.0,"debt":2.3,"orders":0,"d30":0.0,"d30_90":0.03,"d90_180":0.06,"d180":2.21,"total_debt":2.3,"collect_amt":0.0}],"武汉基建制造行业组":[{"name":"任重","perf":0.3,"collect":0.3,"debt":-2.45,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":0.0,"d180":-2.45,"total_debt":-2.45,"collect_amt":0.3},{"name":"别勇","perf":93.14,"collect":4.21,"debt":101.86,"orders":0,"d30":88.92,"d30_90":12.69,"d90_180":0.25,"d180":0.0,"total_debt":101.86,"collect_amt":4.21},{"name":"张轩","perf":3.63,"collect":-5.93,"debt":31.1,"orders":0,"d30":9.57,"d30_90":4.11,"d90_180":17.42,"d180":0.0,"total_debt":31.1,"collect_amt":-5.93},{"name":"程双清","perf":-6.26,"collect":-6.36,"debt":8.3,"orders":0,"d30":0.1,"d30_90":0.17,"d90_180":8.03,"d180":0.0,"total_debt":8.3,"collect_amt":-6.36},{"name":"罗贝","perf":36.97,"collect":-0.07,"debt":43.13,"orders":0,"d30":37.03,"d30_90":4.23,"d90_180":1.87,"d180":0.0,"total_debt":43.13,"collect_amt":-0.07},{"name":"胡松","perf":106.17,"collect":7.31,"debt":133.49,"orders":0,"d30":96.53,"d30_90":34.36,"d90_180":1.11,"d180":1.49,"total_debt":133.49,"collect_amt":7.31},{"name":"陈鹏","perf":0.0,"collect":0.0,"debt":0.68,"orders":0,"d30":0.04,"d30_90":0.64,"d90_180":0.0,"d180":0.0,"total_debt":0.68,"collect_amt":0.0},{"name":"陶迪","perf":0.39,"collect":0.0,"debt":0.39,"orders":0,"d30":0.39,"d30_90":0.0,"d90_180":0.0,"d180":0.0,"total_debt":0.39,"collect_amt":0.0}],"武汉能源交通行业组":[{"name":"周靓","perf":10.46,"collect":8.07,"debt":3.18,"orders":0,"d30":2.36,"d30_90":0.82,"d90_180":0.0,"d180":0.0,"total_debt":3.18,"collect_amt":8.07},{"name":"徐聪","perf":2.25,"collect":1.44,"debt":6.24,"orders":0,"d30":0.83,"d30_90":2.56,"d90_180":2.85,"d180":0.0,"total_debt":6.24,"collect_amt":1.44},{"name":"林茹","perf":2.48,"collect":-0.69,"debt":4.99,"orders":0,"d30":3.17,"d30_90":1.82,"d90_180":0.0,"d180":0.0,"total_debt":4.99,"collect_amt":-0.69},{"name":"樊梦玲","perf":0.0,"collect":0.0,"debt":0.01,"orders":0,"d30":0.0,"d30_90":0.01,"d90_180":0.0,"d180":0.0,"total_debt":0.01,"collect_amt":0.0},{"name":"汤腾","perf":4.91,"collect":0.0,"debt":5.0,"orders":0,"d30":4.91,"d30_90":0.09,"d90_180":0.0,"d180":0.0,"total_debt":5.0,"collect_amt":0.0},{"name":"石翔瑜","perf":18.8,"collect":0.93,"debt":42.9,"orders":0,"d30":16.43,"d30_90":6.11,"d90_180":20.29,"d180":0.07,"total_debt":42.9,"collect_amt":0.93},{"name":"胡帅帅","perf":0.01,"collect":0.0,"debt":0.06,"orders":0,"d30":0.0,"d30_90":0.06,"d90_180":0.0,"d180":0.0,"total_debt":0.06,"collect_amt":0.0},{"name":"袁苗","perf":0.0,"collect":0.0,"debt":0.14,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":0.14,"d180":0.0,"total_debt":0.14,"collect_amt":0.0},{"name":"陈绪涛","perf":2.54,"collect":-0.9,"debt":59.98,"orders":0,"d30":3.44,"d30_90":1.65,"d90_180":54.89,"d180":0.0,"total_debt":59.98,"collect_amt":-0.9},{"name":"魏欣蓓","perf":6.51,"collect":0.0,"debt":8.94,"orders":0,"d30":6.41,"d30_90":0.8,"d90_180":1.73,"d180":0.0,"total_debt":8.94,"collect_amt":0.0},{"name":"黄佩文","perf":14.95,"collect":-0.39,"debt":15.95,"orders":0,"d30":15.34,"d30_90":0.0,"d90_180":0.61,"d180":0.0,"total_debt":15.95,"collect_amt":-0.39}],"武汉金融行业组":[{"name":"常明君","perf":-0.49,"collect":0.08,"debt":75.38,"orders":0,"d30":-0.62,"d30_90":-1.23,"d90_180":77.23,"d180":0.0,"total_debt":75.38,"collect_amt":0.08},{"name":"康哲飞","perf":0.62,"collect":-0.25,"debt":7.12,"orders":0,"d30":0.77,"d30_90":1.95,"d90_180":4.62,"d180":-0.22,"total_debt":7.12,"collect_amt":-0.25},{"name":"张颖","perf":6.84,"collect":0.68,"debt":76.31,"orders":0,"d30":6.16,"d30_90":21.37,"d90_180":19.65,"d180":29.13,"total_debt":76.31,"collect_amt":0.68},{"name":"杨勇","perf":3.67,"collect":0.04,"debt":73.58,"orders":0,"d30":3.63,"d30_90":20.46,"d90_180":20.31,"d180":29.18,"total_debt":73.58,"collect_amt":0.04},{"name":"黄薇","perf":9.67,"collect":2.75,"debt":12.71,"orders":0,"d30":6.92,"d30_90":5.8,"d90_180":0.0,"d180":-0.01,"total_debt":12.71,"collect_amt":2.75}],"西安站":[{"name":"刘江","perf":6.03,"collect":4.6,"debt":48.99,"orders":0,"d30":0.93,"d30_90":36.47,"d90_180":5.59,"d180":6.0,"total_debt":48.99,"collect_amt":4.6},{"name":"康帅奇","perf":1.14,"collect":0.06,"debt":31.9,"orders":0,"d30":1.08,"d30_90":2.54,"d90_180":26.13,"d180":2.15,"total_debt":31.9,"collect_amt":0.06},{"name":"张宸睿","perf":0.0,"collect":0.0,"debt":103.62,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":96.1,"d180":7.52,"total_debt":103.62,"collect_amt":0.0},{"name":"李佳伟","perf":0.0,"collect":0.0,"debt":25.77,"orders":0,"d30":0.0,"d30_90":25.71,"d90_180":0.0,"d180":0.06,"total_debt":25.77,"collect_amt":0.0},{"name":"欧丽娟","perf":4.94,"collect":0.43,"debt":4.51,"orders":0,"d30":4.51,"d30_90":0.0,"d90_180":0.0,"d180":0.0,"total_debt":4.51,"collect_amt":0.43},{"name":"王淑涵","perf":0.0,"collect":0.0,"debt":0.07,"orders":0,"d30":0.01,"d30_90":0.0,"d90_180":0.0,"d180":0.06,"total_debt":0.07,"collect_amt":0.0},{"name":"贺玲","perf":55.5,"collect":-0.01,"debt":107.38,"orders":0,"d30":55.51,"d30_90":7.27,"d90_180":44.53,"d180":0.07,"total_debt":107.38,"collect_amt":-0.01},{"name":"赵婷","perf":21.05,"collect":0.06,"debt":20.99,"orders":0,"d30":17.95,"d30_90":3.04,"d90_180":0.0,"d180":0.0,"total_debt":20.99,"collect_amt":0.06}],"郑州站":[{"name":"刘婵","perf":0.89,"collect":0.19,"debt":0.7,"orders":0,"d30":0.7,"d30_90":0.0,"d90_180":0.0,"d180":0.0,"total_debt":0.7,"collect_amt":0.19},{"name":"刘莉","perf":6.45,"collect":2.55,"debt":14.7,"orders":0,"d30":3.9,"d30_90":10.8,"d90_180":0.0,"d180":0.0,"total_debt":14.7,"collect_amt":2.55},{"name":"刘静玲","perf":15.1,"collect":-0.0,"debt":25.6,"orders":0,"d30":15.1,"d30_90":0.03,"d90_180":10.47,"d180":0.0,"total_debt":25.6,"collect_amt":-0.0},{"name":"孙潇潇","perf":0.51,"collect":-0.0,"debt":0.54,"orders":0,"d30":0.52,"d30_90":0.02,"d90_180":0.0,"d180":0.0,"total_debt":0.54,"collect_amt":-0.0},{"name":"宋运美","perf":1.05,"collect":0.05,"debt":14.57,"orders":0,"d30":0.65,"d30_90":11.84,"d90_180":2.08,"d180":0.0,"total_debt":14.57,"collect_amt":0.05},{"name":"张垚","perf":0.0,"collect":0.0,"debt":0.0,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":0.0,"d180":0.0,"total_debt":0.0,"collect_amt":0.0},{"name":"李国强","perf":0.0,"collect":0.0,"debt":3.7,"orders":0,"d30":0.0,"d30_90":3.08,"d90_180":0.62,"d180":0.0,"total_debt":3.7,"collect_amt":0.0},{"name":"王伟明","perf":0.56,"collect":-0.01,"debt":0.91,"orders":0,"d30":0.57,"d30_90":0.34,"d90_180":0.0,"d180":0.0,"total_debt":0.91,"collect_amt":-0.01},{"name":"韩森","perf":1.73,"collect":0.0,"debt":54.5,"orders":0,"d30":1.73,"d30_90":22.16,"d90_180":30.16,"d180":0.45,"total_debt":54.5,"collect_amt":0.0},{"name":"黄英浩","perf":3.06,"collect":-0.04,"debt":41.73,"orders":0,"d30":3.01,"d30_90":1.64,"d90_180":35.85,"d180":1.23,"total_debt":41.73,"collect_amt":-0.04}],"重庆站":[{"name":"刘美希","perf":0.24,"collect":0.23,"debt":4.36,"orders":0,"d30":0.01,"d30_90":0.0,"d90_180":4.35,"d180":0.0,"total_debt":4.36,"collect_amt":0.23},{"name":"危昶","perf":39.5,"collect":0.02,"debt":41.59,"orders":0,"d30":32.18,"d30_90":7.8,"d90_180":1.61,"d180":0.0,"total_debt":41.59,"collect_amt":0.02},{"name":"周纤纤","perf":0.0,"collect":0.0,"debt":0.26,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":0.0,"d180":0.26,"total_debt":0.26,"collect_amt":0.0},{"name":"廖佳晖","perf":0.36,"collect":0.18,"debt":0.18,"orders":0,"d30":0.16,"d30_90":0.02,"d90_180":0.0,"d180":0.0,"total_debt":0.18,"collect_amt":0.18},{"name":"李倩","perf":0.02,"collect":0.02,"debt":6.57,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":6.57,"d180":0.0,"total_debt":6.57,"collect_amt":0.02},{"name":"杨彦祥","perf":1.18,"collect":0.06,"debt":11.89,"orders":0,"d30":1.08,"d30_90":1.19,"d90_180":9.62,"d180":0.0,"total_debt":11.89,"collect_amt":0.06},{"name":"林萍","perf":0.39,"collect":0.35,"debt":7.15,"orders":0,"d30":0.04,"d30_90":0.0,"d90_180":7.11,"d180":0.0,"total_debt":7.15,"collect_amt":0.35},{"name":"耿晓伟","perf":19.73,"collect":17.66,"debt":36.31,"orders":0,"d30":2.06,"d30_90":1.46,"d90_180":21.3,"d180":11.49,"total_debt":36.31,"collect_amt":17.66},{"name":"董朝武","perf":0.0,"collect":0.0,"debt":0.0,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":0.0,"d180":0.0,"total_debt":0.0,"collect_amt":0.0},{"name":"陈磊","perf":0.94,"collect":0.41,"debt":5.12,"orders":0,"d30":0.22,"d30_90":3.48,"d90_180":1.42,"d180":0.0,"total_debt":5.12,"collect_amt":0.41}],"长沙站":[{"name":"张婉莹","perf":3.68,"collect":0.76,"debt":4.43,"orders":0,"d30":1.43,"d30_90":2.51,"d90_180":0.49,"d180":0.0,"total_debt":4.43,"collect_amt":0.76},{"name":"彭勋","perf":13.35,"collect":0.15,"debt":13.21,"orders":0,"d30":13.2,"d30_90":0.01,"d90_180":0.0,"d180":0.0,"total_debt":13.21,"collect_amt":0.15},{"name":"曾敏","perf":2.23,"collect":0.11,"debt":4.31,"orders":0,"d30":1.53,"d30_90":1.32,"d90_180":1.46,"d180":0.0,"total_debt":4.31,"collect_amt":0.11},{"name":"王涛","perf":6.61,"collect":0.42,"debt":7.42,"orders":0,"d30":3.25,"d30_90":3.58,"d90_180":0.59,"d180":0.0,"total_debt":7.42,"collect_amt":0.42},{"name":"蒋小花","perf":7.9,"collect":1.99,"debt":6.66,"orders":0,"d30":5.88,"d30_90":0.78,"d90_180":0.0,"d180":0.0,"total_debt":6.66,"collect_amt":1.99},{"name":"谢顶峰","perf":14.33,"collect":0.33,"debt":18.11,"orders":0,"d30":14.0,"d30_90":0.7,"d90_180":3.41,"d180":0.0,"total_debt":18.11,"collect_amt":0.33},{"name":"邓梅丽","perf":5.66,"collect":1.21,"debt":4.91,"orders":0,"d30":2.9,"d30_90":2.01,"d90_180":0.0,"d180":0.0,"total_debt":4.91,"collect_amt":1.21},{"name":"陈蓉","perf":11.21,"collect":7.91,"debt":6.09,"orders":0,"d30":0.9,"d30_90":5.19,"d90_180":0.0,"d180":0.0,"total_debt":6.09,"collect_amt":7.91},{"name":"黄倩","perf":0.0,"collect":0.0,"debt":1.13,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":0.0,"d180":1.13,"total_debt":1.13,"collect_amt":0.0}]};
+
+// ===== 部门弹窗 =====
+function showDeptDetail(dept) {
+    const d = deptData.find(x => x.dept === dept);
+    if (!d) return;
+    document.getElementById('modalTitle').textContent = dept + ' — 部门概览';
+    const risky = d.d90_180 + d.d180;
+    document.getElementById('modalContent').innerHTML = `
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;">
+            <div style="background:rgba(0,212,255,0.1);border-radius:12px;padding:14px;text-align:center;">
+                <div style="color:#8892b0;font-size:0.8em;margin-bottom:4px;">26Q1业绩</div>
+                <div style="color:#00ff88;font-size:1.5em;font-weight:700;">${d.v26}万</div>
+            </div>
+            <div style="background:rgba(0,212,255,0.1);border-radius:12px;padding:14px;text-align:center;">
+                <div style="color:#8892b0;font-size:0.8em;margin-bottom:4px;">完成率</div>
+                <div style="color:#ffa502;font-size:1.5em;font-weight:700;">${d.completion}%</div>
+            </div>
+            <div style="background:rgba(255,71,87,0.1);border-radius:12px;padding:14px;text-align:center;">
+                <div style="color:#8892b0;font-size:0.8em;margin-bottom:4px;">同比25Q1</div>
+                <div style="color:#ff4757;font-size:1.5em;font-weight:700;">${d.yoy}%</div>
+            </div>
+            <div style="background:rgba(0,212,255,0.1);border-radius:12px;padding:14px;text-align:center;">
+                <div style="color:#8892b0;font-size:0.8em;margin-bottom:4px;">欠款总额</div>
+                <div style="color:#ff4757;font-size:1.5em;font-weight:700;">${d.total_debt}万</div>
+            </div>
+        </div>
+        <div style="text-align:center;margin-top:10px;">
+            <button onclick="showSalesDetail('${dept}', getCurrentTab())" style="background:linear-gradient(135deg,#00d4ff,#7b2ff7);color:#fff;border:none;border-radius:8px;padding:10px 28px;font-size:1em;cursor:pointer;">📋 查看销售员明细</button>
+        </div>`;
+    document.getElementById('modalOverlay').classList.add('active');
+}
+function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+}
+
+// ===== 销售员明细弹窗 =====
+function showSalesDetail(dept, type) {
+    if (type === 'perf') renderSalesPerf(dept);
+    else if (type === 'debt') renderSalesDebt(dept);
+    else if (type === 'cycle') renderSalesCycle(dept);
+    else renderSalesPerf(dept);
+}
+
+function renderSalesPerf(dept) {
+    const list = [...(salesDetailData[dept] || [])];
+    list.sort((a, b) => b.perf - a.perf);
+    const rows = list.map(s => {
+        const color = s.perf < 0 ? '#ff4757' : s.perf < 5 ? '#ffa502' : '#00ff88';
+        const status = s.perf < 0 ? '🔴 无业绩' : s.perf < 5 ? '🟡 待提升' : '🟢 正常';
+        return `<tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:7px 5px;color:#ccd6f6;">${s.name}</td>
+            <td style="padding:7px 5px;color:${color};text-align:right;font-weight:600;">${s.perf.toFixed(2)}</td>
+            <td style="padding:7px 5px;color:#00ff88;text-align:right;">${s.collect.toFixed(2)}</td>
+            <td style="padding:7px 5px;color:#ccd6f6;text-align:center;">${status}</td>
+        </tr>`;
+    }).join('');
+    const tp = list.reduce((s, v) => s + v.perf, 0).toFixed(2);
+    const tc = list.reduce((s, v) => s + v.collect, 0).toFixed(2);
+    document.getElementById('salesModalTitle').textContent = `📊 ${dept} - 销售员业绩明细`;
+    document.getElementById('salesTableContainer').innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:0.85em;">
+        <thead><tr style="background:rgba(0,212,255,0.12);">
+            <th style="padding:8px 6px;color:#00d4ff;">销售员</th>
+            <th style="padding:8px 6px;color:#00d4ff;text-align:right;">26Q1业绩(万)</th>
+            <th style="padding:8px 6px;color:#00d4ff;text-align:right;">回款(万)</th>
+            <th style="padding:8px 6px;color:#00d4ff;text-align:center;">状态</th>
+        </tr></thead>
+        <tbody>${rows}
+        <tr style="background:rgba(0,212,255,0.08);font-weight:600;">
+            <td style="padding:8px 6px;color:#00d4ff;">合计（${list.length}人）</td>
+            <td style="padding:8px 6px;color:#00ff88;text-align:right;">${tp}</td>
+            <td style="padding:8px 6px;color:#00ff88;text-align:right;">${tc}</td>
+            <td></td>
+        </tr></tbody></table>`;
+    document.getElementById('salesModal').style.display = 'flex';
+}
+
+function renderSalesDebt(dept) {
+    const list = [...(salesDetailData[dept] || [])];
+    list.sort((a, b) => b.total_debt - a.total_debt);
+    const rows = list.map(s => {
+        const dc = s.total_debt > 50 ? '#ff4757' : s.total_debt > 20 ? '#ffa502' : '#00ff88';
+        const status = s.total_debt > 50 ? '🔴 高风险' : s.total_debt > 20 ? '🟡 关注' : '🟢 较好';
+        return `<tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:7px 5px;color:#ccd6f6;">${s.name}</td>
+            <td style="padding:7px 5px;color:${dc};text-align:right;font-weight:600;">${s.total_debt.toFixed(2)}</td>
+            <td style="padding:7px 5px;color:#00ff88;text-align:right;">${s.d30.toFixed(2)}</td>
+            <td style="padding:7px 5px;color:#ffa502;text-align:right;">${s.d30_90.toFixed(2)}</td>
+            <td style="padding:7px 5px;color:${s.d90_180>0?'#ff4757':'#8892b0'};text-align:right;">${s.d90_180.toFixed(2)}</td>
+            <td style="padding:7px 5px;color:${s.d180>0?'#ff4757':'#8892b0'};text-align:right;">${s.d180.toFixed(2)}</td>
+            <td style="padding:7px 5px;color:#ccd6f6;text-align:center;">${status}</td>
+        </tr>`;
+    }).join('');
+    const td = list.reduce((s, v) => s + v.total_debt, 0).toFixed(2);
+    document.getElementById('salesModalTitle').textContent = `💰 ${dept} - 销售员欠款明细`;
+    document.getElementById('salesTableContainer').innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:0.82em;">
+        <thead><tr style="background:rgba(0,212,255,0.12);">
+            <th style="padding:8px 6px;color:#00d4ff;">销售员</th>
+            <th style="padding:8px 6px;color:#00d4ff;text-align:right;">合计欠款(万)</th>
+            <th style="padding:8px 6px;color:#00d4ff;text-align:right;">30天内</th>
+            <th style="padding:8px 6px;color:#ffa502;text-align:right;">30-90天</th>
+            <th style="padding:8px 6px;color:#ff4757;text-align:right;">90-180天</th>
+            <th style="padding:8px 6px;color:#ff4757;text-align:right;">180天以上</th>
+            <th style="padding:8px 6px;color:#00d4ff;text-align:center;">状态</th>
+        </tr></thead>
+        <tbody>${rows}
+        <tr style="background:rgba(0,212,255,0.08);font-weight:600;">
+            <td style="padding:8px 6px;color:#00d4ff;">合计（${list.length}人）</td>
+            <td style="padding:8px 6px;color:#ff4757;text-align:right;">${td}</td>
+            <td colspan="4"></td>
+            <td></td>
+        </tr></tbody></table>`;
+    document.getElementById('salesModal').style.display = 'flex';
+}
+
+function renderSalesCycle(dept) {
+    const list = [...(salesDetailData[dept] || [])];
+    list.forEach(s => {
+        s.cycle = (s.collect > 0) ? (s.total_debt / s.collect * 90) : null;
+    });
+    list.sort((a, b) => {
+        if (a.cycle === null && b.cycle === null) return 0;
+        if (a.cycle === null) return 1;
+        if (b.cycle === null) return -1;
+        return b.cycle - a.cycle;
+    });
+    const rows = list.map(s => {
+        const cycle = s.cycle;
+        const cycleStr = cycle !== null ? cycle.toFixed(1) : '-';
+        const cc = cycle === null ? '#8892b0' : cycle > 90 ? '#ff4757' : cycle > 60 ? '#ffa502' : '#00ff88';
+        const status = cycle === null ? '⚪ 无回款' : cycle > 90 ? '🔴 需关注' : cycle > 60 ? '🟡 偏高' : '🟢 正常';
+        const dc = s.total_debt > 50 ? '#ff4757' : s.total_debt > 20 ? '#ffa502' : '#00ff88';
+        return `<tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:7px 5px;color:#ccd6f6;">${s.name}</td>
+            <td style="padding:7px 5px;color:#00ff88;text-align:right;">${s.collect.toFixed(2)}</td>
+            <td style="padding:7px 5px;color:${dc};text-align:right;">${s.total_debt.toFixed(2)}</td>
+            <td style="padding:7px 5px;color:${cc};text-align:right;font-weight:600;">${cycleStr}</td>
+            <td style="padding:7px 5px;color:#ccd6f6;text-align:center;">${status}</td>
+        </tr>`;
+    }).join('');
+    const tc = list.reduce((s, v) => s + v.collect, 0).toFixed(2);
+    const td = list.reduce((s, v) => s + v.total_debt, 0).toFixed(2);
+    document.getElementById('salesModalTitle').textContent = `⏱️ ${dept} - 销售员回款周期明细`;
+    document.getElementById('salesTableContainer').innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:0.85em;">
+        <thead><tr style="background:rgba(0,212,255,0.12);">
+            <th style="padding:8px 6px;color:#00d4ff;">销售员</th>
+            <th style="padding:8px 6px;color:#00d4ff;text-align:right;">回款金额(万)</th>
+            <th style="padding:8px 6px;color:#00d4ff;text-align:right;">欠款金额(万)</th>
+            <th style="padding:8px 6px;color:#00d4ff;text-align:right;">回款周期(天)</th>
+            <th style="padding:8px 6px;color:#00d4ff;text-align:center;">状态</th>
+        </tr></thead>
+        <tbody>${rows}
+        <tr style="background:rgba(0,212,255,0.08);font-weight:600;">
+            <td style="padding:8px 6px;color:#00d4ff;">合计（${list.length}人）</td>
+            <td style="padding:8px 6px;color:#00ff88;text-align:right;">${tc}</td>
+            <td style="padding:8px 6px;color:#ff4757;text-align:right;">${td}</td>
+            <td colspan="2"></td>
+        </tr></tbody></table>`;
+    document.getElementById('salesModal').style.display = 'flex';
+}
+
+function closeSalesModal() {
+    document.getElementById('salesModal').style.display = 'none';
+}
+
+function showOver90Depts() {
+    const over90 = deptData.filter(d => d.cycle > 90).sort((a, b) => b.cycle - a.cycle);
+    const rows = over90.map(d => {
+        const risky = d.d90_180 + d.d180;
+        return `<tr style="border-bottom:1px solid rgba(255,255,255,0.05);cursor:pointer;" onclick="showSalesDetail('${d.dept}','cycle')">
+            <td style="padding:10px 8px;color:#ccd6f6;font-weight:600;">🏢 ${d.dept}</td>
+            <td style="padding:10px 8px;color:#ff4757;text-align:right;font-weight:700;">${d.cycle.toFixed(1)}天</td>
+            <td style="padding:10px 8px;color:#ff4757;text-align:right;">${d.total_debt.toFixed(2)}万</td>
+            <td style="padding:10px 8px;color:#ffa502;text-align:right;">${risky.toFixed(2)}万</td>
+            <td style="padding:10px 8px;text-align:center;"><span class="status-badge badge-down">需关注</span></td>
+        </tr>`;
+    }).join('');
+    
+    const totalDebt = over90.reduce((s, d) => s + d.total_debt, 0);
+    const totalRisky = over90.reduce((s, d) => s + d.d90_180 + d.d180, 0);
+    const avgCycle = over90.length > 0 ? over90.reduce((s, d) => s + d.cycle, 0) / over90.length : 0;
+    
+    document.getElementById('salesModalTitle').textContent = `⚠️ 回款周期超90天部门（共${over90.length}个）`;
+    document.getElementById('salesTableContainer').innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:0.9em;">
+        <thead><tr style="background:rgba(255,71,87,0.15);">
+            <th style="padding:10px 8px;color:#ff4757;text-align:left;">部门（点击下钻）</th>
+            <th style="padding:10px 8px;color:#ff4757;text-align:right;">回款周期</th>
+            <th style="padding:10px 8px;color:#ff4757;text-align:right;">欠款总额</th>
+            <th style="padding:10px 8px;color:#ff4757;text-align:right;">高风险欠款(90天+)</th>
+            <th style="padding:10px 8px;color:#ff4757;text-align:center;">状态</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+        <tfoot><tr style="background:rgba(255,71,87,0.08);font-weight:600;">
+            <td style="padding:10px 8px;color:#ff4757;">合计（${over90.length}个部门）</td>
+            <td style="padding:10px 8px;color:#ff4757;text-align:right;">平均 ${avgCycle.toFixed(1)}天</td>
+            <td style="padding:10px 8px;color:#ff4757;text-align:right;">${totalDebt.toFixed(2)}万</td>
+            <td style="padding:10px 8px;color:#ff4757;text-align:right;">${totalRisky.toFixed(2)}万</td>
+            <td></td>
+        </tr></tfoot></table>
+        <div style="margin-top:15px;color:#8892b0;font-size:0.85em;text-align:center;">💡 点击部门名称可查看该部门销售员回款周期明细</div>`;
+    document.getElementById('salesModal').style.display = 'flex';
+}
+
+// ===== 回款周期分析表格 =====
+function renderCycleTable() {
+    const tbody = document.getElementById('cycleTableBody');
+    if (!tbody) return;
+    const sorted = [...deptData].filter(d => d.cycle > 0).sort((a, b) => b.cycle - a.cycle);
+    tbody.innerHTML = sorted.map(d => {
+        const sc = d.cycle > 90 ? 'negative' : d.cycle > 60 ? 'warning' : 'highlight';
+        const badge = d.cycle > 90 ? 'badge-down' : d.cycle > 60 ? 'badge-warning' : 'badge-good';
+        const label = d.cycle > 90 ? '需关注' : d.cycle > 60 ? '一般' : '良好';
+        return `<tr onclick="showSalesDetail('${d.dept}','cycle')" style="cursor:pointer;">
+            <td>🏢 ${d.dept}</td>
+            <td>${d.total_debt.toFixed(2)}</td>
+            <td>${d.collect.toFixed(2)}</td>
+            <td class="${sc}">${d.cycle.toFixed(1)}</td>
+            <td><span class="status-badge ${badge}">${label}</span></td>
+        </tr>`;
+    }).join('');
+}
+
+// ===== 图表 =====
+Chart.register(ChartDataLabels);
+
+function initCharts() {
+    const depts = deptData.map(d => d.dept);
+    const v26 = deptData.map(d => d.v26);
+    const v25 = deptData.map(d => d.v25);
+    const COLORS = ['#00d4ff','#7b2ff7','#00ff88','#ffa502','#ff6b9d','#4ecdc4','#45b7d1','#f7dc6f','#82e0aa'];
+
+    // 业绩对比柱状图
+    new Chart(document.getElementById('perfBarChart'), {
+        type: 'bar',
+        data: {
+            labels: depts,
+            datasets: [
+                { label: '25Q1(万)', data: v25, backgroundColor: 'rgba(0,212,255,0.5)', borderColor: '#00d4ff', borderWidth: 1 },
+                { label: '26Q1(万)', data: v26, backgroundColor: 'rgba(123,47,247,0.7)', borderColor: '#7b2ff7', borderWidth: 1 }
+            ]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { labels: { color: '#ccd6f6' } }, datalabels: { display: false } },
+            scales: {
+                x: { ticks: { color: '#8892b0', maxRotation: 30, font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                y: { ticks: { color: '#8892b0' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+            }
+        }
+    });
+
+    // 业绩占比甜甜圈
+    new Chart(document.getElementById('perfPieChart'), {
+        type: 'doughnut',
+        data: {
+            labels: depts,
+            datasets: [{ data: v26, backgroundColor: COLORS, borderColor: '#0a0e27', borderWidth: 2 }]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'right', labels: { color: '#ccd6f6', font: { size: 11 }, padding: 10 } },
+                datalabels: {
+                    color: '#fff', font: { size: 10, weight: 'bold' },
+                    formatter: (val, ctx) => {
+                        const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                        const pct = (val / total * 100).toFixed(1);
+                        return pct > 3 ? pct + '%' : '';
+                    }
+                }
+            }
+        }
+    });
+
+    // 回款周期柱状图
+    const cycleItems = deptData.filter(d => d.cycle > 0).sort((a, b) => b.cycle - a.cycle);
+    const cycleColors = cycleItems.map(d => d.cycle > 90 ? '#ff4757' : d.cycle > 60 ? '#ffa502' : '#00ff88');
+    new Chart(document.getElementById('cycleChart'), {
+        type: 'bar',
+        data: {
+            labels: cycleItems.map(d => d.dept),
+            datasets: [{ label: '回款周期(天)', data: cycleItems.map(d => d.cycle), backgroundColor: cycleColors, borderRadius: 6 }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true, maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                datalabels: {
+                    color: '#fff', anchor: 'end', align: 'right', font: { size: 12, weight: 'bold' },
+                    formatter: val => val + '天'
+                }
+            },
+            scales: {
+                x: { ticks: { color: '#8892b0' }, grid: { color: 'rgba(255,255,255,0.05)' }, max: 150 },
+                y: { ticks: { color: '#ccd6f6', font: { size: 12 } }, grid: { display: false } }
+            }
+        }
+    });
+
+    // 欠款账龄甜甜圈
+    new Chart(document.getElementById('debtPieChart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['30天内', '30-90天', '90-180天', '180天以上'],
+            datasets: [{
+                data: [607.43, 311.41, 650.10, 105.85],
+                backgroundColor: ['#00ff88', '#ffa502', '#ff6b6b', '#ff4757'],
+                borderColor: '#0a0e27', borderWidth: 3
+            }]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            cutout: '55%',
+            plugins: {
+                legend: { position: 'bottom', labels: { color: '#ccd6f6', padding: 15 } },
+                datalabels: {
+                    color: '#fff', font: { size: 11, weight: 'bold' },
+                    formatter: (val, ctx) => {
+                        const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                        const pct = (val / total * 100).toFixed(1);
+                        return pct + '%';
+                    }
+                }
+            }
+        }
+    });
+
+    // 部门欠款排名横向柱状图
+    const debtSorted = [...deptData].sort((a, b) => b.total_debt - a.total_debt);
+    new Chart(document.getElementById('debtBarChart'), {
+        type: 'bar',
+        data: {
+            labels: debtSorted.map(d => d.dept),
+            datasets: [{ label: '欠款(万)', data: debtSorted.map(d => d.total_debt), backgroundColor: 'rgba(255,71,87,0.7)', borderColor: '#ff4757', borderWidth: 1, borderRadius: 4 }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true, maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                datalabels: {
+                    color: '#fff', anchor: 'end', align: 'right', font: { size: 11, weight: 'bold' },
+                    formatter: val => val.toFixed(1)
+                }
+            },
+            scales: {
+                x: { ticks: { color: '#8892b0' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                y: { ticks: { color: '#ccd6f6', font: { size: 11 } }, grid: { display: false } }
+            }
+        }
+    });
+}
+
+window.addEventListener('load', initCharts);
+window.addEventListener('load', function() {
+    renderCycleTable();
+});
 </script>
 </body>
 </html>
