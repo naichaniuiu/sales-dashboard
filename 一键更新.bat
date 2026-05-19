@@ -30,18 +30,25 @@ echo [Token] 已保存，下次运行无需再输入
 git remote set-url origin https://naichaniuiu:!GH_TOKEN!@github.com/naichaniuiu/sales-dashboard.git
 
 echo.
+set PYTHON=C:\Users\wm881\.workbuddy\binaries\python\versions\3.13.12\python.exe
+
 echo [1/5] 提取最新数据...
-python extract_all_data.py
+%PYTHON% extract_all_data.py
 if %errorlevel% neq 0 goto error
 
 echo.
 echo [2/5] 生成销售员明细数据...
-python generate_sales_detail.py
+%PYTHON% generate_sales_detail.py
 if %errorlevel% neq 0 goto error
 
 echo.
-echo [3/5] 更新看板HTML...
-python generate_html.py
+echo [3/5] 更新JSON数据...
+%PYTHON% update_final_json.py
+if %errorlevel% neq 0 goto error
+
+echo.
+echo [4/5] 更新看板HTML...
+%PYTHON% generate_html.py
 if %errorlevel% neq 0 goto error
 
 echo.
