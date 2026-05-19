@@ -101,7 +101,6 @@ print()
 
 # ===== 6. 回款周期计算 =====
 df_debt_r['欠款天数'] = pd.to_numeric(df_debt_r['天数'], errors='coerce').fillna(0)
-df_debt_r['认款天数_raw'] = pd.to_numeric(df_debt_r['回款天数'], errors='coerce').fillna(0)
 
 # 加权回款周期 = (欠款金额*欠款天数 + 认款金额*认款天数) / (欠款金额 + 认款金额)
 df_debt_r['欠款绝对值'] = df_debt_r['欠款净额'].abs()
