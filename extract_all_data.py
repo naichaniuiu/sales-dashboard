@@ -46,11 +46,13 @@ for _, row in df_target_clean.iterrows():
         print(f"  {row['区域']}: {row['26财年Q1']:.0f}万")
 print()
 
-# ===== 3. 销售员数量 =====
-sales_count = df26_r.groupby('三级部门')['销售员名称'].nunique()
-print("=== 各部门销售员数量 ===")
+# ===== 3. 销售员数量（只统计在职）=====
+df26_r_active = df26_r[df26_r['销售员状态'] == '在职'] if '销售员状态' in df26_r.columns else df26_r
+sales_count = df26_r_active.groupby('三级部门')['销售员名称'].nunique()
+print("=== 各部门在职销售员数量 ===")
 for dept, cnt in sales_count.items():
     print(f"  {dept}: {cnt}人")
+print(f"  合计: {sales_count.sum()}人")
 print()
 
 # ===== 4. 欠款数据 =====
