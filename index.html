@@ -90,10 +90,14 @@
 
     /* Cards grid */
     .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
+      display: flex;
+      justify-content: center;
       margin-bottom: 48px;
+    }
+
+    .cards-grid .card {
+      max-width: 360px;
+      width: 100%;
     }
 
     .card {
@@ -305,26 +309,6 @@
         <div class="card-arrow">→</div>
       </a>
 
-      <a class="card" href="25财年Q1部门业绩占比分析.html">
-        <div class="card-icon">📈</div>
-        <div class="card-title">25Q1 业绩占比分析</div>
-        <div class="card-desc">各部门25财年Q1业绩占比与排名</div>
-        <div class="card-arrow">→</div>
-      </a>
-
-      <a class="card" href="中西部大区25vs26Q1部门业绩对比看板.html">
-        <div class="card-icon">📊</div>
-        <div class="card-title">25 vs 26 Q1 对比看板</div>
-        <div class="card-desc">两年同期部门业绩同比变化分析</div>
-        <div class="card-arrow">→</div>
-      </a>
-
-      <a class="card" href="应收账款部门平均回款周期分析.html">
-        <div class="card-icon">⏱️</div>
-        <div class="card-title">部门平均回款周期</div>
-        <div class="card-desc">各部门应收账款平均回款天数分析</div>
-        <div class="card-arrow">→</div>
-      </a>
     </div>
 
     <!-- How to update -->
