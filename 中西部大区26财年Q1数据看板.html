@@ -80,7 +80,7 @@
 <div class="container">
     <div class="header">
         <h1>中西部大区 26财年Q1 数据看板</h1>
-        <p>数据更新时间：2026-05-22 &nbsp;|&nbsp; 数据来源：业绩 欠款看板.xlsx</p>
+        <p>数据截止：2026-05-21 | 统计基准日：2026-05-22 | 生成于：2026-05-22</p>
     </div>
 
     <!-- 核心KPI -->
@@ -294,25 +294,25 @@
                 <div class="kpi-card">
                     <div class="kpi-icon">📊</div>
                     <h3>全大区平均回款周期</h3>
-                    <div class="value warning">76.9</div>
-                    <div class="sub">天（欠款加权综合）</div>
+                    <div class="value warning">77.4</div>
+                    <div class="sub">公式：(欠款加权天数+回款加权天数)÷(欠款总额+认款协同金额)</div>
                 </div>
                 <div class="kpi-card">
                     <div class="kpi-icon">🔴</div>
                     <h3>最长部门回款周期</h3>
-                    <div class="value negative">128.9</div>
-                    <div class="sub">武汉金融行业组</div>
+                    <div class="value negative">153.5</div>
+                    <div class="sub">西安站</div>
                 </div>
                 <div class="kpi-card">
                     <div class="kpi-icon">🟢</div>
                     <h3>最短部门回款周期</h3>
-                    <div class="value highlight">34.6</div>
-                    <div class="sub">武汉基建制造行业组</div>
+                    <div class="value highlight">40.8</div>
+                    <div class="sub">长沙站</div>
                 </div>
                 <div class="kpi-card" onclick="showOver90Depts()" style="cursor:pointer;" title="点击查看回款周期大于90天的部门">
                     <div class="kpi-icon">⚠️</div>
                     <h3>超90天部门数</h3>
-                    <div class="value negative">4</div>
+                    <div class="value negative">2</div>
                     <div class="sub">回款周期大于90天的部门（点击查看）</div>
                 </div>
             </div>
@@ -321,7 +321,7 @@
             <div style="background:rgba(255, 255, 255, 0.03);border-radius:12px;padding:15px 20px;margin-bottom:20px;border:1px solid rgba(255, 255, 255, 0.08);">
                 <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
                     <span style="font-weight:600;color:#00d4ff;">部门平均回款周期（天）</span>
-                    <span style="color:#8892b0;font-size:0.9em;">| 基于欠款账龄中点加权计算</span>
+                    <span style="color:#8892b0;font-size:0.9em;">| 回款周期 = (欠款加权天数 + 回款加权天数) ÷ (欠款总额 + 认款协同金额)</span>
                 </div>
                 <div style="display:flex;gap:20px;flex-wrap:wrap;">
                     <div style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:50%;background:#00ff88;display:inline-block;"></span><span style="color:#ccd6f6;font-size:0.9em;">≤60天（良好）</span></div>
@@ -341,13 +341,13 @@
                     <tr>
                         <th>部门（点击查看明细）</th>
                         <th>欠款总额(万)</th>
-                        <th>回款金额(万)</th>
+                        <th>认款协同金额(万)</th>
                         <th>回款周期(天)</th>
                         <th>状态</th>
                     </tr>
                 </thead>
                 <tbody id="cycleTableBody"><tr onclick="showSalesDetail('西安站','cycle')" style="cursor:pointer;"><td>🏢 西安站</td><td>319.97</td><td>288.09</td><td class="negative">153.5</td><td><span class="status-badge badge-down">需关注</span></td></tr><tr onclick="showSalesDetail('成都站','cycle')" style="cursor:pointer;"><td>🏢 成都站</td><td>186.54</td><td>273.52</td><td class="negative">111.1</td><td><span class="status-badge badge-down">需关注</span></td></tr><tr onclick="showSalesDetail('重庆站','cycle')" style="cursor:pointer;"><td>🏢 重庆站</td><td>111.88</td><td>168.01</td><td class="warning">87.7</td><td><span class="status-badge badge-warning">一般</span></td></tr><tr onclick="showSalesDetail('郑州站','cycle')" style="cursor:pointer;"><td>🏢 郑州站</td><td>144.93</td><td>82.38</td><td class="warning">85.7</td><td><span class="status-badge badge-warning">一般</span></td></tr><tr onclick="showSalesDetail('武汉金融行业组','cycle')" style="cursor:pointer;"><td>🏢 武汉金融行业组</td><td>245.72</td><td>230.10</td><td class="warning">80.9</td><td><span class="status-badge badge-warning">一般</span></td></tr><tr onclick="showSalesDetail('其他','cycle')" style="cursor:pointer;"><td>🏢 其他</td><td>22.20</td><td>4.92</td><td class="warning">80.5</td><td><span class="status-badge badge-warning">一般</span></td></tr><tr onclick="showSalesDetail('武汉能源交通行业组','cycle')" style="cursor:pointer;"><td>🏢 武汉能源交通行业组</td><td>119.90</td><td>398.96</td><td class="warning">63.4</td><td><span class="status-badge badge-warning">一般</span></td></tr><tr onclick="showSalesDetail('武汉基建制造行业组','cycle')" style="cursor:pointer;"><td>🏢 武汉基建制造行业组</td><td>301.44</td><td>617.79</td><td class="highlight">40.9</td><td><span class="status-badge badge-good">良好</span></td></tr><tr onclick="showSalesDetail('长沙站','cycle')" style="cursor:pointer;"><td>🏢 长沙站</td><td>62.80</td><td>281.12</td><td class="highlight">40.8</td><td><span class="status-badge badge-good">良好</span></td></tr></tbody>
-                <tfoot id="cycleTableFoot"><tr><td>合计</td><td>1515.38</td><td>2344.89</td><td>76.9</td><td></td></tr></tfoot>
+                <tfoot id="cycleTableFoot"><tr><td>合计</td><td>1515.38</td><td>2344.89</td><td>77.4</td><td></td></tr></tfoot>
             </table>
         </div>
     </div>
