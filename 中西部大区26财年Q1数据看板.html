@@ -121,7 +121,7 @@
     <div class="tab-nav">
         <button class="tab-btn active" onclick="switchTab('performance', this)"><span class="tab-icon">📊</span>业绩分析</button>
         <button class="tab-btn" onclick="switchTab('debt', this)"><span class="tab-icon">💳</span>欠款分析</button>
-        <button class="tab-btn" onclick="switchTab('collection', this)"><span class="tab-icon">⏱️</span>回款周期分析</button>
+        <button class="tab-btn" onclick="switchTab('collection', this)"><span class="tab-icon">⏱️</span>平均回款周期分析</button>
     </div>
 
     <!-- ===== 业绩分析 Tab ===== -->
@@ -286,10 +286,10 @@
         </div>
     </div>
 
-    <!-- ===== 回款周期分析 Tab ===== -->
+    <!-- ===== 平均回款周期分析 Tab ===== -->
     <div id="tab-collection" class="tab-content">
         <div class="module">
-            <h2 class="module-title">⏱️ 回款周期分析</h2>
+            <h2 class="module-title">⏱️ 平均回款周期分析</h2>
             <div class="kpi-grid" style="margin-bottom:25px;">
                 <div class="kpi-card">
                     <div class="kpi-icon">📊</div>
@@ -405,6 +405,5408 @@ function getCurrentTab() { return currentTabType; }
 // ===== 销售员明细数据 =====
 let salesDetailData = {"其他":[{"name":"吴晗","perf":9.11,"collect":0.82,"debt":20.69,"orders":0,"d30":15.64,"d30_90":2.66,"d90_180":1.98,"d180":0.41,"total_debt":20.69,"collect_amt":0.82},{"name":"李国栋","perf":0.54,"collect":0.05,"debt":1.21,"orders":0,"d30":0.49,"d30_90":0.6,"d90_180":0.12,"d180":0.0,"total_debt":1.21,"collect_amt":0.05},{"name":"白雨","perf":0.0,"collect":0.0,"debt":0.3,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":0.0,"d180":0.3,"total_debt":0.3,"collect_amt":0.0}],"成都站":[{"name":"何光耀","perf":9.29,"collect":0.57,"debt":15.04,"orders":0,"d30":8.3,"d30_90":2.97,"d90_180":3.47,"d180":0.3,"total_debt":15.04,"collect_amt":0.57},{"name":"卓毓涛","perf":8.39,"collect":2.61,"debt":15.68,"orders":0,"d30":5.66,"d30_90":7.83,"d90_180":2.19,"d180":0.0,"total_debt":15.68,"collect_amt":2.61},{"name":"司马净瑜","perf":2.18,"collect":0.0,"debt":6.98,"orders":0,"d30":2.1,"d30_90":1.74,"d90_180":3.14,"d180":0.0,"total_debt":6.98,"collect_amt":0.0},{"name":"吴晓波","perf":40.71,"collect":0.0,"debt":48.08,"orders":0,"d30":2.52,"d30_90":38.69,"d90_180":1.25,"d180":5.62,"total_debt":48.08,"collect_amt":0.0},{"name":"唐天宁","perf":1.36,"collect":-0.11,"debt":1.19,"orders":0,"d30":1.47,"d30_90":-0.28,"d90_180":0.0,"d180":0.0,"total_debt":1.19,"collect_amt":-0.11},{"name":"巨晨逸","perf":-0.08,"collect":-0.08,"debt":5.05,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":5.05,"d180":0.0,"total_debt":5.05,"collect_amt":-0.08},{"name":"席亚雄","perf":1.75,"collect":0.0,"debt":9.14,"orders":0,"d30":1.75,"d30_90":2.67,"d90_180":4.72,"d180":0.0,"total_debt":9.14,"collect_amt":0.0},{"name":"张鹏成","perf":3.58,"collect":0.76,"debt":4.91,"orders":0,"d30":2.83,"d30_90":0.7,"d90_180":0.37,"d180":1.01,"total_debt":4.91,"collect_amt":0.76},{"name":"徐晓荣","perf":15.07,"collect":0.04,"debt":14.99,"orders":0,"d30":0.9,"d30_90":14.09,"d90_180":0.0,"d180":0.0,"total_debt":14.99,"collect_amt":0.04},{"name":"李浩铭","perf":10.79,"collect":0.0,"debt":10.79,"orders":0,"d30":10.79,"d30_90":0.0,"d90_180":0.0,"d180":0.0,"total_debt":10.79,"collect_amt":0.0},{"name":"杨程","perf":-0.68,"collect":-0.68,"debt":0.09,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":0.0,"d180":0.09,"total_debt":0.09,"collect_amt":-0.68},{"name":"杨莉萍","perf":9.47,"collect":2.28,"debt":7.3,"orders":0,"d30":5.38,"d30_90":1.92,"d90_180":0.0,"d180":0.0,"total_debt":7.3,"collect_amt":2.28},{"name":"樊文","perf":13.73,"collect":0.4,"debt":19.93,"orders":0,"d30":8.4,"d30_90":-50.52,"d90_180":62.05,"d180":0.0,"total_debt":19.93,"collect_amt":0.4},{"name":"王俊","perf":0.0,"collect":0.0,"debt":0.01,"orders":0,"d30":0.01,"d30_90":0.0,"d90_180":0.0,"d180":0.0,"total_debt":0.01,"collect_amt":0.0},{"name":"蒋君霞","perf":0.49,"collect":0.1,"debt":1.08,"orders":0,"d30":0.32,"d30_90":-6.04,"d90_180":6.8,"d180":0.0,"total_debt":1.08,"collect_amt":0.1},{"name":"谢晓宇","perf":11.58,"collect":4.45,"debt":23.93,"orders":0,"d30":6.28,"d30_90":1.49,"d90_180":11.5,"d180":4.66,"total_debt":23.93,"collect_amt":4.45},{"name":"郑波","perf":0.46,"collect":0.46,"debt":0.02,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":0.02,"d180":0.0,"total_debt":0.02,"collect_amt":0.46},{"name":"陈钰","perf":0.0,"collect":0.0,"debt":2.3,"orders":0,"d30":0.0,"d30_90":0.03,"d90_180":0.06,"d180":2.21,"total_debt":2.3,"collect_amt":0.0}],"武汉基建制造行业组":[{"name":"任重","perf":0.3,"collect":0.3,"debt":0.0,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":0.0,"d180":0.0,"total_debt":0.0,"collect_amt":0.3},{"name":"别勇","perf":93.14,"collect":4.21,"debt":89.17,"orders":0,"d30":88.92,"d30_90":0.0,"d90_180":0.25,"d180":0.0,"total_debt":89.17,"collect_amt":4.21},{"name":"张轩","perf":0.96,"collect":-11.36,"debt":28.42,"orders":0,"d30":12.31,"d30_90":4.11,"d90_180":12.0,"d180":0.0,"total_debt":28.42,"collect_amt":-11.36},{"name":"程双清","perf":0.03,"collect":-11.78,"debt":14.59,"orders":0,"d30":11.82,"d30_90":0.17,"d90_180":2.6,"d180":0.0,"total_debt":14.59,"collect_amt":-11.78},{"name":"罗贝","perf":36.99,"collect":-0.07,"debt":38.92,"orders":0,"d30":37.05,"d30_90":0.0,"d90_180":1.87,"d180":0.0,"total_debt":38.92,"collect_amt":-0.07},{"name":"胡松","perf":106.17,"collect":7.31,"debt":129.25,"orders":0,"d30":96.2,"d30_90":30.45,"d90_180":1.11,"d180":1.49,"total_debt":129.25,"collect_amt":7.31},{"name":"陈鹏","perf":0.0,"collect":0.0,"debt":0.68,"orders":0,"d30":0.04,"d30_90":0.64,"d90_180":0.0,"d180":0.0,"total_debt":0.68,"collect_amt":0.0},{"name":"陶迪","perf":0.39,"collect":0.0,"debt":0.39,"orders":0,"d30":0.39,"d30_90":0.0,"d90_180":0.0,"d180":0.0,"total_debt":0.39,"collect_amt":0.0}],"武汉能源交通行业组":[{"name":"周靓","perf":10.46,"collect":8.16,"debt":3.1,"orders":0,"d30":2.31,"d30_90":0.79,"d90_180":0.0,"d180":0.0,"total_debt":3.1,"collect_amt":8.16},{"name":"徐聪","perf":2.25,"collect":1.44,"debt":5.25,"orders":0,"d30":0.83,"d30_90":2.54,"d90_180":1.88,"d180":0.0,"total_debt":5.25,"collect_amt":1.44},{"name":"林茹","perf":2.48,"collect":-0.69,"debt":4.99,"orders":0,"d30":3.17,"d30_90":1.82,"d90_180":0.0,"d180":0.0,"total_debt":4.99,"collect_amt":-0.69},{"name":"樊梦玲","perf":0.0,"collect":0.0,"debt":0.01,"orders":0,"d30":0.0,"d30_90":0.01,"d90_180":0.0,"d180":0.0,"total_debt":0.01,"collect_amt":0.0},{"name":"汤腾","perf":4.91,"collect":0.0,"debt":5.0,"orders":0,"d30":4.91,"d30_90":0.09,"d90_180":0.0,"d180":0.0,"total_debt":5.0,"collect_amt":0.0},{"name":"石翔瑜","perf":18.8,"collect":12.57,"debt":19.56,"orders":0,"d30":5.65,"d30_90":5.25,"d90_180":8.59,"d180":0.07,"total_debt":19.56,"collect_amt":12.57},{"name":"胡帅帅","perf":0.01,"collect":0.0,"debt":0.06,"orders":0,"d30":0.0,"d30_90":0.06,"d90_180":0.0,"d180":0.0,"total_debt":0.06,"collect_amt":0.0},{"name":"袁苗","perf":0.0,"collect":0.0,"debt":0.14,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":0.14,"d180":0.0,"total_debt":0.14,"collect_amt":0.0},{"name":"陈绪涛","perf":2.54,"collect":-0.9,"debt":59.98,"orders":0,"d30":3.44,"d30_90":1.65,"d90_180":54.89,"d180":0.0,"total_debt":59.98,"collect_amt":-0.9},{"name":"魏欣蓓","perf":6.51,"collect":2.66,"debt":5.87,"orders":0,"d30":3.71,"d30_90":0.84,"d90_180":1.32,"d180":0.0,"total_debt":5.87,"collect_amt":2.66},{"name":"黄佩文","perf":14.95,"collect":-0.39,"debt":15.95,"orders":0,"d30":15.28,"d30_90":0.06,"d90_180":0.61,"d180":0.0,"total_debt":15.95,"collect_amt":-0.39}],"武汉金融行业组":[{"name":"常明君","perf":-0.49,"collect":0.65,"debt":74.81,"orders":0,"d30":-1.19,"d30_90":-1.23,"d90_180":77.23,"d180":0.0,"total_debt":74.81,"collect_amt":0.65},{"name":"康哲飞","perf":1.22,"collect":-0.25,"debt":7.72,"orders":0,"d30":1.07,"d30_90":2.25,"d90_180":4.62,"d180":-0.22,"total_debt":7.72,"collect_amt":-0.25},{"name":"张颖","perf":6.94,"collect":0.92,"debt":76.16,"orders":0,"d30":6.01,"d30_90":21.37,"d90_180":19.65,"d180":29.13,"total_debt":76.16,"collect_amt":0.92},{"name":"杨勇","perf":3.67,"collect":0.04,"debt":73.58,"orders":0,"d30":3.63,"d30_90":20.46,"d90_180":20.31,"d180":29.18,"total_debt":73.58,"collect_amt":0.04},{"name":"黄薇","perf":10.4,"collect":3.01,"debt":13.44,"orders":0,"d30":7.65,"d30_90":5.8,"d90_180":0.0,"d180":-0.01,"total_debt":13.44,"collect_amt":3.01}],"西安站":[{"name":"刘江","perf":6.03,"collect":4.6,"debt":48.14,"orders":0,"d30":0.93,"d30_90":36.47,"d90_180":5.59,"d180":5.15,"total_debt":48.14,"collect_amt":4.6},{"name":"康帅奇","perf":1.14,"collect":0.06,"debt":31.9,"orders":0,"d30":1.08,"d30_90":2.54,"d90_180":26.13,"d180":2.15,"total_debt":31.9,"collect_amt":0.06},{"name":"张宸睿","perf":0.0,"collect":0.0,"debt":73.55,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":66.03,"d180":7.52,"total_debt":73.55,"collect_amt":0.0},{"name":"李佳伟","perf":0.0,"collect":0.0,"debt":25.77,"orders":0,"d30":0.0,"d30_90":25.71,"d90_180":0.0,"d180":0.06,"total_debt":25.77,"collect_amt":0.0},{"name":"欧丽娟","perf":8.42,"collect":0.43,"debt":7.99,"orders":0,"d30":7.99,"d30_90":0.0,"d90_180":0.0,"d180":0.0,"total_debt":7.99,"collect_amt":0.43},{"name":"王淑涵","perf":0.0,"collect":0.0,"debt":0.07,"orders":0,"d30":0.01,"d30_90":0.0,"d90_180":0.0,"d180":0.06,"total_debt":0.07,"collect_amt":0.0},{"name":"贺玲","perf":58.12,"collect":-0.01,"debt":109.81,"orders":0,"d30":58.12,"d30_90":7.27,"d90_180":44.35,"d180":0.07,"total_debt":109.81,"collect_amt":-0.01},{"name":"赵婷","perf":22.8,"collect":0.06,"debt":22.77,"orders":0,"d30":19.53,"d30_90":3.24,"d90_180":0.0,"d180":0.0,"total_debt":22.77,"collect_amt":0.06}],"郑州站":[{"name":"刘婵","perf":0.91,"collect":0.19,"debt":0.71,"orders":0,"d30":0.71,"d30_90":0.0,"d90_180":0.0,"d180":0.0,"total_debt":0.71,"collect_amt":0.19},{"name":"刘莉","perf":6.7,"collect":3.14,"debt":14.36,"orders":0,"d30":3.56,"d30_90":10.8,"d90_180":0.0,"d180":0.0,"total_debt":14.36,"collect_amt":3.14},{"name":"刘静玲","perf":15.1,"collect":11.01,"debt":14.59,"orders":0,"d30":4.09,"d30_90":0.03,"d90_180":10.47,"d180":0.0,"total_debt":14.59,"collect_amt":11.01},{"name":"孙潇潇","perf":0.51,"collect":0.48,"debt":0.03,"orders":0,"d30":0.03,"d30_90":0.0,"d90_180":0.0,"d180":0.0,"total_debt":0.03,"collect_amt":0.48},{"name":"宋运美","perf":1.23,"collect":0.05,"debt":14.75,"orders":0,"d30":0.77,"d30_90":11.9,"d90_180":2.08,"d180":0.0,"total_debt":14.75,"collect_amt":0.05},{"name":"张垚","perf":0.0,"collect":0.0,"debt":0.0,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":0.0,"d180":0.0,"total_debt":0.0,"collect_amt":0.0},{"name":"李国强","perf":0.0,"collect":0.0,"debt":3.7,"orders":0,"d30":0.0,"d30_90":3.08,"d90_180":0.62,"d180":0.0,"total_debt":3.7,"collect_amt":0.0},{"name":"王伟明","perf":0.56,"collect":-0.01,"debt":0.57,"orders":0,"d30":0.57,"d30_90":0.0,"d90_180":0.0,"d180":0.0,"total_debt":0.57,"collect_amt":-0.01},{"name":"韩森","perf":1.74,"collect":0.01,"debt":54.5,"orders":0,"d30":1.73,"d30_90":22.16,"d90_180":30.16,"d180":0.45,"total_debt":54.5,"collect_amt":0.01},{"name":"黄英浩","perf":3.06,"collect":-0.04,"debt":41.73,"orders":0,"d30":3.01,"d30_90":1.64,"d90_180":35.85,"d180":1.23,"total_debt":41.73,"collect_amt":-0.04}],"重庆站":[{"name":"刘美希","perf":0.24,"collect":0.23,"debt":4.36,"orders":0,"d30":0.01,"d30_90":0.0,"d90_180":4.35,"d180":0.0,"total_debt":4.36,"collect_amt":0.23},{"name":"危昶","perf":39.5,"collect":0.84,"debt":40.8,"orders":0,"d30":29.76,"d30_90":9.35,"d90_180":1.69,"d180":0.0,"total_debt":40.8,"collect_amt":0.84},{"name":"周纤纤","perf":0.0,"collect":0.0,"debt":0.26,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":0.0,"d180":0.26,"total_debt":0.26,"collect_amt":0.0},{"name":"廖佳晖","perf":0.38,"collect":0.21,"debt":0.19,"orders":0,"d30":0.16,"d30_90":0.03,"d90_180":0.0,"d180":0.0,"total_debt":0.19,"collect_amt":0.21},{"name":"李倩","perf":0.02,"collect":0.02,"debt":6.57,"orders":0,"d30":0.0,"d30_90":-0.2,"d90_180":6.77,"d180":0.0,"total_debt":6.57,"collect_amt":0.02},{"name":"杨彦祥","perf":1.48,"collect":1.11,"debt":11.11,"orders":0,"d30":0.33,"d30_90":0.94,"d90_180":9.84,"d180":0.0,"total_debt":11.11,"collect_amt":1.11},{"name":"林萍","perf":0.39,"collect":0.35,"debt":7.15,"orders":0,"d30":0.04,"d30_90":0.0,"d90_180":7.11,"d180":0.0,"total_debt":7.15,"collect_amt":0.35},{"name":"耿晓伟","perf":19.73,"collect":17.66,"debt":36.31,"orders":0,"d30":2.06,"d30_90":1.46,"d90_180":21.3,"d180":11.49,"total_debt":36.31,"collect_amt":17.66},{"name":"董朝武","perf":0.0,"collect":0.0,"debt":0.0,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":0.0,"d180":0.0,"total_debt":0.0,"collect_amt":0.0},{"name":"陈磊","perf":0.94,"collect":0.41,"debt":5.12,"orders":0,"d30":0.22,"d30_90":3.48,"d90_180":1.42,"d180":0.0,"total_debt":5.12,"collect_amt":0.41}],"长沙站":[{"name":"张婉莹","perf":3.68,"collect":0.76,"debt":4.43,"orders":0,"d30":1.43,"d30_90":2.51,"d90_180":0.49,"d180":0.0,"total_debt":4.43,"collect_amt":0.76},{"name":"彭勋","perf":13.35,"collect":4.3,"debt":9.06,"orders":0,"d30":4.6,"d30_90":4.46,"d90_180":0.0,"d180":0.0,"total_debt":9.06,"collect_amt":4.3},{"name":"曾敏","perf":5.24,"collect":0.11,"debt":7.33,"orders":0,"d30":4.55,"d30_90":1.32,"d90_180":1.46,"d180":0.0,"total_debt":7.33,"collect_amt":0.11},{"name":"王涛","perf":14.9,"collect":8.22,"debt":7.91,"orders":0,"d30":3.66,"d30_90":3.66,"d90_180":0.59,"d180":0.0,"total_debt":7.91,"collect_amt":8.22},{"name":"蒋小花","perf":8.09,"collect":1.99,"debt":6.85,"orders":0,"d30":0.76,"d30_90":6.09,"d90_180":0.0,"d180":0.0,"total_debt":6.85,"collect_amt":1.99},{"name":"谢顶峰","perf":15.08,"collect":4.5,"debt":14.69,"orders":0,"d30":6.13,"d30_90":5.15,"d90_180":3.41,"d180":0.0,"total_debt":14.69,"collect_amt":4.5},{"name":"邓梅丽","perf":6.14,"collect":1.29,"debt":5.3,"orders":0,"d30":2.87,"d30_90":2.43,"d90_180":0.0,"d180":0.0,"total_debt":5.3,"collect_amt":1.29},{"name":"陈蓉","perf":11.21,"collect":7.91,"debt":6.09,"orders":0,"d30":0.9,"d30_90":5.19,"d90_180":0.0,"d180":0.0,"total_debt":6.09,"collect_amt":7.91},{"name":"黄倩","perf":0.0,"collect":0.0,"debt":1.13,"orders":0,"d30":0.0,"d30_90":0.0,"d90_180":0.0,"d180":1.13,"total_debt":1.13,"collect_amt":0.0}]};
 
+
+let salesCycleData = {
+  "其他": [
+    {
+      "name": "白雨",
+      "debt_amt": 4397.42,
+      "rec_amt": 4800.0,
+      "cycle": 188.6,
+      "debt_weighted": 975998.26,
+      "rec_weighted": 758400.0
+    },
+    {
+      "name": "李国栋",
+      "debt_amt": 12084.49,
+      "rec_amt": 5524.45,
+      "cycle": 127.6,
+      "debt_weighted": 601280.11,
+      "rec_weighted": 1645144.71
+    },
+    {
+      "name": "吴晗",
+      "debt_amt": 215047.6,
+      "rec_amt": 34386.94,
+      "cycle": 37.3,
+      "debt_weighted": 6907703.61,
+      "rec_weighted": 2397206.56
+    },
+    {
+      "name": "刘传凤",
+      "debt_amt": 0.0,
+      "rec_amt": 4452.0,
+      "cycle": 8.0,
+      "debt_weighted": 0.0,
+      "rec_weighted": 35616.0
+    },
+    {
+      "name": "杨婉晴",
+      "debt_amt": 0.0,
+      "rec_amt": 0.0,
+      "cycle": 0,
+      "debt_weighted": 0.0,
+      "rec_weighted": 0.0
+    },
+    {
+      "name": "王娇娇",
+      "debt_amt": 0.0,
+      "rec_amt": 0.0,
+      "cycle": 0,
+      "debt_weighted": 0.0,
+      "rec_weighted": 0.0
+    }
+  ],
+  "成都站": [
+    {
+      "name": "陈钰",
+      "debt_amt": 22951.69,
+      "rec_amt": 60340.0,
+      "cycle": 569.8,
+      "debt_weighted": 9804835.71,
+      "rec_weighted": 37654911.0
+    },
+    {
+      "name": "杨程",
+      "debt_amt": 900.0,
+      "rec_amt": 9929.74,
+      "cycle": 259.5,
+      "debt_weighted": 333900.0,
+      "rec_weighted": 2476417.86
+    },
+    {
+      "name": "席亚雄",
+      "debt_amt": 91474.17,
+      "rec_amt": 23979.46,
+      "cycle": 106.0,
+      "debt_weighted": 8800455.15,
+      "rec_weighted": 3437394.48
+    },
+    {
+      "name": "曾语嫣",
+      "debt_amt": 0.0,
+      "rec_amt": 18.11,
+      "cycle": 99.9,
+      "debt_weighted": 0.0,
+      "rec_weighted": 1809.27
+    },
+    {
+      "name": "吴晓波",
+      "debt_amt": 481015.78,
+      "rec_amt": 727065.06,
+      "cycle": 92.8,
+      "debt_weighted": 39818609.39,
+      "rec_weighted": 72317246.58
+    },
+    {
+      "name": "谢晓宇",
+      "debt_amt": 239352.49,
+      "rec_amt": 154921.0,
+      "cycle": 87.6,
+      "debt_weighted": 27478239.98,
+      "rec_weighted": 7070790.0
+    },
+    {
+      "name": "蒋君霞",
+      "debt_amt": 139031.91,
+      "rec_amt": 22818.4,
+      "cycle": 85.9,
+      "debt_weighted": 12118722.2,
+      "rec_weighted": 1790198.86
+    },
+    {
+      "name": "樊文",
+      "debt_amt": 1355181.44,
+      "rec_amt": 102022.41,
+      "cycle": 84.6,
+      "debt_weighted": 113943807.53,
+      "rec_weighted": 9371010.54
+    },
+    {
+      "name": "巨晨逸",
+      "debt_amt": 51737.42,
+      "rec_amt": 31404.6,
+      "cycle": 81.4,
+      "debt_weighted": 5734740.95,
+      "rec_weighted": 1036985.6
+    },
+    {
+      "name": "张秀",
+      "debt_amt": 0.0,
+      "rec_amt": 103600.0,
+      "cycle": 77.4,
+      "debt_weighted": 0.0,
+      "rec_weighted": 8021008.0
+    },
+    {
+      "name": "郑波",
+      "debt_amt": 249.0,
+      "rec_amt": 266037.61,
+      "cycle": 76.5,
+      "debt_weighted": 28635.0,
+      "rec_weighted": 20347257.7
+    },
+    {
+      "name": "司马净瑜",
+      "debt_amt": 81983.6,
+      "rec_amt": 118117.8,
+      "cycle": 73.2,
+      "debt_weighted": 6036398.98,
+      "rec_weighted": 8609279.79
+    },
+    {
+      "name": "唐天宁",
+      "debt_amt": 17536.2,
+      "rec_amt": 38779.16,
+      "cycle": 70.1,
+      "debt_weighted": 500583.5,
+      "rec_weighted": 3445194.38
+    },
+    {
+      "name": "何光耀",
+      "debt_amt": 150489.32,
+      "rec_amt": 30958.76,
+      "cycle": 65.6,
+      "debt_weighted": 8760140.13,
+      "rec_weighted": 3138398.86
+    },
+    {
+      "name": "卓毓涛",
+      "debt_amt": 156796.3,
+      "rec_amt": 728214.81,
+      "cycle": 51.3,
+      "debt_weighted": 8292716.4,
+      "rec_weighted": 37132206.99
+    },
+    {
+      "name": "杨莉萍",
+      "debt_amt": 73012.02,
+      "rec_amt": 57129.5,
+      "cycle": 42.7,
+      "debt_weighted": 1761850.74,
+      "rec_weighted": 3791250.2
+    },
+    {
+      "name": "张鹏成",
+      "debt_amt": 49061.42,
+      "rec_amt": 118874.65,
+      "cycle": 42.5,
+      "debt_weighted": 4332337.95,
+      "rec_weighted": 2801364.4
+    },
+    {
+      "name": "李浩铭",
+      "debt_amt": 107920.0,
+      "rec_amt": 50730.0,
+      "cycle": 39.3,
+      "debt_weighted": 2428496.0,
+      "rec_weighted": 3799125.0
+    },
+    {
+      "name": "徐晓荣",
+      "debt_amt": 150593.83,
+      "rec_amt": 90257.54,
+      "cycle": 29.6,
+      "debt_weighted": 4610444.64,
+      "rec_weighted": 2515752.8
+    },
+    {
+      "name": "王俊",
+      "debt_amt": 122.0,
+      "rec_amt": 0.0,
+      "cycle": 11.0,
+      "debt_weighted": 1342.0,
+      "rec_weighted": 0.0
+    }
+  ],
+  "武汉基建制造行业组": [
+    {
+      "name": "任重",
+      "debt_amt": 36.34,
+      "rec_amt": 529886.65,
+      "cycle": 109.7,
+      "debt_weighted": 399.74,
+      "rec_weighted": 58116485.26
+    },
+    {
+      "name": "陈鹏",
+      "debt_amt": 6821.2,
+      "rec_amt": 162723.16,
+      "cycle": 103.3,
+      "debt_weighted": 538941.4,
+      "rec_weighted": 16976791.6
+    },
+    {
+      "name": "张轩",
+      "debt_amt": 284262.58,
+      "rec_amt": 161519.37,
+      "cycle": 62.5,
+      "debt_weighted": 16492133.37,
+      "rec_weighted": 11379446.78
+    },
+    {
+      "name": "陶迪",
+      "debt_amt": 3900.0,
+      "rec_amt": 19820.0,
+      "cycle": 58.2,
+      "debt_weighted": 101296.0,
+      "rec_weighted": 1279200.0
+    },
+    {
+      "name": "程双清",
+      "debt_amt": 145905.0,
+      "rec_amt": 2540310.0,
+      "cycle": 57.2,
+      "debt_weighted": 3025270.5,
+      "rec_weighted": 150628563.0
+    },
+    {
+      "name": "罗贝",
+      "debt_amt": 389276.77,
+      "rec_amt": 429180.16,
+      "cycle": 52.9,
+      "debt_weighted": 7984979.82,
+      "rec_weighted": 35297054.04
+    },
+    {
+      "name": "胡松",
+      "debt_amt": 1293179.78,
+      "rec_amt": 1363071.09,
+      "cycle": 50.6,
+      "debt_weighted": 42971849.32,
+      "rec_weighted": 91500882.18
+    },
+    {
+      "name": "别勇",
+      "debt_amt": 891859.51,
+      "rec_amt": 971367.73,
+      "cycle": 49.7,
+      "debt_weighted": 20082777.4,
+      "rec_weighted": 72601193.81
+    }
+  ],
+  "武汉能源交通行业组": [
+    {
+      "name": "樊梦玲",
+      "debt_amt": 54.0,
+      "rec_amt": 0.0,
+      "cycle": 622.6,
+      "debt_weighted": 3618.0,
+      "rec_weighted": 30000.0
+    },
+    {
+      "name": "原冀峰",
+      "debt_amt": 0.0,
+      "rec_amt": 19893.6,
+      "cycle": 329.9,
+      "debt_weighted": 0.0,
+      "rec_weighted": 6561924.0
+    },
+    {
+      "name": "袁苗",
+      "debt_amt": 1431.0,
+      "rec_amt": 2400.0,
+      "cycle": 126.3,
+      "debt_weighted": 243913.0,
+      "rec_weighted": 240000.0
+    },
+    {
+      "name": "袁友斌",
+      "debt_amt": 0.0,
+      "rec_amt": 131088.0,
+      "cycle": 107.9,
+      "debt_weighted": 0.0,
+      "rec_weighted": 14138832.0
+    },
+    {
+      "name": "林茹",
+      "debt_amt": 54927.0,
+      "rec_amt": 449617.7,
+      "cycle": 89.8,
+      "debt_weighted": 2327319.0,
+      "rec_weighted": 42959124.3
+    },
+    {
+      "name": "陈绪涛",
+      "debt_amt": 600778.57,
+      "rec_amt": 1558213.33,
+      "cycle": 85.3,
+      "debt_weighted": 61911679.64,
+      "rec_weighted": 122208510.46
+    },
+    {
+      "name": "石翔瑜",
+      "debt_amt": 197637.02,
+      "rec_amt": 546612.76,
+      "cycle": 69.0,
+      "debt_weighted": 14825083.76,
+      "rec_weighted": 36551273.72
+    },
+    {
+      "name": "魏欣蓓",
+      "debt_amt": 58619.6,
+      "rec_amt": 265486.54,
+      "cycle": 61.6,
+      "debt_weighted": 2223157.15,
+      "rec_weighted": 17756421.98
+    },
+    {
+      "name": "徐聪",
+      "debt_amt": 52497.38,
+      "rec_amt": 711550.72,
+      "cycle": 59.0,
+      "debt_weighted": 3962208.26,
+      "rec_weighted": 41137818.88
+    },
+    {
+      "name": "胡帅帅",
+      "debt_amt": 612.89,
+      "rec_amt": 6799.47,
+      "cycle": 54.6,
+      "debt_weighted": 31687.28,
+      "rec_weighted": 372663.47
+    },
+    {
+      "name": "黄佩文",
+      "debt_amt": 159506.89,
+      "rec_amt": 65184.86,
+      "cycle": 30.0,
+      "debt_weighted": 2008300.79,
+      "rec_weighted": 4735607.5
+    },
+    {
+      "name": "汤腾",
+      "debt_amt": 50079.05,
+      "rec_amt": 5.0,
+      "cycle": 25.7,
+      "debt_weighted": 1286155.65,
+      "rec_weighted": 380.0
+    },
+    {
+      "name": "周靓",
+      "debt_amt": 30940.56,
+      "rec_amt": 232788.1,
+      "cycle": 18.1,
+      "debt_weighted": 909652.02,
+      "rec_weighted": 3850827.55
+    },
+    {
+      "name": "肖赛康",
+      "debt_amt": 0.0,
+      "rec_amt": 0.0,
+      "cycle": 0,
+      "debt_weighted": 0.0,
+      "rec_weighted": 0.0
+    }
+  ],
+  "武汉金融行业组": [
+    {
+      "name": "张颖",
+      "debt_amt": 762317.12,
+      "rec_amt": 114129.6,
+      "cycle": 149.6,
+      "debt_weighted": 124134629.52,
+      "rec_weighted": 6952023.21
+    },
+    {
+      "name": "杨勇",
+      "debt_amt": 735939.64,
+      "rec_amt": 261178.0,
+      "cycle": 144.4,
+      "debt_weighted": 123875648.34,
+      "rec_weighted": 20101984.01
+    },
+    {
+      "name": "常明君",
+      "debt_amt": 801835.81,
+      "rec_amt": 159204.07,
+      "cycle": 93.8,
+      "debt_weighted": 81957961.67,
+      "rec_weighted": 8203563.35
+    },
+    {
+      "name": "康哲飞",
+      "debt_amt": 82618.94,
+      "rec_amt": 1092348.22,
+      "cycle": 80.9,
+      "debt_weighted": 7960778.64,
+      "rec_weighted": 87076853.71
+    },
+    {
+      "name": "黄薇",
+      "debt_amt": 134598.96,
+      "rec_amt": 674156.35,
+      "cycle": 64.8,
+      "debt_weighted": 4785476.14,
+      "rec_weighted": 47623040.1
+    }
+  ],
+  "西安站": [
+    {
+      "name": "王淑涵",
+      "debt_amt": 614.88,
+      "rec_amt": 255.01,
+      "cycle": 230.5,
+      "debt_weighted": 137917.08,
+      "rec_weighted": 62609.15
+    },
+    {
+      "name": "康帅奇",
+      "debt_amt": 318940.03,
+      "rec_amt": 166259.34,
+      "cycle": 133.3,
+      "debt_weighted": 36867079.37,
+      "rec_weighted": 27791478.58
+    },
+    {
+      "name": "张宸睿",
+      "debt_amt": 735496.8,
+      "rec_amt": 335765.52,
+      "cycle": 112.5,
+      "debt_weighted": 87420839.0,
+      "rec_weighted": 33125140.5
+    },
+    {
+      "name": "刘江",
+      "debt_amt": 489202.56,
+      "rec_amt": 315502.4,
+      "cycle": 89.0,
+      "debt_weighted": 53953299.48,
+      "rec_weighted": 17682584.5
+    },
+    {
+      "name": "贺玲",
+      "debt_amt": 1170563.35,
+      "rec_amt": 1684738.9,
+      "cycle": 86.9,
+      "debt_weighted": 68043491.29,
+      "rec_weighted": 180130511.26
+    },
+    {
+      "name": "张恒",
+      "debt_amt": 0.0,
+      "rec_amt": 294166.08,
+      "cycle": 77.7,
+      "debt_weighted": 0.0,
+      "rec_weighted": 22849999.8
+    },
+    {
+      "name": "李佳伟",
+      "debt_amt": 257643.0,
+      "rec_amt": 79267.1,
+      "cycle": 75.6,
+      "debt_weighted": 20131028.7,
+      "rec_weighted": 5330907.8
+    },
+    {
+      "name": "赵婷",
+      "debt_amt": 236848.0,
+      "rec_amt": 650.0,
+      "cycle": 14.5,
+      "debt_weighted": 3448747.8,
+      "rec_weighted": 425.0
+    },
+    {
+      "name": "欧丽娟",
+      "debt_amt": 79900.0,
+      "rec_amt": 4328.0,
+      "cycle": 7.1,
+      "debt_weighted": 592100.0,
+      "rec_weighted": 3958.0
+    }
+  ],
+  "郑州站": [
+    {
+      "name": "黄英浩",
+      "debt_amt": 435521.56,
+      "rec_amt": 50332.76,
+      "cycle": 119.1,
+      "debt_weighted": 45727257.1,
+      "rec_weighted": 12155543.57
+    },
+    {
+      "name": "张垚",
+      "debt_amt": 46740.0,
+      "rec_amt": 0.0,
+      "cycle": 99.5,
+      "debt_weighted": 4648920.0,
+      "rec_weighted": 0.0
+    },
+    {
+      "name": "韩森",
+      "debt_amt": 545085.93,
+      "rec_amt": 295304.0,
+      "cycle": 94.3,
+      "debt_weighted": 54849102.98,
+      "rec_weighted": 24365314.0
+    },
+    {
+      "name": "李国强",
+      "debt_amt": 37041.08,
+      "rec_amt": 11820.0,
+      "cycle": 81.1,
+      "debt_weighted": 2852291.1,
+      "rec_weighted": 1110475.0
+    },
+    {
+      "name": "白永超",
+      "debt_amt": 0.0,
+      "rec_amt": 20400.0,
+      "cycle": 71.0,
+      "debt_weighted": 0.0,
+      "rec_weighted": 1448400.0
+    },
+    {
+      "name": "宋运美",
+      "debt_amt": 154055.01,
+      "rec_amt": 111972.45,
+      "cycle": 68.5,
+      "debt_weighted": 11604934.04,
+      "rec_weighted": 6619424.45
+    },
+    {
+      "name": "刘静玲",
+      "debt_amt": 146610.2,
+      "rec_amt": 110100.0,
+      "cycle": 65.0,
+      "debt_weighted": 14603934.6,
+      "rec_weighted": 2091900.0
+    },
+    {
+      "name": "刘莉",
+      "debt_amt": 155505.69,
+      "rec_amt": 121847.95,
+      "cycle": 61.3,
+      "debt_weighted": 13662644.93,
+      "rec_weighted": 3329285.05
+    },
+    {
+      "name": "王伟明",
+      "debt_amt": 5690.64,
+      "rec_amt": 40904.05,
+      "cycle": 29.9,
+      "debt_weighted": 51938.28,
+      "rec_weighted": 1339621.95
+    },
+    {
+      "name": "刘婵",
+      "debt_amt": 7147.5,
+      "rec_amt": 48101.5,
+      "cycle": 29.5,
+      "debt_weighted": 72326.2,
+      "rec_weighted": 1558977.7
+    },
+    {
+      "name": "孙潇潇",
+      "debt_amt": 251.2,
+      "rec_amt": 13040.6,
+      "cycle": 20.7,
+      "debt_weighted": 5526.4,
+      "rec_weighted": 269740.6
+    }
+  ],
+  "重庆站": [
+    {
+      "name": "周纤纤",
+      "debt_amt": 2558.93,
+      "rec_amt": 0.0,
+      "cycle": 212.5,
+      "debt_weighted": 543698.56,
+      "rec_weighted": 0.0
+    },
+    {
+      "name": "刘美希",
+      "debt_amt": 43632.87,
+      "rec_amt": 4443.22,
+      "cycle": 155.0,
+      "debt_weighted": 7375190.43,
+      "rec_weighted": 74333.6
+    },
+    {
+      "name": "林萍",
+      "debt_amt": 71521.87,
+      "rec_amt": 16563.22,
+      "cycle": 125.5,
+      "debt_weighted": 10158190.93,
+      "rec_weighted": 900155.6
+    },
+    {
+      "name": "黄培琰",
+      "debt_amt": 0.0,
+      "rec_amt": 80.0,
+      "cycle": 111.0,
+      "debt_weighted": 0.0,
+      "rec_weighted": 8880.0
+    },
+    {
+      "name": "耿晓伟",
+      "debt_amt": 363233.93,
+      "rec_amt": 176635.24,
+      "cycle": 109.7,
+      "debt_weighted": 58741729.05,
+      "rec_weighted": 488500.0
+    },
+    {
+      "name": "李倩",
+      "debt_amt": 69632.93,
+      "rec_amt": 25125.62,
+      "cycle": 97.5,
+      "debt_weighted": 7712994.86,
+      "rec_weighted": 1529946.88
+    },
+    {
+      "name": "杨彦祥",
+      "debt_amt": 116118.16,
+      "rec_amt": 115917.01,
+      "cycle": 82.4,
+      "debt_weighted": 11985953.15,
+      "rec_weighted": 7129754.06
+    },
+    {
+      "name": "董朝武",
+      "debt_amt": 39.68,
+      "rec_amt": 23880.0,
+      "cycle": 79.9,
+      "debt_weighted": 436.48,
+      "rec_weighted": 1910400.0
+    },
+    {
+      "name": "廖佳晖",
+      "debt_amt": 1818.52,
+      "rec_amt": 1137086.0,
+      "cycle": 70.9,
+      "debt_weighted": 42996.72,
+      "rec_weighted": 80757735.5
+    },
+    {
+      "name": "陈磊",
+      "debt_amt": 53080.2,
+      "rec_amt": 172186.5,
+      "cycle": 57.3,
+      "debt_weighted": 3599616.15,
+      "rec_weighted": 9300739.5
+    },
+    {
+      "name": "危昶",
+      "debt_amt": 409470.03,
+      "rec_amt": 8149.5,
+      "cycle": 22.8,
+      "debt_weighted": 9435873.14,
+      "rec_weighted": 103897.76
+    }
+  ],
+  "长沙站": [
+    {
+      "name": "黄倩",
+      "debt_amt": 11345.1,
+      "rec_amt": 0.0,
+      "cycle": 235.0,
+      "debt_weighted": 2666098.5,
+      "rec_weighted": 0.0
+    },
+    {
+      "name": "任丹",
+      "debt_amt": 0.0,
+      "rec_amt": 25.6,
+      "cycle": 99.0,
+      "debt_weighted": 0.0,
+      "rec_weighted": 2534.4
+    },
+    {
+      "name": "张婉莹",
+      "debt_amt": 44434.14,
+      "rec_amt": 365163.52,
+      "cycle": 90.8,
+      "debt_weighted": 2365711.22,
+      "rec_weighted": 34819563.15
+    },
+    {
+      "name": "王涛",
+      "debt_amt": 79075.98,
+      "rec_amt": 567796.94,
+      "cycle": 78.8,
+      "debt_weighted": 3072990.95,
+      "rec_weighted": 47898830.96
+    },
+    {
+      "name": "邓梅丽",
+      "debt_amt": 53019.93,
+      "rec_amt": 657020.04,
+      "cycle": 62.9,
+      "debt_weighted": 1486718.71,
+      "rec_weighted": 43149648.69
+    },
+    {
+      "name": "彭勋",
+      "debt_amt": 95703.39,
+      "rec_amt": 546106.16,
+      "cycle": 59.2,
+      "debt_weighted": 2591651.96,
+      "rec_weighted": 35375912.94
+    },
+    {
+      "name": "曾敏",
+      "debt_amt": 73274.0,
+      "rec_amt": 134904.88,
+      "cycle": 54.5,
+      "debt_weighted": 2583383.0,
+      "rec_weighted": 8770127.94
+    },
+    {
+      "name": "陈蓉",
+      "debt_amt": 60985.39,
+      "rec_amt": 219010.6,
+      "cycle": 48.0,
+      "debt_weighted": 3075072.49,
+      "rec_weighted": 10360161.16
+    },
+    {
+      "name": "蒋小花",
+      "debt_amt": 68458.0,
+      "rec_amt": 98028.05,
+      "cycle": 40.7,
+      "debt_weighted": 2416823.0,
+      "rec_weighted": 4359812.55
+    },
+    {
+      "name": "谢顶峰",
+      "debt_amt": 151991.59,
+      "rec_amt": 221567.7,
+      "cycle": 38.2,
+      "debt_weighted": 6989766.69,
+      "rec_weighted": 7280502.72
+    },
+    {
+      "name": "张辉",
+      "debt_amt": 0.0,
+      "rec_amt": 1597.03,
+      "cycle": 0.0,
+      "debt_weighted": 0.0,
+      "rec_weighted": 0.0
+    }
+  ]
+};
+let custCycleData = {
+  "其他": {
+    "刘传凤": [
+      {
+        "name": "本真朝取（毕节）农业科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 4452.0,
+        "cycle": 8.0
+      }
+    ],
+    "吴晗": [
+      {
+        "name": "武汉中原电子集团有限公司工会委员会",
+        "debt_amt": 78.0,
+        "rec_amt": 0.0,
+        "cycle": 867.7
+      },
+      {
+        "name": "华夏银行股份有限公司武汉分行工会委员会",
+        "debt_amt": 8160.0,
+        "rec_amt": 0.0,
+        "cycle": 186.8
+      },
+      {
+        "name": "中海兴业武汉房地产有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 620.0,
+        "cycle": 171.5
+      },
+      {
+        "name": "湖北鑫禾隆农业发展有限责任公司",
+        "debt_amt": 19575.0,
+        "rec_amt": 0.0,
+        "cycle": 104.0
+      },
+      {
+        "name": "武汉中元通信股份有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 192.0,
+        "cycle": 93.0
+      },
+      {
+        "name": "武汉高德红外股份有限公司",
+        "debt_amt": 16967.0,
+        "rec_amt": 20178.0,
+        "cycle": 81.5
+      },
+      {
+        "name": "武汉衡惯科技发展有限公司",
+        "debt_amt": 1112.0,
+        "rec_amt": 0.0,
+        "cycle": 80.0
+      },
+      {
+        "name": "武汉衷华脑机融合科技发展有限公司",
+        "debt_amt": 4309.0,
+        "rec_amt": 0.0,
+        "cycle": 80.0
+      },
+      {
+        "name": "武汉高德红外股份有限公司工会委员会",
+        "debt_amt": 4250.0,
+        "rec_amt": 0.0,
+        "cycle": 79.5
+      },
+      {
+        "name": "武汉微智芯科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 1668.0,
+        "cycle": 77.0
+      },
+      {
+        "name": "天风证券股份有限公司",
+        "debt_amt": 4761.4,
+        "rec_amt": 0.0,
+        "cycle": 52.5
+      },
+      {
+        "name": "武汉真友科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 1529.0,
+        "cycle": 31.0
+      },
+      {
+        "name": "国药集团武汉生物制药有限公司工会委员",
+        "debt_amt": 2975.0,
+        "rec_amt": 0.0,
+        "cycle": 24.6
+      },
+      {
+        "name": "武汉市汉口医院工会委员会",
+        "debt_amt": 152550.0,
+        "rec_amt": 0.0,
+        "cycle": 8.0
+      },
+      {
+        "name": "科力普科技集团股份有限公司",
+        "debt_amt": 310.2,
+        "rec_amt": 5919.08,
+        "cycle": 2.0
+      },
+      {
+        "name": "李慧敏01",
+        "debt_amt": 0.0,
+        "rec_amt": 4300.06,
+        "cycle": 1.0
+      },
+      {
+        "name": "中捷通信有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": -19.2,
+        "cycle": 0
+      },
+      {
+        "name": "中电中南（武汉）计量检测有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 0.0,
+        "cycle": 0
+      }
+    ],
+    "李国栋": [
+      {
+        "name": "通服云链科技（浙江）有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 4968.6,
+        "cycle": 329.7
+      },
+      {
+        "name": "中国民用航空西北地区空中交通管理局工会委员会",
+        "debt_amt": 36.12,
+        "rec_amt": -0.01,
+        "cycle": 156.1
+      },
+      {
+        "name": "西安华通锐智安全科技有限公司",
+        "debt_amt": 1184.14,
+        "rec_amt": 0.0,
+        "cycle": 153.9
+      },
+      {
+        "name": "武汉华团商业有限公司",
+        "debt_amt": 14.4,
+        "rec_amt": 0.0,
+        "cycle": 149.0
+      },
+      {
+        "name": "北亚联信客户关系管理信息技术（西安）有限公司联合工会委员会",
+        "debt_amt": 10837.94,
+        "rec_amt": 0.0,
+        "cycle": 38.4
+      },
+      {
+        "name": "华夏银行股份有限公司宜昌分行工会委员会",
+        "debt_amt": 11.89,
+        "rec_amt": 555.86,
+        "cycle": 0.2
+      },
+      {
+        "name": "中捷通信有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 0.0,
+        "cycle": 0
+      }
+    ],
+    "杨婉晴": [
+      {
+        "name": "湖北嘉客优品商务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 0.0,
+        "cycle": 0
+      }
+    ],
+    "王娇娇": [
+      {
+        "name": "中国建设银行股份有限公司陕西省分行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 0.0,
+        "cycle": 0
+      }
+    ],
+    "白雨": [
+      {
+        "name": "湖北省肿瘤医院工会委员会",
+        "debt_amt": 677.42,
+        "rec_amt": 0.0,
+        "cycle": 326.0
+      },
+      {
+        "name": "中国铁路工会中铁十一局集团城市轨道工程有限公司委员会",
+        "debt_amt": 3720.0,
+        "rec_amt": 0.0,
+        "cycle": 203.0
+      },
+      {
+        "name": "黄琦鹏",
+        "debt_amt": 0.0,
+        "rec_amt": 4800.0,
+        "cycle": 158.0
+      }
+    ]
+  },
+  "成都站": {
+    "何光耀": [
+      {
+        "name": "王证兵",
+        "debt_amt": 0.0,
+        "rec_amt": 8866.0,
+        "cycle": 172.0
+      },
+      {
+        "name": "四川阳光平台科技有限公司",
+        "debt_amt": 35271.07,
+        "rec_amt": 0.0,
+        "cycle": 113.6
+      },
+      {
+        "name": "中国石油天然气股份有限公司四川销售非油品分公司",
+        "debt_amt": 4178.9,
+        "rec_amt": 0.0,
+        "cycle": 113.1
+      },
+      {
+        "name": "漳州云港机械设备租赁有限公司",
+        "debt_amt": 1200.0,
+        "rec_amt": 0.0,
+        "cycle": 105.5
+      },
+      {
+        "name": "成都市自来水有限责任公司",
+        "debt_amt": 41.54,
+        "rec_amt": 15196.26,
+        "cycle": 92.1
+      },
+      {
+        "name": "长江三峡（成都）电子商务有限公司",
+        "debt_amt": 21980.92,
+        "rec_amt": 0.0,
+        "cycle": 85.0
+      },
+      {
+        "name": "四川省第十六建筑工程有限公司",
+        "debt_amt": 2311.02,
+        "rec_amt": 2815.02,
+        "cycle": 65.5
+      },
+      {
+        "name": "四川省建筑设计研究院有限公司",
+        "debt_amt": 3045.37,
+        "rec_amt": 0.0,
+        "cycle": 38.5
+      },
+      {
+        "name": "中建三局第一建设工程有限责任公司",
+        "debt_amt": 82200.0,
+        "rec_amt": 0.0,
+        "cycle": 24.8
+      },
+      {
+        "name": "四川省川建勘察设计院有限公司",
+        "debt_amt": 60.19,
+        "rec_amt": 0.0,
+        "cycle": 11.0
+      },
+      {
+        "name": "成都华川电装有限责任公司工会委员会",
+        "debt_amt": 200.31,
+        "rec_amt": 0.0,
+        "cycle": 11.0
+      },
+      {
+        "name": "何光耀",
+        "debt_amt": 0.0,
+        "rec_amt": 271.8,
+        "cycle": 1.0
+      },
+      {
+        "name": "四川省川建勘察设计院有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 2467.49,
+        "cycle": 0.0
+      },
+      {
+        "name": "四川省建筑设计研究院有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 1249.38,
+        "cycle": 0.0
+      },
+      {
+        "name": "成都华川电装有限责任公司",
+        "debt_amt": 0.0,
+        "rec_amt": 92.81,
+        "cycle": 0.0
+      }
+    ],
+    "卓毓涛": [
+      {
+        "name": "中国核动力研究设计院",
+        "debt_amt": 28277.7,
+        "rec_amt": 4360.0,
+        "cycle": 102.7
+      },
+      {
+        "name": "银联商务支付股份有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 117939.13,
+        "cycle": 53.7
+      },
+      {
+        "name": "成都职工电子商务有限公司",
+        "debt_amt": 89884.0,
+        "rec_amt": 562679.68,
+        "cycle": 49.5
+      },
+      {
+        "name": "成都职工商贸有限公司",
+        "debt_amt": 38634.6,
+        "rec_amt": 7536.0,
+        "cycle": 48.6
+      },
+      {
+        "name": "四川省建筑医院工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 35700.0,
+        "cycle": 33.3
+      }
+    ],
+    "司马净瑜": [
+      {
+        "name": "成都联众餐饮管理有限公司",
+        "debt_amt": 6094.0,
+        "rec_amt": 0.0,
+        "cycle": 162.0
+      },
+      {
+        "name": "成都天投中央厨房供应链管理有限公司",
+        "debt_amt": 320.22,
+        "rec_amt": 70246.8,
+        "cycle": 100.4
+      },
+      {
+        "name": "成都惠普康大药房有限公司锦江第二分公司",
+        "debt_amt": 0.0,
+        "rec_amt": 1185.0,
+        "cycle": 95.6
+      },
+      {
+        "name": "北京易信掌中云科技有限公司",
+        "debt_amt": 47996.38,
+        "rec_amt": 0.0,
+        "cycle": 94.4
+      },
+      {
+        "name": "中海油华东销售有限公司重庆分公司",
+        "debt_amt": 900.0,
+        "rec_amt": 0.0,
+        "cycle": 64.0
+      },
+      {
+        "name": "司马净瑜",
+        "debt_amt": 251.5,
+        "rec_amt": 0.0,
+        "cycle": 64.0
+      },
+      {
+        "name": "成都睿艺智餐饮管理有限公司",
+        "debt_amt": 2381.5,
+        "rec_amt": 0.0,
+        "cycle": 61.0
+      },
+      {
+        "name": "中海油销售四川有限公司",
+        "debt_amt": 3000.0,
+        "rec_amt": 5400.0,
+        "cycle": 53.0
+      },
+      {
+        "name": "四川省教育融媒体中心工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 13328.0,
+        "cycle": 50.8
+      },
+      {
+        "name": "四川省烟草公司成都市公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 2158.0,
+        "cycle": 50.0
+      },
+      {
+        "name": "电子科技大学工会",
+        "debt_amt": 0.0,
+        "rec_amt": 25800.0,
+        "cycle": 17.7
+      },
+      {
+        "name": "中铁二局集团医院",
+        "debt_amt": 21040.0,
+        "rec_amt": 0.0,
+        "cycle": 1.0
+      }
+    ],
+    "吴晓波": [
+      {
+        "name": "成都市锦江区雅诺英睿成人培训学校有限公司",
+        "debt_amt": 2250.07,
+        "rec_amt": 0.0,
+        "cycle": 308.6
+      },
+      {
+        "name": "中信银行股份有限公司成都分行工会",
+        "debt_amt": 15500.1,
+        "rec_amt": 459000.0,
+        "cycle": 117.7
+      },
+      {
+        "name": "四川公用信息产业有限责任公司电子商务分公司",
+        "debt_amt": 11109.61,
+        "rec_amt": 0.0,
+        "cycle": 81.5
+      },
+      {
+        "name": "中信银行股份有限公司成都分行",
+        "debt_amt": 428556.0,
+        "rec_amt": 268065.06,
+        "cycle": 78.4
+      },
+      {
+        "name": "西藏林芝南迦巴瓦实业有限公司",
+        "debt_amt": 23600.0,
+        "rec_amt": 0.0,
+        "cycle": 3.0
+      }
+    ],
+    "唐天宁": [
+      {
+        "name": "敬琴",
+        "debt_amt": 0.0,
+        "rec_amt": 2700.0,
+        "cycle": 217.0
+      },
+      {
+        "name": "杨莉萍",
+        "debt_amt": 0.0,
+        "rec_amt": 2850.0,
+        "cycle": 216.6
+      },
+      {
+        "name": "郭彩霞",
+        "debt_amt": 0.0,
+        "rec_amt": 300.0,
+        "cycle": 211.0
+      },
+      {
+        "name": "杨煜",
+        "debt_amt": 0.0,
+        "rec_amt": 7050.0,
+        "cycle": 188.9
+      },
+      {
+        "name": "四川省乡发数字科技有限公司",
+        "debt_amt": 221.48,
+        "rec_amt": 0.0,
+        "cycle": 129.1
+      },
+      {
+        "name": "成都好漓桦贸易有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 3099.0,
+        "cycle": 56.4
+      },
+      {
+        "name": "成都通威全农惠电子商务有限公司",
+        "debt_amt": 16558.42,
+        "rec_amt": 22295.16,
+        "cycle": 29.6
+      },
+      {
+        "name": "广东诗里阡陌农业科技发展有限公司眉山分公司",
+        "debt_amt": 756.3,
+        "rec_amt": 0.0,
+        "cycle": 8.3
+      },
+      {
+        "name": "彭含祎",
+        "debt_amt": 0.0,
+        "rec_amt": 185.0,
+        "cycle": 1.0
+      },
+      {
+        "name": "广东诗里阡陌农业科技发展有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 300.0,
+        "cycle": -40.1
+      }
+    ],
+    "巨晨逸": [
+      {
+        "name": "成都市自来水有限责任公司",
+        "debt_amt": 4112.26,
+        "rec_amt": 0.0,
+        "cycle": 113.0
+      },
+      {
+        "name": "四川阳光平台科技有限公司",
+        "debt_amt": 47583.66,
+        "rec_amt": 0.0,
+        "cycle": 110.7
+      },
+      {
+        "name": "中国石油天然气股份有限公司四川销售非油品分公司",
+        "debt_amt": 41.5,
+        "rec_amt": 124.5,
+        "cycle": 73.0
+      },
+      {
+        "name": "国家能源集团四川发电有限公司南桠河水电分公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 24795.1,
+        "cycle": 40.4
+      },
+      {
+        "name": "国家能源集团四川发电有限公司南桠河水电分公司",
+        "debt_amt": 0.0,
+        "rec_amt": 995.0,
+        "cycle": 12.1
+      },
+      {
+        "name": "石棉县锐意广告装饰有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 5490.0,
+        "cycle": 2.0
+      }
+    ],
+    "席亚雄": [
+      {
+        "name": "成都碗穗餐饮管理有限责任公司",
+        "debt_amt": 78068.45,
+        "rec_amt": 14468.85,
+        "cycle": 113.9
+      },
+      {
+        "name": "上海曜睿企业管理（集团）有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 62.4,
+        "cycle": 92.0
+      },
+      {
+        "name": "成都远俊程星商贸有限公司",
+        "debt_amt": 9732.22,
+        "rec_amt": 9448.21,
+        "cycle": 88.0
+      },
+      {
+        "name": "成都众焰贸易有限公司",
+        "debt_amt": 3673.5,
+        "rec_amt": 0.0,
+        "cycle": 2.0
+      }
+    ],
+    "张秀": [
+      {
+        "name": "中国人寿保险股份有限公司省分机关工会",
+        "debt_amt": 0.0,
+        "rec_amt": 103600.0,
+        "cycle": 77.4
+      }
+    ],
+    "张鹏成": [
+      {
+        "name": "中信银行股份有限公司成都温江支行",
+        "debt_amt": 9600.0,
+        "rec_amt": 0.0,
+        "cycle": 273.0
+      },
+      {
+        "name": "四川凯锐人力资源管理有限公司",
+        "debt_amt": 4200.09,
+        "rec_amt": 0.0,
+        "cycle": 158.9
+      },
+      {
+        "name": "中信银行股份有限公司成都分行",
+        "debt_amt": 0.0,
+        "rec_amt": 153.93,
+        "cycle": 99.9
+      },
+      {
+        "name": "中科海高（成都）电子技术有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 2135.5,
+        "cycle": 69.1
+      },
+      {
+        "name": "四川骄子优品电子商务有限公司",
+        "debt_amt": 1249.22,
+        "rec_amt": 4185.09,
+        "cycle": 53.9
+      },
+      {
+        "name": "四川通发广进人力资源管理咨询有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 2440.0,
+        "cycle": 34.8
+      },
+      {
+        "name": "中智四川经济技术合作有限公司工会委员会",
+        "debt_amt": 13050.0,
+        "rec_amt": 0.0,
+        "cycle": 26.3
+      },
+      {
+        "name": "中智四川经济技术合作有限公司",
+        "debt_amt": 179.0,
+        "rec_amt": 2399.84,
+        "cycle": 25.6
+      },
+      {
+        "name": "成都芮丰鼎润商贸有限公司",
+        "debt_amt": 6154.02,
+        "rec_amt": 17982.59,
+        "cycle": 25.3
+      },
+      {
+        "name": "中信银行股份有限公司海口分行",
+        "debt_amt": 14599.49,
+        "rec_amt": 0.0,
+        "cycle": 22.0
+      },
+      {
+        "name": "天津中科海高微波技术有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 71135.0,
+        "cycle": 22.0
+      },
+      {
+        "name": "中国铁路工会卡斯柯信号有限公司委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 17727.5,
+        "cycle": 21.8
+      },
+      {
+        "name": "中智科技服务（成都）有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 715.2,
+        "cycle": 17.0
+      },
+      {
+        "name": "四川松子小良品商贸有限公司",
+        "debt_amt": 29.6,
+        "rec_amt": 0.0,
+        "cycle": 2.0
+      }
+    ],
+    "徐晓荣": [
+      {
+        "name": "中信银行股份有限公司成都分行",
+        "debt_amt": 141264.0,
+        "rec_amt": 0.0,
+        "cycle": 32.0
+      },
+      {
+        "name": "成都通威全农惠电子商务有限公司",
+        "debt_amt": 1839.83,
+        "rec_amt": 2477.24,
+        "cycle": 29.6
+      },
+      {
+        "name": "成都航天通信设备有限责任公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 87150.0,
+        "cycle": 28.0
+      },
+      {
+        "name": "宝石机械成都装备制造分公司工会委员会",
+        "debt_amt": 7490.0,
+        "rec_amt": 0.0,
+        "cycle": 4.8
+      },
+      {
+        "name": "徐晓荣",
+        "debt_amt": 0.0,
+        "rec_amt": 630.3,
+        "cycle": 3.5
+      }
+    ],
+    "曾语嫣": [
+      {
+        "name": "中信银行股份有限公司成都分行",
+        "debt_amt": 0.0,
+        "rec_amt": 18.11,
+        "cycle": 99.9
+      }
+    ],
+    "李浩铭": [
+      {
+        "name": "四川省宜宾普什汽车零部件有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 15330.0,
+        "cycle": 77.0
+      },
+      {
+        "name": "宜宾普翼汽车科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 35400.0,
+        "cycle": 74.0
+      },
+      {
+        "name": "成都普什汽车模具有限公司工会",
+        "debt_amt": 31920.0,
+        "rec_amt": 0.0,
+        "cycle": 22.6
+      },
+      {
+        "name": "宜宾普翼汽车科技有限公司工会委员会",
+        "debt_amt": 76000.0,
+        "rec_amt": 0.0,
+        "cycle": 22.5
+      }
+    ],
+    "杨程": [
+      {
+        "name": "中国建设银行股份有限公司四川省分行机关工会委员会",
+        "debt_amt": 900.0,
+        "rec_amt": 0.0,
+        "cycle": 371.0
+      },
+      {
+        "name": "善融商务",
+        "debt_amt": 0.0,
+        "rec_amt": 1399.0,
+        "cycle": 266.0
+      },
+      {
+        "name": "广东本来网电子商务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 8530.74,
+        "cycle": 246.7
+      }
+    ],
+    "杨莉萍": [
+      {
+        "name": "敬琴",
+        "debt_amt": 0.0,
+        "rec_amt": 2700.0,
+        "cycle": 217.0
+      },
+      {
+        "name": "杨莉萍",
+        "debt_amt": 0.0,
+        "rec_amt": 2850.0,
+        "cycle": 216.6
+      },
+      {
+        "name": "郭彩霞",
+        "debt_amt": 0.0,
+        "rec_amt": 300.0,
+        "cycle": 211.0
+      },
+      {
+        "name": "杨煜",
+        "debt_amt": 0.0,
+        "rec_amt": 7050.0,
+        "cycle": 188.9
+      },
+      {
+        "name": "四川省乡发数字科技有限公司",
+        "debt_amt": 94.92,
+        "rec_amt": 0.0,
+        "cycle": 129.1
+      },
+      {
+        "name": "人瑞人才科技集团有限公司",
+        "debt_amt": 387.0,
+        "rec_amt": 0.0,
+        "cycle": 77.0
+      },
+      {
+        "name": "东方财富证券股份有限公司工会",
+        "debt_amt": 681.5,
+        "rec_amt": 0.0,
+        "cycle": 67.0
+      },
+      {
+        "name": "外企德科人力资源服务（四川）有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 914.0,
+        "cycle": 66.4
+      },
+      {
+        "name": "成都宜泊车智旅游有限公司",
+        "debt_amt": 221.0,
+        "rec_amt": 69.0,
+        "cycle": 46.0
+      },
+      {
+        "name": "成都玖锦科技有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 18935.0,
+        "cycle": 41.3
+      },
+      {
+        "name": "中国移动通信集团工会成都分公司委员会",
+        "debt_amt": 18354.0,
+        "rec_amt": 2956.0,
+        "cycle": 36.0
+      },
+      {
+        "name": "国信证券股份有限公司西南互联网分公司",
+        "debt_amt": 0.0,
+        "rec_amt": 3015.0,
+        "cycle": 34.4
+      },
+      {
+        "name": "中国人寿保险股份有限公司四川省分公司机关工会委员会",
+        "debt_amt": 23700.0,
+        "rec_amt": 0.0,
+        "cycle": 29.5
+      },
+      {
+        "name": "成都鼎桥通信技术有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 18340.5,
+        "cycle": 11.2
+      },
+      {
+        "name": "浙商银行股份有限公司成都分行工会委员会",
+        "debt_amt": 28453.6,
+        "rec_amt": 0.0,
+        "cycle": 8.2
+      },
+      {
+        "name": "天津智行优采信息科技有限公司",
+        "debt_amt": 1120.0,
+        "rec_amt": 0.0,
+        "cycle": 2.0
+      }
+    ],
+    "樊文": [
+      {
+        "name": "成都市血液中心",
+        "debt_amt": 0.0,
+        "rec_amt": 3.74,
+        "cycle": 307224.6
+      },
+      {
+        "name": "成都天府华西医疗产业发展有限公司",
+        "debt_amt": 23913.54,
+        "rec_amt": 18953.91,
+        "cycle": 102.4
+      },
+      {
+        "name": "四川省肿瘤医院工会委员会",
+        "debt_amt": 1221791.6,
+        "rec_amt": 0.0,
+        "cycle": 88.9
+      },
+      {
+        "name": "上海曜睿企业管理（集团）有限公司",
+        "debt_amt": 51678.1,
+        "rec_amt": 31976.9,
+        "cycle": 56.2
+      },
+      {
+        "name": "四川康泰昇科技有限公司",
+        "debt_amt": 1657.6,
+        "rec_amt": 33661.26,
+        "cycle": 52.7
+      },
+      {
+        "name": "成都诚品优购餐饮管理有限公司",
+        "debt_amt": 2758.0,
+        "rec_amt": 146.0,
+        "cycle": 38.6
+      },
+      {
+        "name": "四川航空股份有限公司",
+        "debt_amt": 53184.72,
+        "rec_amt": 15696.0,
+        "cycle": 35.3
+      },
+      {
+        "name": "重庆牧荑商贸有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 935.6,
+        "cycle": 7.7
+      },
+      {
+        "name": "四川松子小良品商贸有限公司",
+        "debt_amt": 197.88,
+        "rec_amt": 0.0,
+        "cycle": 3.6
+      },
+      {
+        "name": "黄武",
+        "debt_amt": 0.0,
+        "rec_amt": 649.0,
+        "cycle": 1.0
+      }
+    ],
+    "王俊": [
+      {
+        "name": "成都高新技术产业开发区中和街道办事处",
+        "debt_amt": 122.0,
+        "rec_amt": 0.0,
+        "cycle": 11.0
+      }
+    ],
+    "蒋君霞": [
+      {
+        "name": "西安天翼新商务酒店有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 17276.48,
+        "cycle": 96.0
+      },
+      {
+        "name": "四川省肿瘤医院工会委员会",
+        "debt_amt": 133417.4,
+        "rec_amt": 0.0,
+        "cycle": 89.8
+      },
+      {
+        "name": "四川骄子优品电子商务有限公司",
+        "debt_amt": 312.3,
+        "rec_amt": 1046.27,
+        "cycle": 53.9
+      },
+      {
+        "name": "成都芮丰鼎润商贸有限公司",
+        "debt_amt": 1538.51,
+        "rec_amt": 4495.65,
+        "cycle": 25.3
+      },
+      {
+        "name": "成都韩希云遇科技有限公司",
+        "debt_amt": 3763.7,
+        "rec_amt": 0.0,
+        "cycle": 11.7
+      }
+    ],
+    "谢晓宇": [
+      {
+        "name": "若尔盖有礼贸易有限责任公司",
+        "debt_amt": 162000.49,
+        "rec_amt": 1850.0,
+        "cycle": 161.0
+      },
+      {
+        "name": "中国石油天然气股份有限公司四川销售储运分公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 68425.0,
+        "cycle": 62.0
+      },
+      {
+        "name": "四川宝石花兴川人力资源有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 42000.0,
+        "cycle": 58.0
+      },
+      {
+        "name": "中石油昆仑好客有限公司",
+        "debt_amt": 1647.0,
+        "rec_amt": 0.0,
+        "cycle": 51.0
+      },
+      {
+        "name": "成都海澳思餐饮管理有限公司",
+        "debt_amt": 23250.0,
+        "rec_amt": 0.0,
+        "cycle": 35.3
+      },
+      {
+        "name": "中国建设银行股份有限公司四川省分行机关工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 4335.0,
+        "cycle": 22.0
+      },
+      {
+        "name": "中国建设银行股份有限公司成都高新支行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 23985.0,
+        "cycle": 12.0
+      },
+      {
+        "name": "中国建设银行股份有限公司成都第一支行工会委员会",
+        "debt_amt": 52455.0,
+        "rec_amt": 0.0,
+        "cycle": 4.0
+      },
+      {
+        "name": "广发银行股份有限公司成都分行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 11302.8,
+        "cycle": 0.0
+      },
+      {
+        "name": "楚雄楷信商贸有限公司楚雄市分公司",
+        "debt_amt": 0.0,
+        "rec_amt": 2048.2,
+        "cycle": 0.0
+      },
+      {
+        "name": "谢晓宇",
+        "debt_amt": 0.0,
+        "rec_amt": 975.0,
+        "cycle": 0.0
+      }
+    ],
+    "郑波": [
+      {
+        "name": "中信银行股份有限公司成都双楠支行",
+        "debt_amt": 249.0,
+        "rec_amt": 0.0,
+        "cycle": 115.0
+      },
+      {
+        "name": "中信银行股份有限公司成都分行",
+        "debt_amt": 0.0,
+        "rec_amt": 259258.0,
+        "cycle": 77.8
+      },
+      {
+        "name": "四川惠至每家爆品供应链科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 2179.61,
+        "cycle": 61.2
+      },
+      {
+        "name": "成都鼎桥通信技术有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 4600.0,
+        "cycle": 10.8
+      }
+    ],
+    "陈钰": [
+      {
+        "name": "成都铁路川之味旅服有限责任公司",
+        "debt_amt": 10731.0,
+        "rec_amt": 60340.0,
+        "cycle": 616.9
+      },
+      {
+        "name": "成都市锦江区雅诺英睿成人培训学校有限公司",
+        "debt_amt": 9550.1,
+        "rec_amt": 0.0,
+        "cycle": 321.0
+      },
+      {
+        "name": "中信银行股份有限公司成都双楠支行",
+        "debt_amt": 2643.7,
+        "rec_amt": 0.0,
+        "cycle": 206.7
+      },
+      {
+        "name": "中信银行股份有限公司海口分行",
+        "debt_amt": 26.89,
+        "rec_amt": 0.0,
+        "cycle": 22.0
+      }
+    ]
+  },
+  "武汉基建制造行业组": {
+    "任重": [
+      {
+        "name": "襄阳子和劳务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 72998.04,
+        "cycle": 117.8
+      },
+      {
+        "name": "大连风神物流有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 52649.97,
+        "cycle": 117.0
+      },
+      {
+        "name": "广州飞梭云供应链有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 133449.35,
+        "cycle": 112.0
+      },
+      {
+        "name": "湖北江邑企业管理服务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 8262.63,
+        "cycle": 112.0
+      },
+      {
+        "name": "风神物流有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 123459.89,
+        "cycle": 112.0
+      },
+      {
+        "name": "武汉三惠人力资源服务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 14529.78,
+        "cycle": 111.0
+      },
+      {
+        "name": "襄阳世捷人力资源服务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 49871.39,
+        "cycle": 111.0
+      },
+      {
+        "name": "广州东铁汽车物流有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 28967.21,
+        "cycle": 93.9
+      },
+      {
+        "name": "武汉佰众英才人力资源服务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 33248.39,
+        "cycle": 93.0
+      },
+      {
+        "name": "东风物流（十堰）有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 9450.0,
+        "cycle": 73.0
+      },
+      {
+        "name": "东风物流集团股份有限公司",
+        "debt_amt": 36.34,
+        "rec_amt": 0.0,
+        "cycle": 11.0
+      },
+      {
+        "name": "中建三局集团有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 3000.0,
+        "cycle": 1.0
+      }
+    ],
+    "别勇": [
+      {
+        "name": "中交特种工程有限公司",
+        "debt_amt": 30460.3,
+        "rec_amt": 77317.0,
+        "cycle": 107.8
+      },
+      {
+        "name": "湖北众从信息科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 600.0,
+        "cycle": 90.0
+      },
+      {
+        "name": "苏州英格玛服务外包股份有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 126921.95,
+        "cycle": 79.0
+      },
+      {
+        "name": "中国船舶集团有限公司第七二二研究所",
+        "debt_amt": 0.0,
+        "rec_amt": 113250.0,
+        "cycle": 78.0
+      },
+      {
+        "name": "湖北航天飞行器研究所工会委员会",
+        "debt_amt": 56360.0,
+        "rec_amt": 140400.0,
+        "cycle": 70.7
+      },
+      {
+        "name": "武汉德行天下人力资源开发有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 17574.32,
+        "cycle": 68.8
+      },
+      {
+        "name": "东风汽车集团股份有限公司猛士汽车科技公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 331006.74,
+        "cycle": 67.0
+      },
+      {
+        "name": "武汉车城人力资源有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 40923.47,
+        "cycle": 66.0
+      },
+      {
+        "name": "湖北红海人力资源有限公司孝感分公司",
+        "debt_amt": 0.0,
+        "rec_amt": 16500.0,
+        "cycle": 64.0
+      },
+      {
+        "name": "湖北精湛科技服务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 1800.0,
+        "cycle": 63.0
+      },
+      {
+        "name": "孝感天时劳动服务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 600.0,
+        "cycle": 61.0
+      },
+      {
+        "name": "联友智连科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 21567.19,
+        "cycle": 40.0
+      },
+      {
+        "name": "CHINA CONSTRUCTION YANGTZE RIVER (MALAYSIA) SDN BHD",
+        "debt_amt": 0.0,
+        "rec_amt": 44455.06,
+        "cycle": 30.0
+      },
+      {
+        "name": "武汉汉能电力发展有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 38052.0,
+        "cycle": 27.0
+      },
+      {
+        "name": "湖北三江航天红阳机电有限公司工会委员会",
+        "debt_amt": 27300.0,
+        "rec_amt": 0.0,
+        "cycle": 25.5
+      },
+      {
+        "name": "东风汽车集团股份有限公司猛士汽车科技公司",
+        "debt_amt": 273339.21,
+        "rec_amt": 0.0,
+        "cycle": 22.0
+      },
+      {
+        "name": "中建三局第一建设工程有限责任公司",
+        "debt_amt": 497400.0,
+        "rec_amt": 0.0,
+        "cycle": 22.0
+      },
+      {
+        "name": "中钢武汉安全环保研究院股份有限公司",
+        "debt_amt": 7000.0,
+        "rec_amt": 0.0,
+        "cycle": 13.7
+      },
+      {
+        "name": "李彩",
+        "debt_amt": 0.0,
+        "rec_amt": 400.0,
+        "cycle": 1.0
+      }
+    ],
+    "张轩": [
+      {
+        "name": "巫山县农业农村委员会",
+        "debt_amt": 120000.0,
+        "rec_amt": 0.0,
+        "cycle": 100.1
+      },
+      {
+        "name": "长江三峡（成都）电子商务有限公司",
+        "debt_amt": 41112.97,
+        "rec_amt": 0.0,
+        "cycle": 85.0
+      },
+      {
+        "name": "中交（厦门）电子商务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 45885.0,
+        "cycle": 83.9
+      },
+      {
+        "name": "华侨城中部集团有限公司本部工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 16760.0,
+        "cycle": 74.0
+      },
+      {
+        "name": "武汉侨滨置业有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 8820.0,
+        "cycle": 74.0
+      },
+      {
+        "name": "武汉华侨城滨江置业有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 16680.0,
+        "cycle": 74.0
+      },
+      {
+        "name": "武汉华侨城都市发展有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 3980.0,
+        "cycle": 74.0
+      },
+      {
+        "name": "武汉天创置业有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 11380.0,
+        "cycle": 74.0
+      },
+      {
+        "name": "湖北荔众人力资源服务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 16280.0,
+        "cycle": 72.5
+      },
+      {
+        "name": "武汉人才集团有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 4952.0,
+        "cycle": 72.0
+      },
+      {
+        "name": "董牵鹏",
+        "debt_amt": 0.0,
+        "rec_amt": 582.0,
+        "cycle": 71.7
+      },
+      {
+        "name": "武汉华侨城实业发展有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 24160.0,
+        "cycle": 62.0
+      },
+      {
+        "name": "中福企福文化传媒（集团）有限公司",
+        "debt_amt": 2012.47,
+        "rec_amt": 8182.77,
+        "cycle": 23.6
+      },
+      {
+        "name": "湖北省企盟优创文化传媒有限公司",
+        "debt_amt": 3144.14,
+        "rec_amt": 0.0,
+        "cycle": 22.0
+      },
+      {
+        "name": "中国铁路工会中铁科工集团轨道交通装备有限公司委员会",
+        "debt_amt": 90500.0,
+        "rec_amt": 0.0,
+        "cycle": 9.0
+      },
+      {
+        "name": "中铁科工集团轨道交通装备有限公司",
+        "debt_amt": 27493.0,
+        "rec_amt": 0.0,
+        "cycle": 2.0
+      },
+      {
+        "name": "张帅01",
+        "debt_amt": 0.0,
+        "rec_amt": 3857.6,
+        "cycle": 1.5
+      },
+      {
+        "name": "神龙汽车有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": -0.0,
+        "cycle": 0
+      }
+    ],
+    "程双清": [
+      {
+        "name": "中国平安财产保险股份有限公司湖北分公司工会委员会",
+        "debt_amt": 26010.0,
+        "rec_amt": 38250.0,
+        "cycle": 98.8
+      },
+      {
+        "name": "武汉市万科房地产有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 11670.0,
+        "cycle": 71.7
+      },
+      {
+        "name": "中国铁路工会中铁科工集团有限公司委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 9200.0,
+        "cycle": 67.0
+      },
+      {
+        "name": "中国航空工业供销中南有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 79000.0,
+        "cycle": 63.0
+      },
+      {
+        "name": "武汉儿童医院工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 2370390.0,
+        "cycle": 58.8
+      },
+      {
+        "name": "武汉万科天诚房地产有限公司",
+        "debt_amt": 2688.0,
+        "rec_amt": 0.0,
+        "cycle": 41.3
+      },
+      {
+        "name": "武汉找茶科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 18600.0,
+        "cycle": 39.0
+      },
+      {
+        "name": "益禾堂（武汉市）餐饮连锁有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 12000.0,
+        "cycle": 39.0
+      },
+      {
+        "name": "益禾堂（海南）电子商务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 900.0,
+        "cycle": 28.7
+      },
+      {
+        "name": "益禾堂（湖北）餐饮管理有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 300.0,
+        "cycle": 8.0
+      },
+      {
+        "name": "中铁科工集团轨道交通装备有限公司",
+        "debt_amt": 117207.0,
+        "rec_amt": 0.0,
+        "cycle": 2.0
+      }
+    ],
+    "罗贝": [
+      {
+        "name": "湖北风行楚中人力资源集团有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 5250.0,
+        "cycle": 144.0
+      },
+      {
+        "name": "湖北智慧光子技术有限公司工会委员会",
+        "debt_amt": 1600.0,
+        "rec_amt": 66650.0,
+        "cycle": 117.3
+      },
+      {
+        "name": "武汉新芯集成电路股份有限公司工会委员会",
+        "debt_amt": 2900.0,
+        "rec_amt": 0.0,
+        "cycle": 116.0
+      },
+      {
+        "name": "中交第二航务工程局有限公司第五工程分公司",
+        "debt_amt": 0.0,
+        "rec_amt": 12075.0,
+        "cycle": 82.5
+      },
+      {
+        "name": "武汉中建盘龙交通发展有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 500.0,
+        "cycle": 81.0
+      },
+      {
+        "name": "苏州英格玛服务外包股份有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 42307.31,
+        "cycle": 79.0
+      },
+      {
+        "name": "华中科技大学工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 49000.0,
+        "cycle": 73.0
+      },
+      {
+        "name": "武汉德行天下人力资源开发有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 5858.11,
+        "cycle": 68.8
+      },
+      {
+        "name": "东风汽车集团股份有限公司猛士汽车科技公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 110335.58,
+        "cycle": 67.0
+      },
+      {
+        "name": "武汉车城人力资源有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 13641.16,
+        "cycle": 66.0
+      },
+      {
+        "name": "中交特种工程有限公司",
+        "debt_amt": 277163.7,
+        "rec_amt": 123143.0,
+        "cycle": 37.8
+      },
+      {
+        "name": "中建三局第一建设工程有限责任公司",
+        "debt_amt": 5700.0,
+        "rec_amt": 0.0,
+        "cycle": 24.4
+      },
+      {
+        "name": "中建三局云采科技有限公司",
+        "debt_amt": 10800.0,
+        "rec_amt": 0.0,
+        "cycle": 24.0
+      },
+      {
+        "name": "东风汽车集团股份有限公司猛士汽车科技公司",
+        "debt_amt": 91113.07,
+        "rec_amt": 0.0,
+        "cycle": 22.0
+      },
+      {
+        "name": "罗贝",
+        "debt_amt": 0.0,
+        "rec_amt": 420.0,
+        "cycle": 1.0
+      }
+    ],
+    "胡松": [
+      {
+        "name": "中国铁路工会中铁十一局集团城市轨道工程有限公司委员会",
+        "debt_amt": 14880.0,
+        "rec_amt": 0.0,
+        "cycle": 203.0
+      },
+      {
+        "name": "黄琦鹏",
+        "debt_amt": 0.0,
+        "rec_amt": 19200.0,
+        "cycle": 158.0
+      },
+      {
+        "name": "胡松",
+        "debt_amt": 0.0,
+        "rec_amt": 5400.0,
+        "cycle": 146.0
+      },
+      {
+        "name": "湖北风行楚中人力资源集团有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 5250.0,
+        "cycle": 144.0
+      },
+      {
+        "name": "武汉华团商业有限公司",
+        "debt_amt": 209.6,
+        "rec_amt": 0.0,
+        "cycle": 130.1
+      },
+      {
+        "name": "湖北智慧光子技术有限公司工会委员会",
+        "debt_amt": 1600.0,
+        "rec_amt": 66650.0,
+        "cycle": 117.3
+      },
+      {
+        "name": "中国铁路工会中铁十一局集团有限公司委员会",
+        "debt_amt": 3900.0,
+        "rec_amt": 0.0,
+        "cycle": 113.0
+      },
+      {
+        "name": "曹有卿",
+        "debt_amt": 0.0,
+        "rec_amt": 8800.0,
+        "cycle": 97.0
+      },
+      {
+        "name": "长江存储科技控股有限责任公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 19820.98,
+        "cycle": 81.0
+      },
+      {
+        "name": "湖北红海人力资源有限公司孝感分公司",
+        "debt_amt": 0.0,
+        "rec_amt": 1200.0,
+        "cycle": 80.0
+      },
+      {
+        "name": "苏州英格玛服务外包股份有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 42307.31,
+        "cycle": 79.0
+      },
+      {
+        "name": "际华三五零六纺织服装有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 1000.0,
+        "cycle": 77.0
+      },
+      {
+        "name": "中国铁路工会中铁十一局集团电务工程有限公司委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 123900.0,
+        "cycle": 73.7
+      },
+      {
+        "name": "汉江国家实验室",
+        "debt_amt": 16575.0,
+        "rec_amt": 2040.0,
+        "cycle": 72.5
+      },
+      {
+        "name": "长存创芯（北京）集成电路设计有限公司工会委员会",
+        "debt_amt": 1848.8,
+        "rec_amt": 8063.84,
+        "cycle": 71.1
+      },
+      {
+        "name": "湖北航天飞行器研究所工会委员会",
+        "debt_amt": 14040.0,
+        "rec_amt": 35100.0,
+        "cycle": 70.7
+      },
+      {
+        "name": "武汉德行天下人力资源开发有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 5858.11,
+        "cycle": 68.8
+      },
+      {
+        "name": "武汉光谷航天三江激光产业技术研究院有限公司工会委员会",
+        "debt_amt": 47700.0,
+        "rec_amt": 70500.0,
+        "cycle": 67.2
+      },
+      {
+        "name": "东风汽车集团股份有限公司猛士汽车科技公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 110335.58,
+        "cycle": 67.0
+      },
+      {
+        "name": "武汉车城人力资源有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 13641.16,
+        "cycle": 66.0
+      },
+      {
+        "name": "湖北航天工业学校工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 29700.0,
+        "cycle": 65.0
+      },
+      {
+        "name": "卢少培",
+        "debt_amt": 0.0,
+        "rec_amt": 440.0,
+        "cycle": 50.4
+      },
+      {
+        "name": "长江存储科技有限责任公司工会委员会",
+        "debt_amt": 606904.54,
+        "rec_amt": 327326.85,
+        "cycle": 48.7
+      },
+      {
+        "name": "湖北三江航天红林探控有限公司工会委员会",
+        "debt_amt": 77600.0,
+        "rec_amt": 167500.0,
+        "cycle": 42.8
+      },
+      {
+        "name": "中国铁路工会中车株洲电力机车有限公司委员会",
+        "debt_amt": 15700.0,
+        "rec_amt": 0.0,
+        "cycle": 42.0
+      },
+      {
+        "name": "武汉新芯集成电路股份有限公司工会委员会",
+        "debt_amt": 3227.94,
+        "rec_amt": 200490.84,
+        "cycle": 36.1
+      },
+      {
+        "name": "长存创芯（上海）集成电路有限公司工会委员会",
+        "debt_amt": 318551.43,
+        "rec_amt": 51251.42,
+        "cycle": 29.7
+      },
+      {
+        "name": "中国铁路工会中铁武汉电气化局集团有限公司委员会",
+        "debt_amt": 2400.0,
+        "rec_amt": 0.0,
+        "cycle": 23.0
+      },
+      {
+        "name": "东风汽车集团股份有限公司猛士汽车科技公司",
+        "debt_amt": 91113.07,
+        "rec_amt": 0.0,
+        "cycle": 22.0
+      },
+      {
+        "name": "长江存储控股股份有限公司工会委员会",
+        "debt_amt": 3749.4,
+        "rec_amt": 0.0,
+        "cycle": 22.0
+      },
+      {
+        "name": "汉江国家实验室工会委员会",
+        "debt_amt": 73180.0,
+        "rec_amt": 51255.0,
+        "cycle": 18.9
+      },
+      {
+        "name": "中铁十一局集团有限公司深江铁路SJSG-7标项目经理部",
+        "debt_amt": 0.0,
+        "rec_amt": -3960.0,
+        "cycle": 0
+      }
+    ],
+    "陈鹏": [
+      {
+        "name": "汉江国家实验室工会委员会",
+        "debt_amt": 6375.0,
+        "rec_amt": 150765.0,
+        "cycle": 105.3
+      },
+      {
+        "name": "华中科技大学",
+        "debt_amt": 0.0,
+        "rec_amt": 660.0,
+        "cycle": 96.0
+      },
+      {
+        "name": "华中科技大学工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 9900.0,
+        "cycle": 89.0
+      },
+      {
+        "name": "武汉科技大学附属天佑医院临床学院工会委员会",
+        "debt_amt": 446.2,
+        "rec_amt": 1398.16,
+        "cycle": 12.9
+      }
+    ],
+    "陶迪": [
+      {
+        "name": "中国铁路工会中车株洲电力机车有限公司委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 4500.0,
+        "cycle": 78.0
+      },
+      {
+        "name": "卢少培",
+        "debt_amt": 0.0,
+        "rec_amt": 360.0,
+        "cycle": 74.0
+      },
+      {
+        "name": "中铁十一局集团有限公司深江铁路SJSG-7标项目经理部",
+        "debt_amt": 0.0,
+        "rec_amt": 3960.0,
+        "cycle": 61.0
+      },
+      {
+        "name": "武汉市江岸区社会福利院工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 11000.0,
+        "cycle": 60.0
+      },
+      {
+        "name": "航天行云科技有限公司工会委员会",
+        "debt_amt": 3900.0,
+        "rec_amt": 0.0,
+        "cycle": 26.0
+      }
+    ]
+  },
+  "武汉能源交通行业组": {
+    "原冀峰": [
+      {
+        "name": "中捷通信有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 19.2,
+        "cycle": 460.0
+      },
+      {
+        "name": "通服云链科技（浙江）有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 19874.4,
+        "cycle": 329.7
+      }
+    ],
+    "周靓": [
+      {
+        "name": "中国石油天然气股份有限公司湖北销售分公司",
+        "debt_amt": 0.0,
+        "rec_amt": 3425.0,
+        "cycle": 117.3
+      },
+      {
+        "name": "湖北省新华书店（集团）有限公司",
+        "debt_amt": 18080.56,
+        "rec_amt": 22074.9,
+        "cycle": 58.5
+      },
+      {
+        "name": "中国船舶集团有限公司第七一七研究所工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 14880.0,
+        "cycle": 42.0
+      },
+      {
+        "name": "武汉同博科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 825.0,
+        "cycle": 31.1
+      },
+      {
+        "name": "中核汇能湖北新能源有限公司工会委员会",
+        "debt_amt": 8700.0,
+        "rec_amt": 10500.0,
+        "cycle": 22.5
+      },
+      {
+        "name": "中国石化集团共享服务有限公司武汉服务部",
+        "debt_amt": 4160.0,
+        "rec_amt": 0.0,
+        "cycle": 7.8
+      },
+      {
+        "name": "沃秀信息技术（福州）有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 180776.2,
+        "cycle": 4.9
+      },
+      {
+        "name": "王金",
+        "debt_amt": 0.0,
+        "rec_amt": 307.0,
+        "cycle": 1.0
+      }
+    ],
+    "徐聪": [
+      {
+        "name": "中国石油天然气股份有限公司江西销售非油分公司",
+        "debt_amt": 0.0,
+        "rec_amt": 158.2,
+        "cycle": 213.0
+      },
+      {
+        "name": "中国石油天然气股份有限公司江西吉安销售分公司",
+        "debt_amt": 0.0,
+        "rec_amt": 9718.8,
+        "cycle": 124.0
+      },
+      {
+        "name": "南昌印钞有限公司工会委员会",
+        "debt_amt": 11550.0,
+        "rec_amt": 0.0,
+        "cycle": 105.0
+      },
+      {
+        "name": "江西同力企业服务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 173.7,
+        "cycle": 81.0
+      },
+      {
+        "name": "中信银行股份有限公司南昌分行工会",
+        "debt_amt": 6400.0,
+        "rec_amt": 260800.0,
+        "cycle": 77.6
+      },
+      {
+        "name": "中国电信集团工会江西公司直属委员会",
+        "debt_amt": 14526.2,
+        "rec_amt": 0.0,
+        "cycle": 74.5
+      },
+      {
+        "name": "江西省汇思人力资源有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 2691.0,
+        "cycle": 71.0
+      },
+      {
+        "name": "江西省数字乡村研究院",
+        "debt_amt": 0.0,
+        "rec_amt": 802.8,
+        "cycle": 62.0
+      },
+      {
+        "name": "江西省人力资源有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 23902.2,
+        "cycle": 61.0
+      },
+      {
+        "name": "江西省鸿联九五信息产业有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 36805.0,
+        "cycle": 59.6
+      },
+      {
+        "name": "中国石油天然气股份有限公司江西销售分公司",
+        "debt_amt": 18130.0,
+        "rec_amt": 0.0,
+        "cycle": 54.3
+      },
+      {
+        "name": "南昌中展数智科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 267733.8,
+        "cycle": 47.0
+      },
+      {
+        "name": "中国电信集团工会江西省新余市委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 26300.0,
+        "cycle": 35.3
+      },
+      {
+        "name": "中国电信集团工会江西电信信息产业有限公司委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 59808.6,
+        "cycle": 34.0
+      },
+      {
+        "name": "银联商务股份有限公司江西分公司",
+        "debt_amt": 19.28,
+        "rec_amt": 0.0,
+        "cycle": 22.0
+      },
+      {
+        "name": "苏州丰城达网络科技有限公司",
+        "debt_amt": 1871.9,
+        "rec_amt": 0.0,
+        "cycle": 16.0
+      },
+      {
+        "name": "银联商务支付股份有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 22656.62,
+        "cycle": 10.5
+      },
+      {
+        "name": "江西裕民银行股份有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 0.0,
+        "cycle": 0
+      }
+    ],
+    "林茹": [
+      {
+        "name": "武汉市金银潭医院工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 303178.0,
+        "cycle": 107.2
+      },
+      {
+        "name": "广东中膳健康产业科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 6176.7,
+        "cycle": 102.6
+      },
+      {
+        "name": "武汉市金银潭医院（武汉市传染病医院）",
+        "debt_amt": 16722.0,
+        "rec_amt": 0.0,
+        "cycle": 84.0
+      },
+      {
+        "name": "中国船舶集团有限公司第七二二研究所",
+        "debt_amt": 0.0,
+        "rec_amt": 113250.0,
+        "cycle": 78.0
+      },
+      {
+        "name": "康永腾大药房连锁（湖北）有限公司",
+        "debt_amt": 1495.0,
+        "rec_amt": 11983.0,
+        "cycle": 50.9
+      },
+      {
+        "name": "大唐互联科技（武汉）有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 14550.0,
+        "cycle": 28.0
+      },
+      {
+        "name": "国药集团武汉生物制药有限公司工会委员",
+        "debt_amt": 2975.0,
+        "rec_amt": 0.0,
+        "cycle": 24.6
+      },
+      {
+        "name": "湖北华益润生大药房连锁有限公司仓储店",
+        "debt_amt": 29505.0,
+        "rec_amt": 0.0,
+        "cycle": 24.1
+      },
+      {
+        "name": "湖北省地质局武汉水文地质工程地质大队（湖北省武汉地质环境监测保护站、湖北省地热能研究推广中心）",
+        "debt_amt": 4230.0,
+        "rec_amt": 0.0,
+        "cycle": 8.0
+      },
+      {
+        "name": "李乖点",
+        "debt_amt": 0.0,
+        "rec_amt": 480.0,
+        "cycle": 1.0
+      }
+    ],
+    "樊梦玲": [
+      {
+        "name": "南昌康旭禾生物科技有限公司",
+        "debt_amt": 54.0,
+        "rec_amt": 0.0,
+        "cycle": 67.0
+      },
+      {
+        "name": "江西裕民银行股份有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 0.0,
+        "cycle": 0
+      }
+    ],
+    "汤腾": [
+      {
+        "name": "汤腾",
+        "debt_amt": 0.0,
+        "rec_amt": 5.0,
+        "cycle": 76.0
+      },
+      {
+        "name": "江西长旅供应链管理有限公司",
+        "debt_amt": 2079.05,
+        "rec_amt": 0.0,
+        "cycle": 41.4
+      },
+      {
+        "name": "中国三峡新能源（集团）股份有限公司江西分公司",
+        "debt_amt": 48000.0,
+        "rec_amt": 0.0,
+        "cycle": 25.0
+      }
+    ],
+    "石翔瑜": [
+      {
+        "name": "中国葛洲坝集团机械船舶有限公司西部陆海新通道（平陆）运河工程金属结构及启闭机安装№.JJAZ2标项目部",
+        "debt_amt": 0.0,
+        "rec_amt": 2860.0,
+        "cycle": 224.0
+      },
+      {
+        "name": "中国铁路工会中国铁路武汉局集团有限公司武汉电务段委员会",
+        "debt_amt": 3680.0,
+        "rec_amt": 3520.0,
+        "cycle": 151.8
+      },
+      {
+        "name": "中国铁路武汉局集团有限公司武汉动车段",
+        "debt_amt": 0.0,
+        "rec_amt": 300.0,
+        "cycle": 120.0
+      },
+      {
+        "name": "中国铁路工会中国铁路武汉局集团有限公司武汉大功率机车检修段委员会",
+        "debt_amt": 480.0,
+        "rec_amt": 0.0,
+        "cycle": 119.0
+      },
+      {
+        "name": "中国葛洲坝集团股份有限公司直属机关工会",
+        "debt_amt": 0.0,
+        "rec_amt": 1000.0,
+        "cycle": 111.0
+      },
+      {
+        "name": "中国铁路工会中国铁路武汉局集团有限公司武汉客运段委员会",
+        "debt_amt": 10459.02,
+        "rec_amt": 0.0,
+        "cycle": 108.0
+      },
+      {
+        "name": "中国铁路工会中国铁路武汉局集团有限公司武汉动车段委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 1100.0,
+        "cycle": 107.9
+      },
+      {
+        "name": "中国葛洲坝集团电力有限责任公司设计研究院",
+        "debt_amt": 11286.0,
+        "rec_amt": 0.0,
+        "cycle": 102.0
+      },
+      {
+        "name": "中国葛洲坝集团股份有限公司总部工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 117000.0,
+        "cycle": 102.0
+      },
+      {
+        "name": "中国铁路工会中国铁路武汉局集团有限公司武昌南机务段委员会",
+        "debt_amt": 16406.4,
+        "rec_amt": 108000.0,
+        "cycle": 80.9
+      },
+      {
+        "name": "北京深微数字科技有限公司",
+        "debt_amt": 47586.4,
+        "rec_amt": 20104.0,
+        "cycle": 77.6
+      },
+      {
+        "name": "中能建（广安）高性能纤维复合材料科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 6300.0,
+        "cycle": 76.0
+      },
+      {
+        "name": "中能建（德庆）绿色建材科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 22400.0,
+        "cycle": 73.6
+      },
+      {
+        "name": "中国葛洲坝集团电力有限责任公司工会委员会",
+        "debt_amt": 7600.0,
+        "rec_amt": 93898.0,
+        "cycle": 67.0
+      },
+      {
+        "name": "中国葛洲坝集团股份有限公司直属机关工会委员会",
+        "debt_amt": 100139.2,
+        "rec_amt": 0.0,
+        "cycle": 61.8
+      },
+      {
+        "name": "武汉鑫三利集装箱服务有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 44472.0,
+        "cycle": 60.7
+      },
+      {
+        "name": "马家康",
+        "debt_amt": 0.0,
+        "rec_amt": 8000.0,
+        "cycle": 41.2
+      },
+      {
+        "name": "交石数字技术（武汉）有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 69.0,
+        "cycle": 26.0
+      },
+      {
+        "name": "中国铁路工会中国铁路武汉局集团有限公司武汉大功率机修段委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 108826.56,
+        "cycle": 13.3
+      },
+      {
+        "name": "乌兰察布市鑫龍清生物有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 7815.0,
+        "cycle": 12.0
+      },
+      {
+        "name": "黑龙江荣程粮食加工有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 520.0,
+        "cycle": 7.0
+      },
+      {
+        "name": "董晨业",
+        "debt_amt": 0.0,
+        "rec_amt": 428.2,
+        "cycle": 1.0
+      },
+      {
+        "name": "中国葛洲坝集团机械船舶有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 0.0,
+        "cycle": 0
+      }
+    ],
+    "肖赛康": [
+      {
+        "name": "湖北省新华书店（集团）有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 0.0,
+        "cycle": 0
+      }
+    ],
+    "胡帅帅": [
+      {
+        "name": "武汉联特科技股份有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 5176.01,
+        "cycle": 58.6
+      },
+      {
+        "name": "武汉联特科技股份有限公司",
+        "debt_amt": 538.89,
+        "rec_amt": 0.0,
+        "cycle": 52.0
+      },
+      {
+        "name": "深圳市胜意供应链科技有限公司",
+        "debt_amt": 74.0,
+        "rec_amt": 1623.46,
+        "cycle": 43.1
+      }
+    ],
+    "袁友斌": [
+      {
+        "name": "航天东方红卫星有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 129168.0,
+        "cycle": 109.0
+      },
+      {
+        "name": "深圳市金微蓝技术有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 1920.0,
+        "cycle": 31.0
+      }
+    ],
+    "袁苗": [
+      {
+        "name": "江西赣能股份有限公司机关工会委员会",
+        "debt_amt": 1431.0,
+        "rec_amt": 0.0,
+        "cycle": 170.4
+      },
+      {
+        "name": "魏建斌",
+        "debt_amt": 0.0,
+        "rec_amt": 2400.0,
+        "cycle": 100.0
+      }
+    ],
+    "陈绪涛": [
+      {
+        "name": "中国核工业第二二建设有限公司工程设计研究院",
+        "debt_amt": 50400.0,
+        "rec_amt": 0.0,
+        "cycle": 128.1
+      },
+      {
+        "name": "中国核工业第二二建设有限公司安徽分公司",
+        "debt_amt": 28800.0,
+        "rec_amt": 0.0,
+        "cycle": 110.1
+      },
+      {
+        "name": "上海旷鹰赛光学科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 41593.81,
+        "cycle": 109.9
+      },
+      {
+        "name": "中石化石油机械股份有限公司承德江钻分公司工会委员会",
+        "debt_amt": 81913.5,
+        "rec_amt": 0.0,
+        "cycle": 104.0
+      },
+      {
+        "name": "中石化石油机械股份有限公司工会委员会",
+        "debt_amt": 126699.0,
+        "rec_amt": 28731.0,
+        "cycle": 98.2
+      },
+      {
+        "name": "中国核工业第二二建设有限公司钢结构分公司",
+        "debt_amt": 141000.0,
+        "rec_amt": 0.0,
+        "cycle": 97.7
+      },
+      {
+        "name": "采招云（湖北）信息科技有限公司",
+        "debt_amt": 171966.07,
+        "rec_amt": 0.0,
+        "cycle": 96.3
+      },
+      {
+        "name": "肖睿",
+        "debt_amt": 0.0,
+        "rec_amt": 23200.0,
+        "cycle": 87.0
+      },
+      {
+        "name": "中国核工业第二二建设有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 189500.0,
+        "cycle": 83.8
+      },
+      {
+        "name": "湖北省创新人力资源服务中心有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 140122.5,
+        "cycle": 82.3
+      },
+      {
+        "name": "中石化氢能机械（武汉）有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 5652.0,
+        "cycle": 81.0
+      },
+      {
+        "name": "中国核工业第二二建设有限公司福州51069项目工程资金专户",
+        "debt_amt": 0.0,
+        "rec_amt": 2400.0,
+        "cycle": 80.0
+      },
+      {
+        "name": "湖北江汉新业石油技术服务有限责任公司",
+        "debt_amt": 0.0,
+        "rec_amt": 205120.5,
+        "cycle": 79.1
+      },
+      {
+        "name": "中国船舶集团有限公司第七二二研究所",
+        "debt_amt": 0.0,
+        "rec_amt": 113250.0,
+        "cycle": 78.0
+      },
+      {
+        "name": "中石化江钻石油机械有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 223254.0,
+        "cycle": 78.0
+      },
+      {
+        "name": "中石化四机石油机械有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 286603.5,
+        "cycle": 74.6
+      },
+      {
+        "name": "四机赛瓦石油钻采设备有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 166969.5,
+        "cycle": 74.1
+      },
+      {
+        "name": "采招云(湖北)信息科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 36236.02,
+        "cycle": 73.0
+      },
+      {
+        "name": "中石化石油机械股份有限公司三机分公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 92080.5,
+        "cycle": 72.0
+      },
+      {
+        "name": "中石化石油机械股份有限公司天然气技术服务分公司",
+        "debt_amt": 0.0,
+        "rec_amt": 3500.0,
+        "cycle": 67.0
+      }
+    ],
+    "魏欣蓓": [
+      {
+        "name": "中国石油天然气股份有限公司江西销售非油分公司",
+        "debt_amt": 0.0,
+        "rec_amt": 67.8,
+        "cycle": 213.0
+      },
+      {
+        "name": "中国石油天然气股份有限公司江西吉安销售分公司",
+        "debt_amt": 0.0,
+        "rec_amt": 4165.2,
+        "cycle": 124.0
+      },
+      {
+        "name": "中国铁路工会中国铁路武汉局集团有限公司武汉客运段委员会",
+        "debt_amt": 2614.75,
+        "rec_amt": 0.0,
+        "cycle": 108.0
+      },
+      {
+        "name": "南昌印钞有限公司工会委员会",
+        "debt_amt": 2887.5,
+        "rec_amt": 0.0,
+        "cycle": 105.0
+      },
+      {
+        "name": "中国电信集团工会江西公司直属委员会",
+        "debt_amt": 1108.3,
+        "rec_amt": 0.0,
+        "cycle": 84.0
+      },
+      {
+        "name": "江西同力企业服务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 19.3,
+        "cycle": 81.0
+      },
+      {
+        "name": "中国铁路工会中国铁路武汉局集团有限公司武昌南机务段委员会",
+        "debt_amt": 4101.6,
+        "rec_amt": 27000.0,
+        "cycle": 80.9
+      },
+      {
+        "name": "中国船舶集团有限公司第七二二研究所",
+        "debt_amt": 0.0,
+        "rec_amt": 37750.0,
+        "cycle": 78.0
+      },
+      {
+        "name": "中信银行股份有限公司南昌分行工会",
+        "debt_amt": 3200.0,
+        "rec_amt": 130400.0,
+        "cycle": 77.6
+      },
+      {
+        "name": "江西省汇思人力资源有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 299.0,
+        "cycle": 71.0
+      },
+      {
+        "name": "江西省数字乡村研究院",
+        "debt_amt": 0.0,
+        "rec_amt": 89.2,
+        "cycle": 62.0
+      },
+      {
+        "name": "江西省人力资源有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 2655.8,
+        "cycle": 61.0
+      },
+      {
+        "name": "中国石油天然气股份有限公司江西销售分公司",
+        "debt_amt": 7770.0,
+        "rec_amt": 0.0,
+        "cycle": 54.3
+      },
+      {
+        "name": "南昌市波动传媒有限公司",
+        "debt_amt": 598.0,
+        "rec_amt": 0.0,
+        "cycle": 52.6
+      },
+      {
+        "name": "南昌中展数智科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 29748.2,
+        "cycle": 47.0
+      },
+      {
+        "name": "江西长旅供应链管理有限公司",
+        "debt_amt": 810.45,
+        "rec_amt": 0.0,
+        "cycle": 35.7
+      },
+      {
+        "name": "中国电信集团工会江西电信信息产业有限公司委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 6645.4,
+        "cycle": 34.0
+      },
+      {
+        "name": "江西波动智媒网络科技有限公司",
+        "debt_amt": 1629.0,
+        "rec_amt": 0.0,
+        "cycle": 33.5
+      },
+      {
+        "name": "中国铁路工会中国铁路武汉局集团有限公司武汉大功率机修段委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 26646.64,
+        "cycle": 12.0
+      },
+      {
+        "name": "武汉市汉口医院工会委员会",
+        "debt_amt": 33900.0,
+        "rec_amt": 0.0,
+        "cycle": 8.0
+      }
+    ],
+    "黄佩文": [
+      {
+        "name": "武汉金安格印刷技术有限公司",
+        "debt_amt": 6945.0,
+        "rec_amt": 38670.0,
+        "cycle": 99.7
+      },
+      {
+        "name": "康永腾大药房连锁（湖北）有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 674.0,
+        "cycle": 60.0
+      },
+      {
+        "name": "武汉光谷交通运营有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 25285.0,
+        "cycle": 37.0
+      },
+      {
+        "name": "武汉市汉口医院工会委员会",
+        "debt_amt": 152550.0,
+        "rec_amt": 0.0,
+        "cycle": 8.0
+      },
+      {
+        "name": "华夏银行股份有限公司宜昌分行工会委员会",
+        "debt_amt": 11.89,
+        "rec_amt": 555.86,
+        "cycle": 0.2
+      }
+    ]
+  },
+  "武汉金融行业组": {
+    "常明君": [
+      {
+        "name": "武汉起点人力资源股份有限公司",
+        "debt_amt": 463.96,
+        "rec_amt": 0.0,
+        "cycle": 110.6
+      },
+      {
+        "name": "湖北供销合作电子商务有限公司",
+        "debt_amt": 7344.0,
+        "rec_amt": 0.0,
+        "cycle": 108.0
+      },
+      {
+        "name": "法雷奥照明湖北技术中心有限公司工会委员会",
+        "debt_amt": 2968.1,
+        "rec_amt": 0.0,
+        "cycle": 107.6
+      },
+      {
+        "name": "中车长江运输设备集团有限公司",
+        "debt_amt": 394920.0,
+        "rec_amt": 0.0,
+        "cycle": 104.3
+      },
+      {
+        "name": "中国建设银行远程智能银行中心武汉分中心",
+        "debt_amt": 396000.0,
+        "rec_amt": 0.0,
+        "cycle": 100.0
+      },
+      {
+        "name": "中国建设银行股份有限公司武汉经济技术开发区支行",
+        "debt_amt": 128.0,
+        "rec_amt": 0.0,
+        "cycle": 99.0
+      },
+      {
+        "name": "中国建设银行股份有限公司武汉经济技术开发区支行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 3186.0,
+        "cycle": 94.1
+      },
+      {
+        "name": "中国银行股份有限公司湖北省分行",
+        "debt_amt": 0.0,
+        "rec_amt": 7600.0,
+        "cycle": 90.7
+      },
+      {
+        "name": "中国银行股份有限公司武汉省直支行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 36400.0,
+        "cycle": 56.0
+      },
+      {
+        "name": "湖北嘉客优品商务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 71223.67,
+        "cycle": 50.8
+      },
+      {
+        "name": "中国银行股份有限公司武汉经济技术开发区支行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 5632.0,
+        "cycle": 44.0
+      },
+      {
+        "name": "中国建设银行股份有限公司武汉光谷自贸区分行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 34400.0,
+        "cycle": 38.0
+      },
+      {
+        "name": "常明君",
+        "debt_amt": 0.0,
+        "rec_amt": 762.4,
+        "cycle": 1.0
+      },
+      {
+        "name": "武汉融威荟鑫服务管理有限公司",
+        "debt_amt": 11.75,
+        "rec_amt": 0.0,
+        "cycle": 1.0
+      }
+    ],
+    "康哲飞": [
+      {
+        "name": "中国建设银行股份有限公司湖北省分行营业部工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 0.01,
+        "cycle": 2000623.0
+      },
+      {
+        "name": "湖北工建基础设施建设有限公司工会委员会",
+        "debt_amt": 574.9,
+        "rec_amt": 89.5,
+        "cycle": 291.4
+      },
+      {
+        "name": "中国工商银行股份有限公司湖北省分行工会委员会",
+        "debt_amt": 2748.0,
+        "rec_amt": 111.0,
+        "cycle": 118.4
+      },
+      {
+        "name": "武汉好多鲜供应链科技有限公司",
+        "debt_amt": 43499.4,
+        "rec_amt": 6200.0,
+        "cycle": 109.5
+      },
+      {
+        "name": "武汉市金银潭医院工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 326498.0,
+        "cycle": 106.4
+      },
+      {
+        "name": "武汉市金银潭医院（武汉市传染病医院）",
+        "debt_amt": 17266.0,
+        "rec_amt": 0.0,
+        "cycle": 81.7
+      },
+      {
+        "name": "武汉市第三医院工会委员会",
+        "debt_amt": 500.0,
+        "rec_amt": 522500.0,
+        "cycle": 77.2
+      },
+      {
+        "name": "湖北省肿瘤医院工会委员会",
+        "debt_amt": 1580.64,
+        "rec_amt": 5549.71,
+        "cycle": 72.3
+      },
+      {
+        "name": "武汉市第一医院工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 110100.0,
+        "cycle": 66.8
+      },
+      {
+        "name": "中国工商银行湖北省分行机关工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 76600.0,
+        "cycle": 46.1
+      },
+      {
+        "name": "浙商银行武汉分行工会",
+        "debt_amt": 0.0,
+        "rec_amt": 44220.0,
+        "cycle": 36.8
+      },
+      {
+        "name": "中国工商银行武汉分行工会委员会",
+        "debt_amt": 6450.0,
+        "rec_amt": 0.0,
+        "cycle": 32.0
+      },
+      {
+        "name": "中国工商银行股份有限公司湖北省分行",
+        "debt_amt": 6000.0,
+        "rec_amt": 0.0,
+        "cycle": 1.0
+      },
+      {
+        "name": "胡建新",
+        "debt_amt": 0.0,
+        "rec_amt": 480.0,
+        "cycle": 1.0
+      },
+      {
+        "name": "上海上投资产经营有限公司",
+        "debt_amt": 4000.0,
+        "rec_amt": 0.0,
+        "cycle": -177.0
+      }
+    ],
+    "张颖": [
+      {
+        "name": "武汉惠码通科技有限公司",
+        "debt_amt": 729006.22,
+        "rec_amt": 0.0,
+        "cycle": 168.8
+      },
+      {
+        "name": "武汉起点人力资源股份有限公司",
+        "debt_amt": 198.84,
+        "rec_amt": 0.0,
+        "cycle": 110.6
+      },
+      {
+        "name": "北京健力源餐饮管理有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 36261.8,
+        "cycle": 97.0
+      },
+      {
+        "name": "湖北嘉客优品商务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 30524.43,
+        "cycle": 50.8
+      },
+      {
+        "name": "武汉健康养老集团有限公司商业运营分公司",
+        "debt_amt": 364.54,
+        "rec_amt": 23153.18,
+        "cycle": 43.6
+      },
+      {
+        "name": "武汉市驿宝通网络科技有限公司",
+        "debt_amt": 19059.86,
+        "rec_amt": 4486.09,
+        "cycle": 41.1
+      },
+      {
+        "name": "南京华群能源集团有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 3487.56,
+        "cycle": 38.0
+      },
+      {
+        "name": "江苏金舜源商贸有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 826.2,
+        "cycle": 28.4
+      },
+      {
+        "name": "杭州福易云科技有限公司",
+        "debt_amt": 13687.66,
+        "rec_amt": 13652.66,
+        "cycle": 27.8
+      },
+      {
+        "name": "一出科技集团有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 1324.68,
+        "cycle": 27.3
+      },
+      {
+        "name": "武汉有鲤无双科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 413.0,
+        "cycle": 8.0
+      }
+    ],
+    "杨勇": [
+      {
+        "name": "武汉惠码通科技有限公司",
+        "debt_amt": 729539.64,
+        "rec_amt": 0.0,
+        "cycle": 168.9
+      },
+      {
+        "name": "中信银行股份有限公司南昌分行工会",
+        "debt_amt": 6400.0,
+        "rec_amt": 260800.0,
+        "cycle": 77.6
+      },
+      {
+        "name": "杨昊霖",
+        "debt_amt": 0.0,
+        "rec_amt": 378.0,
+        "cycle": 1.0
+      },
+      {
+        "name": "中国建设银行股份有限公司湖北省分行营业部工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 0.0,
+        "cycle": 0
+      }
+    ],
+    "黄薇": [
+      {
+        "name": "广发银行股份有限公司武汉分行工会委员会",
+        "debt_amt": 118.27,
+        "rec_amt": 0.0,
+        "cycle": 577.0
+      },
+      {
+        "name": "中国银行股份有限公司湖北省分行",
+        "debt_amt": 0.0,
+        "rec_amt": 7600.0,
+        "cycle": 90.7
+      },
+      {
+        "name": "武汉市第三医院工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 522500.0,
+        "cycle": 77.2
+      },
+      {
+        "name": "中国银行股份有限公司武汉省直支行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 36400.0,
+        "cycle": 56.0
+      },
+      {
+        "name": "中国银行股份有限公司武汉经济技术开发区支行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 5632.0,
+        "cycle": 44.0
+      },
+      {
+        "name": "武汉市驿宝通网络科技有限公司",
+        "debt_amt": 133010.78,
+        "rec_amt": 40374.82,
+        "cycle": 41.4
+      },
+      {
+        "name": "武汉健康养老集团有限公司商业运营分公司",
+        "debt_amt": 1458.16,
+        "rec_amt": 51716.78,
+        "cycle": 31.4
+      },
+      {
+        "name": "一出科技集团有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 5298.72,
+        "cycle": 27.3
+      },
+      {
+        "name": "武汉珞珈自强商业服务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 2585.03,
+        "cycle": 14.4
+      },
+      {
+        "name": "孙明",
+        "debt_amt": 0.0,
+        "rec_amt": 2049.0,
+        "cycle": 1.0
+      },
+      {
+        "name": "武汉融威荟鑫服务管理有限公司",
+        "debt_amt": 11.75,
+        "rec_amt": 0.0,
+        "cycle": 1.0
+      }
+    ]
+  },
+  "西安站": {
+    "刘江": [
+      {
+        "name": "陕西西咸新区人才发展有限公司",
+        "debt_amt": 51500.0,
+        "rec_amt": 8500.0,
+        "cycle": 361.5
+      },
+      {
+        "name": "陕西水务发展集团电器制造有限公司",
+        "debt_amt": 33264.0,
+        "rec_amt": 0.0,
+        "cycle": 106.5
+      },
+      {
+        "name": "西安华通锐智安全科技有限公司",
+        "debt_amt": 304917.26,
+        "rec_amt": 0.0,
+        "cycle": 80.5
+      },
+      {
+        "name": "陕西交控物产管理有限公司",
+        "debt_amt": 99221.0,
+        "rec_amt": 0.0,
+        "cycle": 72.6
+      },
+      {
+        "name": "中国水利水电第三工程局有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 116800.0,
+        "cycle": 62.0
+      },
+      {
+        "name": "西安华通新能源股份有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 1720.0,
+        "cycle": 59.0
+      },
+      {
+        "name": "中国建设银行股份有限公司陕西省分行工会委员会",
+        "debt_amt": 300.3,
+        "rec_amt": 183996.4,
+        "cycle": 38.8
+      },
+      {
+        "name": "西安交通大学",
+        "debt_amt": 0.0,
+        "rec_amt": 4486.0,
+        "cycle": 33.4
+      }
+    ],
+    "康帅奇": [
+      {
+        "name": "百利商业有限公司",
+        "debt_amt": 85107.53,
+        "rec_amt": 128294.34,
+        "cycle": 175.4
+      },
+      {
+        "name": "陕西高一生医疗美容医院有限公司",
+        "debt_amt": 222980.0,
+        "rec_amt": 0.0,
+        "cycle": 113.9
+      },
+      {
+        "name": "上海中软华腾软件系统有限公司",
+        "debt_amt": 2968.0,
+        "rec_amt": 0.0,
+        "cycle": 105.0
+      },
+      {
+        "name": "中国电力建设股份有限公司",
+        "debt_amt": 6600.0,
+        "rec_amt": 0.0,
+        "cycle": 104.0
+      },
+      {
+        "name": "陕西国药器械有限公司工会委员会",
+        "debt_amt": 1284.5,
+        "rec_amt": 37400.0,
+        "cycle": 21.5
+      },
+      {
+        "name": "李鑫260427",
+        "debt_amt": 0.0,
+        "rec_amt": 565.0,
+        "cycle": 1.0
+      }
+    ],
+    "张宸睿": [
+      {
+        "name": "西安经发科技产业发展有限公司工会委员会",
+        "debt_amt": 1622.0,
+        "rec_amt": 0.0,
+        "cycle": 287.1
+      },
+      {
+        "name": "西安经发城市发展有限公司工会",
+        "debt_amt": 24968.0,
+        "rec_amt": 0.0,
+        "cycle": 247.5
+      },
+      {
+        "name": "西安经济技术开发区建设有限责任公司",
+        "debt_amt": 28680.0,
+        "rec_amt": 0.0,
+        "cycle": 238.1
+      },
+      {
+        "name": "西安经开投建综合保税区产业发展有限公司",
+        "debt_amt": 5699.0,
+        "rec_amt": 0.0,
+        "cycle": 105.8
+      },
+      {
+        "name": "西安天翼新商务酒店有限公司",
+        "debt_amt": 674527.8,
+        "rec_amt": 335765.52,
+        "cycle": 105.4
+      }
+    ],
+    "张恒": [
+      {
+        "name": "宋燕",
+        "debt_amt": 0.0,
+        "rec_amt": 1800.0,
+        "cycle": 140.0
+      },
+      {
+        "name": "西安航天乾元科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 742.08,
+        "cycle": 90.6
+      },
+      {
+        "name": "中国葛洲坝集团第三工程有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 157800.0,
+        "cycle": 84.3
+      },
+      {
+        "name": "陕西移动通信工会机关委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 16245.0,
+        "cycle": 78.0
+      },
+      {
+        "name": "中国移动通信集团工会陕西云计算分公司委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 1665.0,
+        "cycle": 72.0
+      },
+      {
+        "name": "中国移动通信集团工会陕西工程建设中心委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 4770.0,
+        "cycle": 72.0
+      },
+      {
+        "name": "中国移动通信集团工会陕西重要客户部委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 3420.0,
+        "cycle": 72.0
+      },
+      {
+        "name": "中国民生银行西安分行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 91782.0,
+        "cycle": 68.5
+      },
+      {
+        "name": "中国移动通信集团工会陕西客户运营中心委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 1485.0,
+        "cycle": 68.0
+      },
+      {
+        "name": "中国移动通信集团工会陕西省客户响应中心委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 1710.0,
+        "cycle": 68.0
+      },
+      {
+        "name": "中国移动通信集团工会陕西政企产品运营中心委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 675.0,
+        "cycle": 65.0
+      },
+      {
+        "name": "中国移动通信集团工会陕西网络管理中心委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 6795.0,
+        "cycle": 65.0
+      },
+      {
+        "name": "陕西移动通信工会网优中心委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 1395.0,
+        "cycle": 65.0
+      },
+      {
+        "name": "中国铁塔股份有限公司工会西安市委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 3882.0,
+        "cycle": 43.0
+      }
+    ],
+    "李佳伟": [
+      {
+        "name": "鄂尔多斯市隆基光伏科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 76.5,
+        "cycle": 235.0
+      },
+      {
+        "name": "隆基绿能科技股份有限公司",
+        "debt_amt": 223293.0,
+        "rec_amt": 0.0,
+        "cycle": 84.2
+      },
+      {
+        "name": "中国民生银行西安分行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 61188.0,
+        "cycle": 68.5
+      },
+      {
+        "name": "隆基绿能科技股份有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 18002.6,
+        "cycle": 62.4
+      },
+      {
+        "name": "中国农业银行股份有限公司",
+        "debt_amt": 30350.0,
+        "rec_amt": 0.0,
+        "cycle": 39.0
+      },
+      {
+        "name": "北京外企德科人力资源服务陕西有限公司",
+        "debt_amt": 4000.0,
+        "rec_amt": 0.0,
+        "cycle": 38.0
+      }
+    ],
+    "欧丽娟": [
+      {
+        "name": "中陕核（西安）文化传媒有限公司",
+        "debt_amt": 79900.0,
+        "rec_amt": 0.0,
+        "cycle": 7.4
+      },
+      {
+        "name": "周理",
+        "debt_amt": 0.0,
+        "rec_amt": 291.0,
+        "cycle": 1.0
+      },
+      {
+        "name": "王亚楠",
+        "debt_amt": 0.0,
+        "rec_amt": 4037.0,
+        "cycle": 0.9
+      }
+    ],
+    "王淑涵": [
+      {
+        "name": "隆基绿能科技股份有限公司",
+        "debt_amt": 560.7,
+        "rec_amt": 0.0,
+        "cycle": 244.9
+      },
+      {
+        "name": "鄂尔多斯市隆基光伏科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 76.5,
+        "cycle": 235.0
+      },
+      {
+        "name": "隆基绿能科技股份有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 178.5,
+        "cycle": 206.0
+      },
+      {
+        "name": "中国民用航空西北地区空中交通管理局工会委员会",
+        "debt_amt": 54.18,
+        "rec_amt": 0.01,
+        "cycle": 156.1
+      }
+    ],
+    "贺玲": [
+      {
+        "name": "鄂尔多斯市隆基光伏科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 102.0,
+        "cycle": 235.0
+      },
+      {
+        "name": "中国民用航空西北地区空中交通管理局工会委员会",
+        "debt_amt": 90.31,
+        "rec_amt": 0.0,
+        "cycle": 156.1
+      },
+      {
+        "name": "陕西顺丰速运有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 1401900.0,
+        "cycle": 109.3
+      },
+      {
+        "name": "中陕核（西安）文化传媒有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 1760.0,
+        "cycle": 104.0
+      },
+      {
+        "name": "陕西顺丰快运有限公司",
+        "debt_amt": 8900.0,
+        "rec_amt": 0.0,
+        "cycle": 99.0
+      },
+      {
+        "name": "顺丰速运（宁夏）有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 273100.0,
+        "cycle": 96.0
+      },
+      {
+        "name": "隆基绿能科技股份有限公司",
+        "debt_amt": 96204.3,
+        "rec_amt": 0.0,
+        "cycle": 85.0
+      },
+      {
+        "name": "华夏银行股份有限公司西安分行工会委员会",
+        "debt_amt": 759860.0,
+        "rec_amt": 0.0,
+        "cycle": 73.2
+      },
+      {
+        "name": "北亚联信客户关系管理信息技术（西安）有限公司联合工会委员会",
+        "debt_amt": 10837.94,
+        "rec_amt": 0.0,
+        "cycle": 38.4
+      },
+      {
+        "name": "隆基绿能科技股份有限公司工会委员会",
+        "debt_amt": 294670.8,
+        "rec_amt": 7876.9,
+        "cycle": 11.5
+      }
+    ],
+    "赵婷": [
+      {
+        "name": "中国农业银行股份有限公司",
+        "debt_amt": 30350.0,
+        "rec_amt": 0.0,
+        "cycle": 39.0
+      },
+      {
+        "name": "中国葛洲坝集团第三工程有限公司",
+        "debt_amt": 10400.0,
+        "rec_amt": 0.0,
+        "cycle": 28.5
+      },
+      {
+        "name": "隆基绿能科技股份有限公司工会委员会",
+        "debt_amt": 196098.0,
+        "rec_amt": 0.0,
+        "cycle": 10.0
+      },
+      {
+        "name": "赵婷1",
+        "debt_amt": 0.0,
+        "rec_amt": 425.0,
+        "cycle": 1.0
+      },
+      {
+        "name": "张芳丽",
+        "debt_amt": 0.0,
+        "rec_amt": 225.0,
+        "cycle": 0.0
+      }
+    ]
+  },
+  "郑州站": {
+    "刘婵": [
+      {
+        "name": "中国磨料磨具工业海南有限公司上海分公司",
+        "debt_amt": 0.0,
+        "rec_amt": 370.0,
+        "cycle": 37.0
+      },
+      {
+        "name": "河南升环劳务派遣有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 11045.0,
+        "cycle": 36.4
+      },
+      {
+        "name": "河南京润人力资源服务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 2960.0,
+        "cycle": 35.0
+      },
+      {
+        "name": "国机金刚石（河南）有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 30895.0,
+        "cycle": 31.0
+      },
+      {
+        "name": "河南内森商贸有限公司",
+        "debt_amt": 2052.5,
+        "rec_amt": 2831.5,
+        "cycle": 21.9
+      },
+      {
+        "name": "精工锐意科技 (河南)有限公司工会委员会",
+        "debt_amt": 5095.0,
+        "rec_amt": 0.0,
+        "cycle": 9.2
+      }
+    ],
+    "刘莉": [
+      {
+        "name": "发货履约保证金",
+        "debt_amt": 0.0,
+        "rec_amt": 213.0,
+        "cycle": 100.0
+      },
+      {
+        "name": "中国移动通信集团河南有限公司郑州分公司",
+        "debt_amt": 108000.0,
+        "rec_amt": 0.0,
+        "cycle": 81.0
+      },
+      {
+        "name": "河南省郑州市新华书店有限公司",
+        "debt_amt": 21952.16,
+        "rec_amt": 96134.95,
+        "cycle": 60.9
+      },
+      {
+        "name": "郑州聚味香餐饮服务有限公司",
+        "debt_amt": 25553.53,
+        "rec_amt": 0.0,
+        "cycle": 21.9
+      },
+      {
+        "name": "国网河南省电力公司鄢陵县供电公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 25500.0,
+        "cycle": 18.4
+      }
+    ],
+    "刘静玲": [
+      {
+        "name": "华北水利水电大学",
+        "debt_amt": 104652.0,
+        "rec_amt": 0.0,
+        "cycle": 129.3
+      },
+      {
+        "name": "平高集团有限公司",
+        "debt_amt": 706.2,
+        "rec_amt": 0.0,
+        "cycle": 67.1
+      },
+      {
+        "name": "平高集团华生电力设计有限公司工会委员会",
+        "debt_amt": 260.0,
+        "rec_amt": 0.0,
+        "cycle": 56.0
+      },
+      {
+        "name": "河南华信企业信息服务有限公司",
+        "debt_amt": 104.0,
+        "rec_amt": 0.0,
+        "cycle": 56.0
+      },
+      {
+        "name": "中原银行股份有限公司鹤壁分行",
+        "debt_amt": 40888.0,
+        "rec_amt": 0.0,
+        "cycle": 24.6
+      },
+      {
+        "name": "中原银行股份有限公司鹤壁分行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 110100.0,
+        "cycle": 19.0
+      }
+    ],
+    "孙潇潇": [
+      {
+        "name": "郑州市民卡有限公司",
+        "debt_amt": 19.2,
+        "rec_amt": 27.6,
+        "cycle": 93.3
+      },
+      {
+        "name": "河南百企助农信息科技有限公司",
+        "debt_amt": 232.0,
+        "rec_amt": 7013.0,
+        "cycle": 26.2
+      },
+      {
+        "name": "青岛信连信息科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 6000.0,
+        "cycle": 13.5
+      }
+    ],
+    "宋运美": [
+      {
+        "name": "郑州一品聚实业有限公司",
+        "debt_amt": 960.2,
+        "rec_amt": 4816.5,
+        "cycle": 180.8
+      },
+      {
+        "name": "深圳丰享信息技术有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 14288.1,
+        "cycle": 105.7
+      },
+      {
+        "name": "河南华润医疗器械有限公司工会委员会",
+        "debt_amt": 40897.0,
+        "rec_amt": 0.0,
+        "cycle": 82.6
+      },
+      {
+        "name": "深圳丰赞科技有限公司",
+        "debt_amt": 107352.81,
+        "rec_amt": 2720.85,
+        "cycle": 75.9
+      },
+      {
+        "name": "河南德信行大药房有限公司工会委员会",
+        "debt_amt": 2.0,
+        "rec_amt": 23706.0,
+        "cycle": 74.7
+      },
+      {
+        "name": "河南农播网络科技有限公司",
+        "debt_amt": 4843.0,
+        "rec_amt": 0.0,
+        "cycle": 52.2
+      },
+      {
+        "name": "河南省顺丰速运有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 65840.0,
+        "cycle": 29.0
+      },
+      {
+        "name": "宋运美",
+        "debt_amt": 0.0,
+        "rec_amt": 376.0,
+        "cycle": 1.0
+      },
+      {
+        "name": "杨贵智01",
+        "debt_amt": 0.0,
+        "rec_amt": 225.0,
+        "cycle": 1.0
+      }
+    ],
+    "张垚": [
+      {
+        "name": "河南瑞通电气科技有限公司",
+        "debt_amt": 46740.0,
+        "rec_amt": 0.0,
+        "cycle": 99.5
+      }
+    ],
+    "李国强": [
+      {
+        "name": "中国船舶集团有限公司第七一三研究所工会委员会",
+        "debt_amt": 6245.0,
+        "rec_amt": 11820.0,
+        "cycle": 97.8
+      },
+      {
+        "name": "郑州聚味香餐饮服务有限公司",
+        "debt_amt": 30796.08,
+        "rec_amt": 0.0,
+        "cycle": 71.3
+      }
+    ],
+    "王伟明": [
+      {
+        "name": "河南省豫供京选科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 360.0,
+        "cycle": 70.0
+      },
+      {
+        "name": "马艺豪",
+        "debt_amt": 0.0,
+        "rec_amt": 500.0,
+        "cycle": 63.3
+      },
+      {
+        "name": "河南省郑州市新华书店有限公司",
+        "debt_amt": 5690.64,
+        "rec_amt": 39517.05,
+        "cycle": 29.5
+      },
+      {
+        "name": "王伟明",
+        "debt_amt": 0.0,
+        "rec_amt": 527.0,
+        "cycle": 0.5
+      }
+    ],
+    "白永超": [
+      {
+        "name": "中国铁路工会中铁建电气化局集团南方工程有限公司委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 20400.0,
+        "cycle": 71.0
+      }
+    ],
+    "韩森": [
+      {
+        "name": "河南省立安实业有限责任公司",
+        "debt_amt": 8871.23,
+        "rec_amt": 0.0,
+        "cycle": 228.1
+      },
+      {
+        "name": "华北水利水电大学",
+        "debt_amt": 244188.0,
+        "rec_amt": 0.0,
+        "cycle": 129.3
+      },
+      {
+        "name": "河南康来福农业开发有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 295206.0,
+        "cycle": 82.5
+      },
+      {
+        "name": "郑州迪三实业有限公司",
+        "debt_amt": 253928.7,
+        "rec_amt": 0.0,
+        "cycle": 77.2
+      },
+      {
+        "name": "中国船舶重工集团公司第七一三研究所",
+        "debt_amt": 22908.0,
+        "rec_amt": 0.0,
+        "cycle": 53.0
+      },
+      {
+        "name": "黄河勘测规划设计有限公司机关工会委员会",
+        "debt_amt": 15190.0,
+        "rec_amt": 0.0,
+        "cycle": 28.0
+      },
+      {
+        "name": "耿新亚",
+        "debt_amt": 0.0,
+        "rec_amt": 98.0,
+        "cycle": 1.0
+      }
+    ],
+    "黄英浩": [
+      {
+        "name": "秋丽冰",
+        "debt_amt": 0.0,
+        "rec_amt": 35281.0,
+        "cycle": 311.6
+      },
+      {
+        "name": "河南省立安实业有限责任公司",
+        "debt_amt": 22455.95,
+        "rec_amt": 0.0,
+        "cycle": 248.1
+      },
+      {
+        "name": "焦作市宏亮电力技术咨询有限公司",
+        "debt_amt": 306581.25,
+        "rec_amt": 0.0,
+        "cycle": 104.4
+      },
+      {
+        "name": "河南勤发泽科技有限公司",
+        "debt_amt": 4203.0,
+        "rec_amt": 0.0,
+        "cycle": 99.6
+      },
+      {
+        "name": "河南省豫检品质生活馆有限公司",
+        "debt_amt": 602.56,
+        "rec_amt": 6564.76,
+        "cycle": 88.3
+      },
+      {
+        "name": "中建八局河南建设有限公司工会委员会",
+        "debt_amt": 87607.0,
+        "rec_amt": 0.0,
+        "cycle": 78.2
+      },
+      {
+        "name": "平高集团有限公司",
+        "debt_amt": 2824.8,
+        "rec_amt": 0.0,
+        "cycle": 67.1
+      },
+      {
+        "name": "河南中原国际会展中心有限公司",
+        "debt_amt": 9421.0,
+        "rec_amt": 0.0,
+        "cycle": 63.3
+      },
+      {
+        "name": "河南颐城科技生活服务有限公司",
+        "debt_amt": 370.0,
+        "rec_amt": 8487.0,
+        "cycle": 62.3
+      },
+      {
+        "name": "平高集团华生电力设计有限公司工会委员会",
+        "debt_amt": 1040.0,
+        "rec_amt": 0.0,
+        "cycle": 56.0
+      },
+      {
+        "name": "河南华信企业信息服务有限公司",
+        "debt_amt": 416.0,
+        "rec_amt": 0.0,
+        "cycle": 56.0
+      }
+    ]
+  },
+  "重庆站": {
+    "刘美希": [
+      {
+        "name": "兴业银行股份有限公司重庆分行工会委员会",
+        "debt_amt": 43492.44,
+        "rec_amt": 0.0,
+        "cycle": 169.5
+      },
+      {
+        "name": "赵兰",
+        "debt_amt": 0.0,
+        "rec_amt": 1120.0,
+        "cycle": 45.0
+      },
+      {
+        "name": "中国人民人寿保险股份有限公司重庆市分公司",
+        "debt_amt": 140.43,
+        "rec_amt": 0.0,
+        "cycle": 11.0
+      },
+      {
+        "name": "中国人民人寿保险股份有限公司重庆市分公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 3236.22,
+        "cycle": 7.4
+      },
+      {
+        "name": "小彭",
+        "debt_amt": 0.0,
+        "rec_amt": 87.0,
+        "cycle": 1.0
+      }
+    ],
+    "危昶": [
+      {
+        "name": "重庆通邑卫士智慧生活服务有限公司金通会议服务分公司",
+        "debt_amt": 17408.23,
+        "rec_amt": -280.5,
+        "cycle": 109.6
+      },
+      {
+        "name": "重庆德普外国语学校",
+        "debt_amt": 10261.8,
+        "rec_amt": 0.0,
+        "cycle": 37.4
+      },
+      {
+        "name": "中广核新能源发电重庆有限公司",
+        "debt_amt": 89000.0,
+        "rec_amt": 0.0,
+        "cycle": 37.3
+      },
+      {
+        "name": "中国工商银行重庆市北碚区支行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 8200.0,
+        "cycle": 18.8
+      },
+      {
+        "name": "中交三航局第九工程有限公司工会委员会",
+        "debt_amt": 292800.0,
+        "rec_amt": 0.0,
+        "cycle": 13.0
+      },
+      {
+        "name": "李芳卉",
+        "debt_amt": 0.0,
+        "rec_amt": 230.0,
+        "cycle": 1.0
+      }
+    ],
+    "周纤纤": [
+      {
+        "name": "赋刻（重庆）科技有限公司",
+        "debt_amt": 2558.93,
+        "rec_amt": 0.0,
+        "cycle": 212.5
+      }
+    ],
+    "廖佳晖": [
+      {
+        "name": "辰致（重庆）制动系统有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 387828.0,
+        "cycle": 80.2
+      },
+      {
+        "name": "廖佳晖",
+        "debt_amt": 0.0,
+        "rec_amt": 8560.0,
+        "cycle": 71.4
+      },
+      {
+        "name": "辰致汽车科技集团有限公司总部工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 23205.0,
+        "cycle": 70.0
+      },
+      {
+        "name": "辰致科技有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 714293.0,
+        "cycle": 66.3
+      },
+      {
+        "name": "华夏航空股份有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 1740.0,
+        "cycle": 19.3
+      },
+      {
+        "name": "陕西耀远景润网络科技有限公司",
+        "debt_amt": 1759.0,
+        "rec_amt": 1460.0,
+        "cycle": 16.9
+      },
+      {
+        "name": "中国铁塔股份有限公司重庆市分公司",
+        "debt_amt": 59.52,
+        "rec_amt": 0.0,
+        "cycle": 11.0
+      }
+    ],
+    "李倩": [
+      {
+        "name": "重庆通邑卫士智慧生活服务有限公司金通会议服务分公司",
+        "debt_amt": 69632.93,
+        "rec_amt": 0.0,
+        "cycle": 109.7
+      },
+      {
+        "name": "渤海银行股份有限公司重庆分行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 1799.32,
+        "cycle": 93.0
+      },
+      {
+        "name": "重庆贻农汇实业有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 23136.3,
+        "cycle": 62.2
+      },
+      {
+        "name": "陈思锦",
+        "debt_amt": 0.0,
+        "rec_amt": 190.0,
+        "cycle": 1.0
+      }
+    ],
+    "杨彦祥": [
+      {
+        "name": "重庆通邑卫士智慧生活服务有限公司金通会议服务分公司",
+        "debt_amt": 87041.16,
+        "rec_amt": 280.5,
+        "cycle": 109.7
+      },
+      {
+        "name": "中国移动通信集团重庆有限公司巴南分公司",
+        "debt_amt": 13818.0,
+        "rec_amt": 0.0,
+        "cycle": 100.5
+      },
+      {
+        "name": "中国移动通信集团工会重庆两江新区分公司委员会",
+        "debt_amt": 11564.0,
+        "rec_amt": 0.0,
+        "cycle": 80.0
+      },
+      {
+        "name": "中国移动通信集团工会重庆市委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 35149.5,
+        "cycle": 78.3
+      },
+      {
+        "name": "重庆贻农汇实业有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 59132.7,
+        "cycle": 61.7
+      },
+      {
+        "name": "渤海银行股份有限公司重庆分行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 9599.31,
+        "cycle": 51.8
+      },
+      {
+        "name": "中国移动通信集团重庆有限公司",
+        "debt_amt": 695.0,
+        "rec_amt": 0.0,
+        "cycle": 27.2
+      },
+      {
+        "name": "北京民生现代美术馆工会委员会",
+        "debt_amt": 3000.0,
+        "rec_amt": 10500.0,
+        "cycle": 22.7
+      },
+      {
+        "name": "中国民生银行股份有限公司北京分行",
+        "debt_amt": 0.0,
+        "rec_amt": 350.0,
+        "cycle": 4.0
+      },
+      {
+        "name": "康婷",
+        "debt_amt": 0.0,
+        "rec_amt": 905.0,
+        "cycle": 1.0
+      }
+    ],
+    "林萍": [
+      {
+        "name": "兴业银行股份有限公司重庆分行工会委员会",
+        "debt_amt": 43492.44,
+        "rec_amt": 0.0,
+        "cycle": 169.5
+      },
+      {
+        "name": "中国移动通信集团重庆有限公司巴南分公司",
+        "debt_amt": 27636.0,
+        "rec_amt": 0.0,
+        "cycle": 100.5
+      },
+      {
+        "name": "中国移动通信集团工会重庆市委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 11564.0,
+        "cycle": 75.8
+      },
+      {
+        "name": "中国人民人寿保险股份有限公司重庆市分公司",
+        "debt_amt": 140.43,
+        "rec_amt": 0.0,
+        "cycle": 11.0
+      },
+      {
+        "name": "中国人民人寿保险股份有限公司重庆市分公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 3236.22,
+        "cycle": 7.4
+      },
+      {
+        "name": "赋刻（重庆）科技有限公司",
+        "debt_amt": 253.0,
+        "rec_amt": 1589.0,
+        "cycle": 3.0
+      },
+      {
+        "name": "杨娅",
+        "debt_amt": 0.0,
+        "rec_amt": 174.0,
+        "cycle": 1.0
+      }
+    ],
+    "耿晓伟": [
+      {
+        "name": "中国建设银行股份有限公司重庆市分行机关工会委员会",
+        "debt_amt": 172361.95,
+        "rec_amt": 0.0,
+        "cycle": 232.0
+      },
+      {
+        "name": "平安银行股份有限公司贵阳分行工会委员会",
+        "debt_amt": 153200.0,
+        "rec_amt": 0.0,
+        "cycle": 106.3
+      },
+      {
+        "name": "中国建设银行股份有限公司重庆市分行营业部工会委员会",
+        "debt_amt": 4387.25,
+        "rec_amt": 0.0,
+        "cycle": 92.6
+      },
+      {
+        "name": "中国金谷国际信托有限责任公司",
+        "debt_amt": 17600.0,
+        "rec_amt": 0.0,
+        "cycle": 78.4
+      },
+      {
+        "name": "中国建设银行股份有限公司重庆市分行",
+        "debt_amt": 6916.19,
+        "rec_amt": 0.0,
+        "cycle": 71.1
+      },
+      {
+        "name": "重庆齿轮箱有限责任公司工会委员会",
+        "debt_amt": 6600.0,
+        "rec_amt": 0.0,
+        "cycle": 24.8
+      },
+      {
+        "name": "中国金谷国际信托有限责任公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 162500.0,
+        "cycle": 3.0
+      },
+      {
+        "name": "应急管理部国家自然灾害防治研究院工会委员会",
+        "debt_amt": 2168.54,
+        "rec_amt": 14135.24,
+        "cycle": 1.2
+      }
+    ],
+    "董朝武": [
+      {
+        "name": "中国移动通信集团工会重庆市委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 23880.0,
+        "cycle": 80.0
+      },
+      {
+        "name": "中国铁塔股份有限公司重庆市分公司",
+        "debt_amt": 39.68,
+        "rec_amt": 0.0,
+        "cycle": 11.0
+      }
+    ],
+    "陈磊": [
+      {
+        "name": "中图移动通信集团工会重庆网络部委员会",
+        "debt_amt": 400.0,
+        "rec_amt": 0.0,
+        "cycle": 107.0
+      },
+      {
+        "name": "中国移动通信集团重庆有限公司巴南分公司",
+        "debt_amt": 13818.0,
+        "rec_amt": 0.0,
+        "cycle": 100.5
+      },
+      {
+        "name": "中国移动通信集团工会重庆两江新区分公司委员会",
+        "debt_amt": 11564.0,
+        "rec_amt": 0.0,
+        "cycle": 80.0
+      },
+      {
+        "name": "中国移动通信集团工会重庆市委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 56354.5,
+        "cycle": 75.6
+      },
+      {
+        "name": "重庆德普外国语学校",
+        "debt_amt": 21043.2,
+        "rec_amt": 0.0,
+        "cycle": 51.0
+      },
+      {
+        "name": "重庆航天火箭电子技术有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 111240.0,
+        "cycle": 45.1
+      },
+      {
+        "name": "赵兰",
+        "debt_amt": 0.0,
+        "rec_amt": 480.0,
+        "cycle": 45.0
+      },
+      {
+        "name": "中国移动通信集团重庆有限公司",
+        "debt_amt": 6255.0,
+        "rec_amt": 0.0,
+        "cycle": 27.2
+      },
+      {
+        "name": "陈磊",
+        "debt_amt": 0.0,
+        "rec_amt": 4112.0,
+        "cycle": 1.6
+      }
+    ],
+    "黄培琰": [
+      {
+        "name": "中国移动通信集团工会重庆市委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 80.0,
+        "cycle": 111.0
+      }
+    ]
+  },
+  "长沙站": {
+    "任丹": [
+      {
+        "name": "湖南医药集团国健湘康健康产业有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 25.6,
+        "cycle": 99.0
+      }
+    ],
+    "张婉莹": [
+      {
+        "name": "中石油昆仑好客有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 199161.13,
+        "cycle": 125.8
+      },
+      {
+        "name": "兴业银行长沙分行工会委员会",
+        "debt_amt": 1000.0,
+        "rec_amt": 0.0,
+        "cycle": 105.8
+      },
+      {
+        "name": "中国石油天然气股份有限公司湖南销售分公司",
+        "debt_amt": 7965.04,
+        "rec_amt": 0.0,
+        "cycle": 93.4
+      },
+      {
+        "name": "兴业银行股份有限公司株洲分行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 1000.0,
+        "cycle": 85.3
+      },
+      {
+        "name": "长沙银行股份有限公司工会委员会南城支行分工会",
+        "debt_amt": 0.0,
+        "rec_amt": 24920.0,
+        "cycle": 83.1
+      },
+      {
+        "name": "长沙银行股份有限公司工会委员会开福支行分工会",
+        "debt_amt": 0.0,
+        "rec_amt": 19120.0,
+        "cycle": 80.0
+      },
+      {
+        "name": "长沙银行股份有限公司汇融支行",
+        "debt_amt": 2550.0,
+        "rec_amt": 0.0,
+        "cycle": 77.3
+      },
+      {
+        "name": "湖南省火电建设公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 15662.5,
+        "cycle": 75.0
+      },
+      {
+        "name": "发货履约保证金",
+        "debt_amt": 0.0,
+        "rec_amt": 14640.0,
+        "cycle": 70.4
+      },
+      {
+        "name": "长沙银行股份有限公司工会委员会",
+        "debt_amt": 3650.0,
+        "rec_amt": 10250.0,
+        "cycle": 66.9
+      },
+      {
+        "name": "长沙银行股份有限公司工会委员会张家界分行分工会",
+        "debt_amt": 0.0,
+        "rec_amt": 3000.0,
+        "cycle": 60.0
+      },
+      {
+        "name": "长沙银行股份有限公司工会委员会科技支行分工会",
+        "debt_amt": 0.0,
+        "rec_amt": 1500.0,
+        "cycle": 60.0
+      },
+      {
+        "name": "长沙银行股份有限公司金城支行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 5820.0,
+        "cycle": 54.8
+      },
+      {
+        "name": "交通银行股份有限公司岳阳分行",
+        "debt_amt": 14848.7,
+        "rec_amt": 0.0,
+        "cycle": 49.0
+      },
+      {
+        "name": "中国能源建设集团湖南火电建设有限公司",
+        "debt_amt": 6565.94,
+        "rec_amt": 66598.64,
+        "cycle": 38.2
+      },
+      {
+        "name": "湖南农夫匠心农业科技有限公司",
+        "debt_amt": 1476.96,
+        "rec_amt": 0.0,
+        "cycle": 29.9
+      },
+      {
+        "name": "电通（上海）投资有限公司",
+        "debt_amt": 3037.5,
+        "rec_amt": 0.0,
+        "cycle": 16.0
+      },
+      {
+        "name": "上海浦东发展银行股份有限公司长沙分行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 3491.25,
+        "cycle": 9.0
+      },
+      {
+        "name": "爱德曼国际公关（中国）有限公司",
+        "debt_amt": 2340.0,
+        "rec_amt": 0.0,
+        "cycle": 9.0
+      },
+      {
+        "name": "湖南省肿瘤医院工会委员会",
+        "debt_amt": 1000.0,
+        "rec_amt": 0.0,
+        "cycle": 8.0
+      }
+    ],
+    "张辉": [
+      {
+        "name": "中国教育工会中南大学湘雅医院委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 1597.03,
+        "cycle": 0.0
+      }
+    ],
+    "彭勋": [
+      {
+        "name": "深圳丰享信息技术有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 498453.9,
+        "cycle": 69.0
+      },
+      {
+        "name": "湖南医药集团国健湘康健康产业有限公司",
+        "debt_amt": 1325.6,
+        "rec_amt": 2386.6,
+        "cycle": 54.7
+      },
+      {
+        "name": "湖南农夫匠心农业科技有限公司",
+        "debt_amt": 984.64,
+        "rec_amt": 0.0,
+        "cycle": 29.9
+      },
+      {
+        "name": "长沙市博湘源餐饮管理有限公司",
+        "debt_amt": 92281.3,
+        "rec_amt": 41479.87,
+        "cycle": 24.5
+      },
+      {
+        "name": "中南大学工会委员会",
+        "debt_amt": 1111.85,
+        "rec_amt": 2285.79,
+        "cycle": 17.8
+      },
+      {
+        "name": "长沙王涛",
+        "debt_amt": 0.0,
+        "rec_amt": 255.0,
+        "cycle": 3.0
+      },
+      {
+        "name": "优易达（武汉）有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 1050.0,
+        "cycle": 1.0
+      },
+      {
+        "name": "彭裕龙",
+        "debt_amt": 0.0,
+        "rec_amt": 195.0,
+        "cycle": 1.0
+      }
+    ],
+    "曾敏": [
+      {
+        "name": "湖南天雁机械股份有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 22148.0,
+        "cycle": 78.0
+      },
+      {
+        "name": "湖南顺丰速运有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 111625.38,
+        "cycle": 63.1
+      },
+      {
+        "name": "衡阳合力工业车辆有限公司工会委员会",
+        "debt_amt": 43114.0,
+        "rec_amt": 0.0,
+        "cycle": 58.5
+      },
+      {
+        "name": "中华联合财产保险股份有限公司湖南分公司工会委员会",
+        "debt_amt": 30160.0,
+        "rec_amt": 0.0,
+        "cycle": 2.0
+      },
+      {
+        "name": "曾建军",
+        "debt_amt": 0.0,
+        "rec_amt": 1131.5,
+        "cycle": 1.0
+      }
+    ],
+    "王涛": [
+      {
+        "name": "中石油昆仑好客有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 298741.69,
+        "cycle": 125.8
+      },
+      {
+        "name": "中国石油天然气股份有限公司湖南销售分公司",
+        "debt_amt": 11947.58,
+        "rec_amt": 0.0,
+        "cycle": 93.4
+      },
+      {
+        "name": "郴州市第一人民医院工会委员会",
+        "debt_amt": 960.0,
+        "rec_amt": 0.0,
+        "cycle": 74.0
+      },
+      {
+        "name": "湖南湘江新区枢速购便利店（个体工商户）",
+        "debt_amt": 0.0,
+        "rec_amt": 91881.7,
+        "cycle": 66.9
+      },
+      {
+        "name": "长沙银行股份有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 6000.0,
+        "cycle": 61.0
+      },
+      {
+        "name": "爱德曼国际公关（中国）有限公司",
+        "debt_amt": 31707.0,
+        "rec_amt": 2880.0,
+        "cycle": 44.8
+      },
+      {
+        "name": "深圳丰享信息技术有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 85500.0,
+        "cycle": 41.0
+      },
+      {
+        "name": "中南大学工会委员会",
+        "debt_amt": 204.5,
+        "rec_amt": 545.97,
+        "cycle": 17.4
+      },
+      {
+        "name": "电通（上海）投资有限公司",
+        "debt_amt": 34256.9,
+        "rec_amt": 0.0,
+        "cycle": 16.0
+      },
+      {
+        "name": "长沙王涛",
+        "debt_amt": 0.0,
+        "rec_amt": 255.0,
+        "cycle": 3.0
+      },
+      {
+        "name": "合肥市贝余文化传播有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 78000.0,
+        "cycle": 1.0
+      },
+      {
+        "name": "中国教育工会中南大学湘雅医院委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 3992.58,
+        "cycle": 0.0
+      }
+    ],
+    "蒋小花": [
+      {
+        "name": "北京京东世纪贸易有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 724.39,
+        "cycle": 75.0
+      },
+      {
+        "name": "北京京东世纪信息技术有限公司",
+        "debt_amt": 7809.0,
+        "rec_amt": 30252.64,
+        "cycle": 73.4
+      },
+      {
+        "name": "财信吉祥人寿保险股份有限公司",
+        "debt_amt": 861.0,
+        "rec_amt": 49230.0,
+        "cycle": 36.7
+      },
+      {
+        "name": "湖南保利天创物业发展有限公司",
+        "debt_amt": 53060.0,
+        "rec_amt": 0.0,
+        "cycle": 32.0
+      },
+      {
+        "name": "长沙高新开发区麓谷中小企业转贷引导基金(有限合伙)",
+        "debt_amt": 0.0,
+        "rec_amt": 4186.0,
+        "cycle": 21.0
+      },
+      {
+        "name": "第三方账号-1700869026",
+        "debt_amt": 0.0,
+        "rec_amt": 6665.5,
+        "cycle": 20.0
+      },
+      {
+        "name": "岳阳新智餐饮有限公司",
+        "debt_amt": 6728.0,
+        "rec_amt": 0.0,
+        "cycle": 19.6
+      },
+      {
+        "name": "盐源魏丫丫电子商务有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 3600.0,
+        "cycle": 10.0
+      },
+      {
+        "name": "蒋小花",
+        "debt_amt": 0.0,
+        "rec_amt": 1020.0,
+        "cycle": 2.0
+      },
+      {
+        "name": "谭小程",
+        "debt_amt": 0.0,
+        "rec_amt": 1195.0,
+        "cycle": 1.0
+      },
+      {
+        "name": "中国教育工会中南大学湘雅医院委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 798.52,
+        "cycle": 0.0
+      },
+      {
+        "name": "长沙坤元信息科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 356.0,
+        "cycle": 0.0
+      }
+    ],
+    "谢顶峰": [
+      {
+        "name": "长沙铁路第一中学",
+        "debt_amt": 15200.0,
+        "rec_amt": 0.0,
+        "cycle": 113.2
+      },
+      {
+        "name": "湖南点石家居装饰集团有限公司",
+        "debt_amt": 14790.0,
+        "rec_amt": 0.0,
+        "cycle": 107.9
+      },
+      {
+        "name": "湖南达漫电子商务有限公司",
+        "debt_amt": 9233.1,
+        "rec_amt": 1050.7,
+        "cycle": 87.9
+      },
+      {
+        "name": "湖南天雁机械股份有限公司工会委员会",
+        "debt_amt": 224.0,
+        "rec_amt": 27580.0,
+        "cycle": 78.2
+      },
+      {
+        "name": "湖南省火电建设公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 6712.5,
+        "cycle": 75.0
+      },
+      {
+        "name": "郴州市第一人民医院工会委员会",
+        "debt_amt": 240.0,
+        "rec_amt": 0.0,
+        "cycle": 74.0
+      },
+      {
+        "name": "湖南医药集团国健湘康健康产业有限公司",
+        "debt_amt": 1988.4,
+        "rec_amt": 5694.3,
+        "cycle": 58.4
+      },
+      {
+        "name": "中国能源建设集团湖南火电建设有限公司",
+        "debt_amt": 2813.98,
+        "rec_amt": 28542.27,
+        "cycle": 38.2
+      },
+      {
+        "name": "长沙市博湘源餐饮管理有限公司",
+        "debt_amt": 94702.19,
+        "rec_amt": 137681.13,
+        "cycle": 23.2
+      },
+      {
+        "name": "湖南迅诚达供应链管理有限公司",
+        "debt_amt": 1688.8,
+        "rec_amt": 4890.5,
+        "cycle": 18.3
+      },
+      {
+        "name": "中南大学工会委员会",
+        "debt_amt": 3220.4,
+        "rec_amt": 5867.3,
+        "cycle": 18.0
+      },
+      {
+        "name": "湖南供销电子商务股份有限公司",
+        "debt_amt": 271.2,
+        "rec_amt": 135.6,
+        "cycle": 13.0
+      },
+      {
+        "name": "北京市三一重机有限公司",
+        "debt_amt": 79.52,
+        "rec_amt": 943.56,
+        "cycle": 12.3
+      },
+      {
+        "name": "上海浦东发展银行股份有限公司长沙分行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 872.81,
+        "cycle": 9.0
+      },
+      {
+        "name": "中华联合财产保险股份有限公司湖南分公司工会委员会",
+        "debt_amt": 7540.0,
+        "rec_amt": 0.0,
+        "cycle": 2.0
+      },
+      {
+        "name": "中国教育工会中南大学湘雅医院委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 1597.03,
+        "cycle": 0.0
+      }
+    ],
+    "邓梅丽": [
+      {
+        "name": "华能湖南岳阳发电有限责任公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 45500.0,
+        "cycle": 73.7
+      },
+      {
+        "name": "深圳丰享信息技术有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 582321.33,
+        "cycle": 66.9
+      },
+      {
+        "name": "湖南顺丰速运有限公司工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 5875.02,
+        "cycle": 63.1
+      },
+      {
+        "name": "鄂州顺路物流有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 1180.0,
+        "cycle": 60.0
+      },
+      {
+        "name": "深圳丰赞科技有限公司",
+        "debt_amt": 49571.85,
+        "rec_amt": 1731.45,
+        "cycle": 32.3
+      },
+      {
+        "name": "华能国际电力股份有限公司湖南清洁能源分公司工会委员会",
+        "debt_amt": 880.0,
+        "rec_amt": 3760.0,
+        "cycle": 31.7
+      },
+      {
+        "name": "北京市三一重机有限公司",
+        "debt_amt": 318.08,
+        "rec_amt": 3774.24,
+        "cycle": 12.3
+      },
+      {
+        "name": "湖南顺丰速运有限公司",
+        "debt_amt": 2250.0,
+        "rec_amt": 0.0,
+        "cycle": 11.0
+      },
+      {
+        "name": "优易达（武汉）有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 1050.0,
+        "cycle": 1.0
+      },
+      {
+        "name": "邓敏",
+        "debt_amt": 0.0,
+        "rec_amt": 11828.0,
+        "cycle": 0.9
+      }
+    ],
+    "陈蓉": [
+      {
+        "name": "中国电信集团有限公司",
+        "debt_amt": 16.08,
+        "rec_amt": 0.0,
+        "cycle": 142.0
+      },
+      {
+        "name": "中国电信集团工会长沙市委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 614.72,
+        "cycle": 94.8
+      },
+      {
+        "name": "长沙银行股份有限公司工会委员会南城支行分工会",
+        "debt_amt": 0.0,
+        "rec_amt": 37380.0,
+        "cycle": 83.1
+      },
+      {
+        "name": "长沙银行股份有限公司工会委员会开福支行分工会",
+        "debt_amt": 0.0,
+        "rec_amt": 27180.0,
+        "cycle": 79.8
+      },
+      {
+        "name": "长沙银行股份有限公司汇融支行",
+        "debt_amt": 2550.0,
+        "rec_amt": 0.0,
+        "cycle": 77.3
+      },
+      {
+        "name": "湖南省军粮放心粮油有限公司",
+        "debt_amt": 16977.55,
+        "rec_amt": 20916.5,
+        "cycle": 74.1
+      },
+      {
+        "name": "中国电信股份有限公司湖南分公司",
+        "debt_amt": 0.0,
+        "rec_amt": 13134.53,
+        "cycle": 72.0
+      },
+      {
+        "name": "长沙银行股份有限公司工会委员会",
+        "debt_amt": 3650.0,
+        "rec_amt": 16250.0,
+        "cycle": 65.1
+      },
+      {
+        "name": "长沙银行股份有限公司工会委员会张家界分行分工会",
+        "debt_amt": 0.0,
+        "rec_amt": 3000.0,
+        "cycle": 60.0
+      },
+      {
+        "name": "长沙银行股份有限公司工会委员会科技支行分工会",
+        "debt_amt": 0.0,
+        "rec_amt": 1500.0,
+        "cycle": 60.0
+      },
+      {
+        "name": "长沙银行股份有限公司金城支行工会委员会",
+        "debt_amt": 0.0,
+        "rec_amt": 3880.0,
+        "cycle": 54.8
+      },
+      {
+        "name": "长沙永润食品贸易有限公司",
+        "debt_amt": 33255.0,
+        "rec_amt": 0.0,
+        "cycle": 50.1
+      },
+      {
+        "name": "中国电信集团有限公司湖南分公司",
+        "debt_amt": 0.0,
+        "rec_amt": 7346.8,
+        "cycle": 42.8
+      },
+      {
+        "name": "中南大学工会委员会",
+        "debt_amt": 4536.76,
+        "rec_amt": 8699.05,
+        "cycle": 18.0
+      },
+      {
+        "name": "王育丰",
+        "debt_amt": 0.0,
+        "rec_amt": 3074.0,
+        "cycle": 2.0
+      },
+      {
+        "name": "上海在心礼信息科技有限公司",
+        "debt_amt": 0.0,
+        "rec_amt": 76035.0,
+        "cycle": 1.9
+      }
+    ],
+    "黄倩": [
+      {
+        "name": "湖南株冶火炬新材料有限公司",
+        "debt_amt": 11345.1,
+        "rec_amt": 0.0,
+        "cycle": 235.0
+      }
+    ]
+  }
+};
+
 // ===== 部门弹窗 =====
 function showDeptDetail(dept) {
     const d = deptData.find(x => x.dept === dept);
@@ -519,46 +5921,40 @@ function renderSalesDebt(dept) {
 }
 
 function renderSalesCycle(dept) {
-    const list = [...(salesDetailData[dept] || [])];
-    list.forEach(s => {
-        s.cycle = (s.collect > 0) ? (s.total_debt / s.collect * 90) : null;
-    });
-    list.sort((a, b) => {
-        if (a.cycle === null && b.cycle === null) return 0;
-        if (a.cycle === null) return 1;
-        if (b.cycle === null) return -1;
-        return b.cycle - a.cycle;
-    });
+    const list = [...(salesCycleData[dept] || [])];
+    list.sort((a, b) => b.cycle - a.cycle);
     const rows = list.map(s => {
         const cycle = s.cycle;
-        const cycleStr = cycle !== null ? cycle.toFixed(1) : '-';
-        const cc = cycle === null ? '#8892b0' : cycle > 90 ? '#ff4757' : cycle > 60 ? '#ffa502' : '#00ff88';
-        const status = cycle === null ? '⚪ 无回款' : cycle > 90 ? '🔴 需关注' : cycle > 60 ? '🟡 偏高' : '🟢 正常';
-        const dc = s.total_debt > 50 ? '#ff4757' : s.total_debt > 20 ? '#ffa502' : '#00ff88';
+        const cycleStr = cycle > 0 ? cycle.toFixed(1) : '-';
+        const cc = cycle <= 0 ? '#8892b0' : cycle > 90 ? '#ff4757' : cycle > 60 ? '#ffa502' : '#00ff88';
+        const status = cycle <= 0 ? '\u26AA \u65E0\u6570\u636E' : cycle > 90 ? '\u{1F534} \u9700\u5173\u6CE8' : cycle > 60 ? '\u{1F7E1} \u504F\u9AD8' : '\u{1F7E2} \u6B63\u5E38';
+        const hasCust = custCycleData[dept] && custCycleData[dept][s.name];
+        const nameStyle = hasCust ? 'color:#00d4ff;cursor:pointer;text-decoration:underline;' : 'color:#ccd6f6;';
+        const nameClick = hasCust ? `onclick="renderCustCycle('${dept}','${s.name}')"` : '';
         return `<tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-            <td style="padding:7px 5px;color:#ccd6f6;">${s.name}</td>
-            <td style="padding:7px 5px;color:#00ff88;text-align:right;">${s.collect.toFixed(2)}</td>
-            <td style="padding:7px 5px;color:${dc};text-align:right;">${s.total_debt.toFixed(2)}</td>
+            <td style="padding:7px 5px;${nameStyle}" ${nameClick}>${s.name}${hasCust ? ' \u{1F4C2}' : ''}</td>
+            <td style="padding:7px 5px;color:#00ff88;text-align:right;">${(s.rec_amt/10000).toFixed(2)}</td>
+            <td style="padding:7px 5px;color:#ffa502;text-align:right;">${(s.debt_amt/10000).toFixed(2)}</td>
             <td style="padding:7px 5px;color:${cc};text-align:right;font-weight:600;">${cycleStr}</td>
             <td style="padding:7px 5px;color:#ccd6f6;text-align:center;">${status}</td>
         </tr>`;
     }).join('');
-    const tc = list.reduce((s, v) => s + v.collect, 0).toFixed(2);
-    const td = list.reduce((s, v) => s + v.total_debt, 0).toFixed(2);
-    document.getElementById('salesModalTitle').textContent = `⏱️ ${dept} - 销售员回款周期明细`;
+    const tc = list.reduce((s, v) => s + v.rec_amt, 0);
+    const td = list.reduce((s, v) => s + v.debt_amt, 0);
+    document.getElementById('salesModalTitle').innerHTML = `\u23F1\uFE0F ${dept} - \u9500\u552E\u5458\u56DE\u6B3E\u5468\u671F\u660E\u7EC6 <span style="font-size:0.7em;color:#8892b0;">(\u70B9\u51FB\u9500\u552E\u5458\u540D\u67E5\u770B\u5BA2\u6237\u660E\u7EC6)</span>`;
     document.getElementById('salesTableContainer').innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:0.85em;">
         <thead><tr style="background:rgba(0,212,255,0.12);">
-            <th style="padding:8px 6px;color:#00d4ff;">销售员</th>
-            <th style="padding:8px 6px;color:#00d4ff;text-align:right;">回款金额(万)</th>
-            <th style="padding:8px 6px;color:#00d4ff;text-align:right;">欠款金额(万)</th>
-            <th style="padding:8px 6px;color:#00d4ff;text-align:right;">回款周期(天)</th>
-            <th style="padding:8px 6px;color:#00d4ff;text-align:center;">状态</th>
+            <th style="padding:8px 6px;color:#00d4ff;">\u9500\u552E\u5458</th>
+            <th style="padding:8px 6px;color:#00d4ff;text-align:right;">\u8BA4\u6B3E\u91D1\u989D(\u4E07)</th>
+            <th style="padding:8px 6px;color:#00d4ff;text-align:right;">\u6B20\u6B3E\u91D1\u989D(\u4E07)</th>
+            <th style="padding:8px 6px;color:#00d4ff;text-align:right;">\u56DE\u6B3E\u5468\u671F(\u5929)</th>
+            <th style="padding:8px 6px;color:#00d4ff;text-align:center;">\u72B6\u6001</th>
         </tr></thead>
         <tbody>${rows}
         <tr style="background:rgba(0,212,255,0.08);font-weight:600;">
-            <td style="padding:8px 6px;color:#00d4ff;">合计（${list.length}人）</td>
-            <td style="padding:8px 6px;color:#00ff88;text-align:right;">${tc}</td>
-            <td style="padding:8px 6px;color:#ff4757;text-align:right;">${td}</td>
+            <td style="padding:8px 6px;color:#00d4ff;">\u5408\u8BA1\uFF08${list.length}\u4EBA\uFF09</td>
+            <td style="padding:8px 6px;color:#00ff88;text-align:right;">${(tc/10000).toFixed(2)}</td>
+            <td style="padding:8px 6px;color:#ffa502;text-align:right;">${(td/10000).toFixed(2)}</td>
             <td colspan="2"></td>
         </tr></tbody></table>`;
     document.getElementById('salesModal').style.display = 'flex';
@@ -566,7 +5962,61 @@ function renderSalesCycle(dept) {
 
 function closeSalesModal() {
     document.getElementById('salesModal').style.display = 'none';
+    window._salesCycleBack = null;
 }
+
+// ===== 客户回款周期明细（第二级下钻）=====
+function renderCustCycle(dept, salesName) {
+    window._salesCycleBack = document.getElementById('salesTableContainer').innerHTML;
+    window._salesCycleTitle = document.getElementById('salesModalTitle').innerHTML;
+
+    const custList = custCycleData[dept] && custCycleData[dept][salesName] ? custCycleData[dept][salesName] : [];
+    if (!custList.length) return;
+
+    const rows = custList.map(c => {
+        const cycle = c.cycle;
+        const cycleStr = cycle > 0 ? cycle.toFixed(1) : '-';
+        const cc = cycle <= 0 ? '#8892b0' : cycle > 90 ? '#ff4757' : cycle > 60 ? '#ffa502' : '#00ff88';
+        const status = cycle <= 0 ? '\u26AA \u65E0\u6570\u636E' : cycle > 90 ? '\u{1F534} \u9700\u5173\u6CE8' : cycle > 60 ? '\u{1F7E1} \u504F\u9AD8' : '\u{1F7E2} \u6B63\u5E38';
+        return `<tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:7px 5px;color:#ccd6f6;max-width:300px;word-break:break-all;">${c.name}</td>
+            <td style="padding:7px 5px;color:#00ff88;text-align:right;">${(c.rec_amt/10000).toFixed(2)}</td>
+            <td style="padding:7px 5px;color:#ffa502;text-align:right;">${(c.debt_amt/10000).toFixed(2)}</td>
+            <td style="padding:7px 5px;color:${cc};text-align:right;font-weight:600;">${cycleStr}</td>
+            <td style="padding:7px 5px;color:#ccd6f6;text-align:center;">${status}</td>
+        </tr>`;
+    }).join('');
+
+    const tc = custList.reduce((s, c) => s + c.rec_amt, 0);
+    const td = custList.reduce((s, c) => s + c.debt_amt, 0);
+
+    document.getElementById('salesModalTitle').innerHTML = `\u23F1\uFE0F ${salesName} - \u5BA2\u6237\u56DE\u6B3E\u5468\u671F\u660E\u7EC6 <span style="font-size:0.75em;color:#8892b0;">(${dept})</span> <button onclick="backToSalesCycle()" style="margin-left:12px;background:rgba(0,212,255,0.2);border:1px solid rgba(0,212,255,0.4);color:#00d4ff;border-radius:6px;padding:3px 12px;font-size:0.85em;cursor:pointer;">\u2190 \u8FD4\u56DE\u9500\u552E\u5458</button>`;
+    document.getElementById('salesTableContainer').innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:0.8em;">
+        <thead><tr style="background:rgba(0,212,255,0.12);">
+            <th style="padding:8px 6px;color:#00d4ff;text-align:left;">\u5BA2\u6237\u540D\u79F0</th>
+            <th style="padding:8px 6px;color:#00d4ff;text-align:right;">\u8BA4\u6B3E\u91D1\u989D(\u4E07)</th>
+            <th style="padding:8px 6px;color:#00d4ff;text-align:right;">\u6B20\u6B3E\u91D1\u989D(\u4E07)</th>
+            <th style="padding:8px 6px;color:#00d4ff;text-align:right;">\u56DE\u6B3E\u5468\u671F(\u5929)</th>
+            <th style="padding:8px 6px;color:#00d4ff;text-align:center;">\u72B6\u6001</th>
+        </tr></thead>
+        <tbody>${rows}
+        <tr style="background:rgba(0,212,255,0.08);font-weight:600;">
+            <td style="padding:8px 6px;color:#00d4ff;">\u5408\u8BA1\uFF08${custList.length}\u4E2A\u5BA2\u6237\uFF09</td>
+            <td style="padding:8px 6px;color:#00ff88;text-align:right;">${(tc/10000).toFixed(2)}</td>
+            <td style="padding:8px 6px;color:#ffa502;text-align:right;">${(td/10000).toFixed(2)}</td>
+            <td colspan="2"></td>
+        </tr></tbody></table>`;
+}
+
+function backToSalesCycle() {
+    if (window._salesCycleBack) {
+        document.getElementById('salesTableContainer').innerHTML = window._salesCycleBack;
+        document.getElementById('salesModalTitle').innerHTML = window._salesCycleTitle;
+        window._salesCycleBack = null;
+    }
+}
+
+
 
 function showOver90Depts() {
     const over90 = deptData.filter(d => d.cycle > 90).sort((a, b) => b.cycle - a.cycle);
@@ -606,7 +6056,7 @@ function showOver90Depts() {
     document.getElementById('salesModal').style.display = 'flex';
 }
 
-// ===== 回款周期分析表格 =====
+// ===== 平均回款周期分析表格 =====
 function renderCycleTable() {
     const tbody = document.getElementById('cycleTableBody');
     if (!tbody) return;

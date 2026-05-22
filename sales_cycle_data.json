@@ -36,7 +36,7 @@
       "name": "杨婉晴",
       "debt_amt": 0.0,
       "rec_amt": 0.0,
-      "cycle": 0.0,
+      "cycle": 0,
       "debt_weighted": 0.0,
       "rec_weighted": 0.0
     },
@@ -44,7 +44,7 @@
       "name": "王娇娇",
       "debt_amt": 0.0,
       "rec_amt": 0.0,
-      "cycle": 0.0,
+      "cycle": 0,
       "debt_weighted": 0.0,
       "rec_weighted": 0.0
     }
@@ -386,7 +386,7 @@
       "name": "肖赛康",
       "debt_amt": 0.0,
       "rec_amt": 0.0,
-      "cycle": 0.0,
+      "cycle": 0,
       "debt_weighted": 0.0,
       "rec_weighted": 0.0
     }

@@ -251,7 +251,7 @@ def generate_html(data, sales_detail):
     <div class="tab-nav">
         <button class="tab-btn active" onclick="switchTab('performance', this)"><span class="tab-icon">📊</span>业绩分析</button>
         <button class="tab-btn" onclick="switchTab('debt', this)"><span class="tab-icon">💳</span>欠款分析</button>
-        <button class="tab-btn" onclick="switchTab('collection', this)"><span class="tab-icon">⏱️</span>回款周期分析</button>
+        <button class="tab-btn" onclick="switchTab('collection', this)"><span class="tab-icon">⏱️</span>平均回款周期分析</button>
     </div>
 
     <!-- ===== 业绩分析 Tab ===== -->
@@ -368,10 +368,10 @@ def generate_html(data, sales_detail):
         </div>
     </div>
 
-    <!-- ===== 回款周期分析 Tab ===== -->
+    <!-- ===== 平均回款周期分析 Tab ===== -->
     <div id="tab-collection" class="tab-content">
         <div class="module">
-            <h2 class="module-title">⏱️ 回款周期分析</h2>
+            <h2 class="module-title">⏱️ 平均回款周期分析</h2>
             <div class="kpi-grid" style="margin-bottom:25px;">
                 <div class="kpi-card">
                     <div class="kpi-icon">📊</div>
@@ -680,7 +680,7 @@ function showOver90Depts() {{
     document.getElementById('salesModal').style.display = 'flex';
 }}
 
-// ===== 回款周期分析表格 =====
+// ===== 平均回款周期分析表格 =====
 function renderCycleTable() {{
     const tbody = document.getElementById('cycleTableBody');
     if (!tbody) return;
