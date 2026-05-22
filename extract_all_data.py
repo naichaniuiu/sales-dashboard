@@ -72,7 +72,7 @@ def classify_age(days):
     except:
         return '未知'
 
-df_debt_r['账龄区间'] = df_debt_r['天数'].apply(classify_age)
+df_debt_r['账龄区间'] = df_debt_r['欠款天数'].apply(classify_age)
 
 # 按部门+账龄汇总
 debt_by_dept_age = df_debt_r.groupby(['三级部门', '账龄区间'])['欠款净额'].sum() / 10000
@@ -102,7 +102,7 @@ for dept, val in receipt_by_dept.sort_values(ascending=False).items():
 print()
 
 # ===== 6. 回款周期计算 =====
-df_debt_r['欠款天数'] = pd.to_numeric(df_debt_r['天数'], errors='coerce').fillna(0)
+df_debt_r['欠款天数'] = pd.to_numeric(df_debt_r['欠款天数'], errors='coerce').fillna(0)
 
 # 加权回款周期 = (欠款金额*欠款天数 + 认款金额*认款天数) / (欠款金额 + 认款金额)
 df_debt_r['欠款绝对值'] = df_debt_r['欠款净额'].abs()

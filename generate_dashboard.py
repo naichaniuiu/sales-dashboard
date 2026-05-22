@@ -39,7 +39,7 @@ for _, row in df_target.iterrows():
 # ===================== 欠款数据处理 =====================
 # 天数列是数字，正值欠款
 df_debt_pos = df_debt[df_debt["欠款金额"] > 0].copy()
-df_debt_pos["天数"] = pd.to_numeric(df_debt_pos["天数"], errors="coerce").fillna(0)
+df_debt_pos["欠款天数"] = pd.to_numeric(df_debt_pos["欠款天数"], errors="coerce").fillna(0)
 
 def classify_days(days):
     if days <= 30:
@@ -51,7 +51,7 @@ def classify_days(days):
     else:
         return "180天以上"
 
-df_debt_pos["账龄分类"] = df_debt_pos["天数"].apply(classify_days)
+df_debt_pos["账龄分类"] = df_debt_pos["欠款天数"].apply(classify_days)
 df_debt_pos["账龄中点"] = df_debt_pos["账龄分类"].map({
     "30天内": 15, "30-90天": 60, "90-180天": 135, "180天以上": 210
 })

@@ -43,7 +43,7 @@ perf["回款"] = (perf["回款"] / 10000).round(2)
 
 # ========== 2. 欠款账龄（全部人员，部门以欠款表为准）==========
 df_debt_all = df_debt_xb.copy()
-df_debt_all["天数"] = pd.to_numeric(df_debt_all["天数"], errors="coerce").fillna(0)
+df_debt_all["欠款天数"] = pd.to_numeric(df_debt_all["欠款天数"], errors="coerce").fillna(0)
 
 def classify(d):
     if d <= 30:   return "30天内"
@@ -51,7 +51,7 @@ def classify(d):
     elif d <= 180: return "90-180天"
     else:           return "180天以上"
 
-df_debt_all["账龄"] = df_debt_all["天数"].apply(classify)
+df_debt_all["账龄"] = df_debt_all["欠款天数"].apply(classify)
 
 debt_age = (
     df_debt_all
