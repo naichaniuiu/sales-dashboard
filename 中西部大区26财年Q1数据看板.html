@@ -294,25 +294,25 @@
                 <div class="kpi-card">
                     <div class="kpi-icon">📊</div>
                     <h3>全大区平均回款周期</h3>
-                    <div class="value warning">76.9</div>
-                    <div class="sub">天（欠款加权综合）</div>
+                    <div class="value warning">77.4</div>
+                    <div class="sub">天（欠款+认款加权综合）</div>
                 </div>
                 <div class="kpi-card">
                     <div class="kpi-icon">🔴</div>
                     <h3>最长部门回款周期</h3>
-                    <div class="value negative">128.9</div>
+                    <div class="value negative">106.4</div>
                     <div class="sub">武汉金融行业组</div>
                 </div>
                 <div class="kpi-card">
                     <div class="kpi-icon">🟢</div>
                     <h3>最短部门回款周期</h3>
-                    <div class="value highlight">34.6</div>
-                    <div class="sub">武汉基建制造行业组</div>
+                    <div class="value highlight">47.5</div>
+                    <div class="sub">其他</div>
                 </div>
                 <div class="kpi-card" onclick="showOver90Depts()" style="cursor:pointer;" title="点击查看回款周期大于90天的部门">
                     <div class="kpi-icon">⚠️</div>
                     <h3>超90天部门数</h3>
-                    <div class="value negative">4</div>
+                    <div class="value negative">2</div>
                     <div class="sub">回款周期大于90天的部门（点击查看）</div>
                 </div>
             </div>
@@ -321,7 +321,7 @@
             <div style="background:rgba(255, 255, 255, 0.03);border-radius:12px;padding:15px 20px;margin-bottom:20px;border:1px solid rgba(255, 255, 255, 0.08);">
                 <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
                     <span style="font-weight:600;color:#00d4ff;">部门平均回款周期（天）</span>
-                    <span style="color:#8892b0;font-size:0.9em;">| 基于欠款账龄中点加权计算</span>
+                    <span style="color:#8892b0;font-size:0.9em;">| （欠款加权天数+回款加权天数）÷（欠款总额+认款协同金额）</span>
                 </div>
                 <div style="display:flex;gap:20px;flex-wrap:wrap;">
                     <div style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:50%;background:#00ff88;display:inline-block;"></span><span style="color:#ccd6f6;font-size:0.9em;">≤60天（良好）</span></div>
@@ -378,15 +378,15 @@
 <script>
 // ===== 数据 =====
 const deptData = [
-    {dept:'武汉基建制造行业组',v26:237.71,v25:753.19,yoy:-68.4,target:1302.0,completion:18.3,sales:7,d30:246.75,d30_90:35.37,d90_180:17.83,d180:1.49,total_debt:301.44,collect:617.79,cycle:40.9},
-    {dept:'成都站',v26:128.13,v25:606.4,yoy:-78.9,target:1155.0,completion:11.1,sales:16,d30:56.73,d30_90:15.29,d90_180:100.63,d180:13.9,total_debt:186.54,collect:273.52,cycle:111.1},
-    {dept:'西安站',v26:99.94,v25:245.77,yoy:-59.3,target:441.0,completion:22.7,sales:5,d30:87.65,d30_90:75.22,d90_180:142.09,d180:15.01,total_debt:319.97,collect:288.09,cycle:153.5},
-    {dept:'长沙站',v26:77.85,v25:395.05,yoy:-80.3,target:525.0,completion:14.8,sales:8,d30:24.91,d30_90:30.81,d90_180:5.95,d180:1.13,total_debt:62.8,collect:281.12,cycle:40.8},
-    {dept:'武汉能源交通行业组',v26:62.67,v25:504.07,yoy:-87.6,target:630.0,completion:9.9,sales:9,d30:39.3,d30_90:13.11,d90_180:67.43,d180:0.07,total_debt:119.9,collect:398.96,cycle:63.4},
-    {dept:'重庆站',v26:62.63,v25:315.63,yoy:-80.2,target:525.0,completion:11.9,sales:8,d30:32.59,d30_90:15.06,d90_180:52.48,d180:11.75,total_debt:111.88,collect:168.01,cycle:87.7},
-    {dept:'郑州站',v26:29.8,v25:232.47,yoy:-87.2,target:441.0,completion:6.8,sales:8,d30:14.46,d30_90:49.61,d90_180:79.17,d180:1.69,total_debt:144.93,collect:82.38,cycle:85.7},
-    {dept:'武汉金融行业组',v26:21.73,v25:552.34,yoy:-96.1,target:567.0,completion:3.8,sales:5,d30:17.16,d30_90:48.65,d90_180:121.82,d180:58.09,total_debt:245.72,collect:230.1,cycle:80.9},
-    {dept:'其他',v26:9.66,v25:230.71,yoy:-95.8,target:0,completion:0,sales:2,d30:16.13,d30_90:3.26,d90_180:2.1,d180:0.71,total_debt:22.2,collect:4.92,cycle:80.5}
+    {dept:'武汉基建制造行业组',v26:237.71,v25:753.19,yoy:-68.4,target:1302.0,completion:18.3,sales:7,d30:246.75,d30_90:35.37,d90_180:17.83,d180:1.49,total_debt:301.44,collect:617.79,cycle:57.5},
+    {dept:'成都站',v26:128.13,v25:606.4,yoy:-78.9,target:1155.0,completion:11.1,sales:16,d30:56.73,d30_90:15.29,d90_180:100.63,d180:13.9,total_debt:186.54,collect:273.52,cycle:81.9},
+    {dept:'西安站',v26:99.94,v25:245.77,yoy:-59.3,target:441.0,completion:22.7,sales:5,d30:87.65,d30_90:75.22,d90_180:142.09,d180:15.01,total_debt:319.97,collect:288.09,cycle:90.4},
+    {dept:'长沙站',v26:77.85,v25:395.05,yoy:-80.3,target:525.0,completion:14.8,sales:8,d30:24.91,d30_90:30.81,d90_180:5.95,d180:1.13,total_debt:62.8,collect:281.12,cycle:63.6},
+    {dept:'武汉能源交通行业组',v26:62.67,v25:504.07,yoy:-87.6,target:630.0,completion:9.9,sales:9,d30:39.3,d30_90:13.11,d90_180:67.43,d180:0.07,total_debt:119.9,collect:398.96,cycle:73.2},
+    {dept:'重庆站',v26:62.63,v25:315.63,yoy:-80.2,target:525.0,completion:11.9,sales:8,d30:32.59,d30_90:15.06,d90_180:52.48,d180:11.75,total_debt:111.88,collect:168.01,cycle:75.3},
+    {dept:'郑州站',v26:29.8,v25:232.47,yoy:-87.2,target:441.0,completion:6.8,sales:8,d30:14.46,d30_90:49.61,d90_180:79.17,d180:1.69,total_debt:144.93,collect:82.38,cycle:85.8},
+    {dept:'武汉金融行业组',v26:21.73,v25:552.34,yoy:-96.1,target:567.0,completion:3.8,sales:5,d30:17.16,d30_90:48.65,d90_180:121.82,d180:58.09,total_debt:245.72,collect:230.1,cycle:106.4},
+    {dept:'其他',v26:9.66,v25:230.71,yoy:-95.8,target:0,completion:0,sales:2,d30:16.13,d30_90:3.26,d90_180:2.1,d180:0.71,total_debt:22.2,collect:4.92,cycle:47.5}
 ];
 
 // ===== Tab切换 =====
@@ -836,7 +836,7 @@ function initCharts() {
                 }
             },
             scales: {
-                x: { ticks: { color: '#8892b0' }, grid: { color: 'rgba(255,255,255,0.05)' }, max: 150 },
+                x: { ticks: { color: '#8892b0' }, grid: { color: 'rgba(255,255,255,0.05)' }, max: 120 },
                 y: { ticks: { color: '#ccd6f6', font: { size: 12 } }, grid: { display: false } }
             }
         }
