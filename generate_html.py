@@ -377,7 +377,7 @@ def generate_html(data, sales_detail):
                     <div class="kpi-icon">📊</div>
                     <h3>全大区平均回款周期</h3>
                     <div class="value warning">{avg_cycle:.1f}</div>
-                    <div class="sub">天（欠款加权综合）</div>
+                    <div class="sub">天（欠款+回款加权综合）</div>
                 </div>
                 <div class="kpi-card">
                     <div class="kpi-icon">🔴</div>
