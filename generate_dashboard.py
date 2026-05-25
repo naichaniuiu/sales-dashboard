@@ -73,16 +73,42 @@ age_dist = df_debt_pos.groupby("账龄分类")["欠款金额"].sum() / 10000
 # ===================== 认款数据 =====================
 collect_by_dept = df_collect.groupby("三级部门")["认款协同金额"].sum() / 10000
 
+# ===================== 回款加权天数（认款端） =====================
+from datetime import datetime
+
+df_collect_w = df_collect.copy()
+df_collect_w["业绩日期"] = pd.to_datetime(df_collect_w["业绩日期"], errors="coerce")
+df_collect_w["认款时间"] = pd.to_datetime(df_collect_w["认款时间"], errors="coerce")
+df_collect_w["认款天数"] = df_collect_w.apply(
+    lambda row: max(0, (row["认款时间"] - row["业绩日期"]).days)
+    if pd.notna(row["业绩日期"]) and pd.notna(row["认款时间"]) else 0,
+    axis=1
+)
+df_collect_w["rec_weighted"] = df_collect_w["认款协同金额"] * df_collect_w["认款天数"]
+rec_weighted_by_dept = df_collect_w.groupby("三级部门")["rec_weighted"].sum()  # 单位：元·天
+
+# ===================== 欠款加权天数（欠款端） =====================
+debt_weighted_by_dept = df_debt_pos.groupby("三级部门").apply(
+    lambda g: (g["欠款金额"] * g["欠款天数"]).sum(), include_groups=False
+)  # 单位：元·天
+
 # ===================== 加权回款周期 =====================
+# 公式: 回款周期 = (欠款加权天数 + 回款加权天数) / (欠款总额 + 认款协同金额)
 def calc_cycle(dept):
-    sub = df_debt_pos[df_debt_pos["三级部门"] == dept]
-    if sub.empty:
+    # 欠款端（单位：元）
+    debt_w = float(debt_weighted_by_dept.get(dept, 0))
+    debt_total = float(df_debt_pos[df_debt_pos["三级部门"] == dept]["欠款金额"].sum())
+
+    # 认款端（单位：元）
+    rec_w = float(rec_weighted_by_dept.get(dept, 0))
+    rec_total = float(df_collect_w[df_collect_w["三级部门"] == dept]["认款协同金额"].sum())
+
+    total_w = debt_w + rec_w
+    total_a = debt_total + rec_total
+
+    if total_a == 0:
         return 0
-    total = sub["欠款金额"].sum()
-    if total == 0:
-        return 0
-    weighted = (sub["欠款金额"] * sub["账龄中点"]).sum() / total
-    return round(weighted, 1)
+    return round(total_w / total_a, 1)
 
 # ===================== 汇总部门数据 =====================
 all_depts = sorted(set(list(sum26.index) + list(sum25.index)))
