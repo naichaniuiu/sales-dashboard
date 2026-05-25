@@ -56,13 +56,13 @@ debt_drill = {}
 total_debt = 0
 total_custs = 0
 
-for dept in sorted(debt_map.keys()):
+for dept in sorted(str(k) for k in debt_map.keys() if pd.notna(k)):
     sales_list = []
-    for sales_name in sorted(debt_map[dept].keys()):
+    for sales_name in sorted(str(k) for k in debt_map[dept].keys() if pd.notna(k)):
         cust_list = []
         s_d30 = s_d30_90 = s_d90_180 = s_d180 = 0.0
 
-        for client_name in sorted(debt_map[dept][sales_name].keys()):
+        for client_name in sorted(str(k) for k in debt_map[dept][sales_name].keys() if pd.notna(k)):
             c = debt_map[dept][sales_name][client_name]
             c_total = round(c['d30'] + c['d30_90'] + c['d90_180'] + c['d180'], 2)
             s_d30 += c['d30']
@@ -144,13 +144,13 @@ perf_drill = {}
 total_perf = 0
 total_custs_perf = 0
 
-for dept in sorted(perf_map.keys()):
+for dept in sorted(str(k) for k in perf_map.keys() if pd.notna(k)):
     sales_list = []
-    for sales_name in sorted(perf_map[dept].keys()):
+    for sales_name in sorted(str(k) for k in perf_map[dept].keys() if pd.notna(k)):
         cust_list = []
         s_perf = s_coll = 0
 
-        for client_name in sorted(perf_map[dept][sales_name].keys()):
+        for client_name in sorted(str(k) for k in perf_map[dept][sales_name].keys() if pd.notna(k)):
             c = perf_map[dept][sales_name][client_name]
             cust_list.append({
                 'name': client_name,

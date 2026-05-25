@@ -86,11 +86,11 @@ sales_rec_count = sum(len(v) for v in rec_map.values())
 print(f"[认款] 已读取 {sales_rec_count} 个销售员的认款数据")
 
 # ========== 3. 合并计算销售员级回款周期 ==========
-all_depts = sorted(set(list(debt_map.keys()) + list(rec_map.keys())))
+all_depts = sorted(set(str(k) for k in list(debt_map.keys()) + list(rec_map.keys()) if pd.notna(k)))
 sales_cycle_data = {}
 
 for dept in all_depts:
-    all_sales = sorted(set(list(debt_map[dept].keys()) + list(rec_map[dept].keys())))
+    all_sales = sorted(set(str(k) for k in list(debt_map[dept].keys()) + list(rec_map[dept].keys()) if pd.notna(k)))
     dept_list = []
 
     for sales_name in all_sales:
@@ -128,7 +128,7 @@ print(f"\n[OK] sales_cycle_data.json ({len(sales_cycle_data)} 个部门)")
 cust_cycle_data = {}
 
 for dept in all_depts:
-    all_sales = sorted(set(list(debt_map[dept].keys()) + list(rec_map[dept].keys())))
+    all_sales = sorted(set(str(k) for k in list(debt_map[dept].keys()) + list(rec_map[dept].keys()) if pd.notna(k)))
     dept_cust = {}
 
     for sales_name in all_sales:
