@@ -403,7 +403,7 @@ def generate_html(data, sales_detail):
             <div style="background:rgba(255, 255, 255, 0.03);border-radius:12px;padding:15px 20px;margin-bottom:20px;border:1px solid rgba(255, 255, 255, 0.08);">
                 <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
                     <span style="font-weight:600;color:#00d4ff;">部门平均回款周期（天）</span>
-                    <span style="color:#8892b0;font-size:0.9em;">| 基于欠款账龄中点加权计算</span>
+                    <span style="color:#8892b0;font-size:0.9em;">| 回款周期计算 =（欠款加权天数 + 回款加权天数）÷（欠款总额 + 认款协同金额）</span>
                 </div>
                 <div style="display:flex;gap:20px;flex-wrap:wrap;">
                     <div style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:50%;background:#00ff88;display:inline-block;"></span><span style="color:#ccd6f6;font-size:0.9em;">≤60天（良好）</span></div>
