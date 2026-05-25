@@ -3,7 +3,7 @@
 根据最新JSON数据重新生成HTML看板（保留旧模板样式）
 """
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 
 def load_data():
     """加载数据文件"""
@@ -18,6 +18,7 @@ def load_sales_detail():
 def generate_html(data, sales_detail):
     """生成HTML"""
     today = datetime.now().strftime('%Y-%m-%d')
+    yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
     dept_data = data['dept_data']
     total = data['total']
     risk = data['risk_customers']
@@ -210,7 +211,7 @@ def generate_html(data, sales_detail):
 <div class="container">
     <div class="header">
         <h1>中西部大区 26财年Q1 数据看板</h1>
-        <p>数据更新时间：{today} &nbsp;|&nbsp; 数据来源：业绩 欠款看板.xlsx</p>
+        <p>数据截止：{yesterday} &nbsp;|&nbsp; 统计基日：{today} &nbsp;|&nbsp; 生成于：{today}</p>
     </div>
 
     <!-- 核心KPI -->
