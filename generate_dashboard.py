@@ -70,6 +70,9 @@ for col in ["30天内","30-90天","90-180天","180天以上"]:
 # 账龄总分布
 age_dist = df_debt_pos.groupby("账龄分类")["欠款金额"].sum() / 10000
 
+# 全部欠款（正负相抵）按部门汇总 —— 用于KPI和回款周期
+debt_net_by_dept = df_debt.groupby("三级部门")["欠款金额"].sum() / 10000
+
 # ===================== 认款数据 =====================
 collect_by_dept = df_collect.groupby("三级部门")["认款协同金额"].sum() / 10000
 
@@ -97,7 +100,7 @@ debt_weighted_by_dept = df_debt_pos.groupby("三级部门").apply(
 def calc_cycle(dept):
     # 欠款端（单位：元）
     debt_w = float(debt_weighted_by_dept.get(dept, 0))
-    debt_total = float(df_debt_pos[df_debt_pos["三级部门"] == dept]["欠款金额"].sum())
+    debt_total = float(df_debt[df_debt["三级部门"] == dept]["欠款金额"].sum())
 
     # 认款端（单位：元）
     rec_w = float(rec_weighted_by_dept.get(dept, 0))
@@ -142,7 +145,7 @@ for dept in all_depts:
     else:
         d30 = d30_90 = d90_180 = d180 = 0
 
-    total_debt = round(d30 + d30_90 + d90_180 + d180, 2)
+    total_debt = round(float(debt_net_by_dept.get(dept, 0)), 2)
     collect = round(float(collect_by_dept.get(dept, 0)), 2)
     cycle = calc_cycle(dept)
 
@@ -167,7 +170,7 @@ total_d30     = round(sum(d["d30"]     for d in dept_data), 2)
 total_d30_90  = round(sum(d["d30_90"]  for d in dept_data), 2)
 total_d90_180 = round(sum(d["d90_180"] for d in dept_data), 2)
 total_d180    = round(sum(d["d180"]    for d in dept_data), 2)
-total_debt    = round(total_d30 + total_d30_90 + total_d90_180 + total_d180, 2)
+total_debt    = round(float(debt_net_by_dept.sum()), 2)
 total_collect = round(sum(d["collect"] for d in dept_data), 2)
 
 # ===================== 回款周期 =====================
