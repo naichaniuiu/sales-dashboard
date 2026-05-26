@@ -37,9 +37,9 @@ for _, row in df_target.iterrows():
         targets[dept] = float(val)  # 已是万元
 
 # ===================== 欠款数据处理 =====================
-# 天数列是数字，正值欠款
-df_debt_pos = df_debt[df_debt["欠款金额"] > 0].copy()
-df_debt_pos["欠款天数"] = pd.to_numeric(df_debt_pos["欠款天数"], errors="coerce").fillna(0)
+# 账龄分类（含全部正负欠款）—— 用于四个账龄桶汇总
+df_debt_aged = df_debt.copy()
+df_debt_aged["欠款天数"] = pd.to_numeric(df_debt_aged["欠款天数"], errors="coerce").fillna(0)
 
 def classify_days(days):
     if days <= 30:
@@ -51,13 +51,10 @@ def classify_days(days):
     else:
         return "180天以上"
 
-df_debt_pos["账龄分类"] = df_debt_pos["欠款天数"].apply(classify_days)
-df_debt_pos["账龄中点"] = df_debt_pos["账龄分类"].map({
-    "30天内": 15, "30-90天": 60, "90-180天": 135, "180天以上": 210
-})
+df_debt_aged["账龄分类"] = df_debt_aged["欠款天数"].apply(classify_days)
 
-# 按部门+账龄汇总
-debt_pivot = df_debt_pos.pivot_table(
+# 按部门+账龄汇总（含正负）
+debt_pivot = df_debt_aged.pivot_table(
     values="欠款金额", index="三级部门", columns="账龄分类",
     aggfunc="sum", fill_value=0
 ) / 10000
@@ -67,8 +64,13 @@ for col in ["30天内","30-90天","90-180天","180天以上"]:
     if col not in debt_pivot.columns:
         debt_pivot[col] = 0
 
-# 账龄总分布
-age_dist = df_debt_pos.groupby("账龄分类")["欠款金额"].sum() / 10000
+# 账龄总分布（含正负）
+age_dist = df_debt_aged.groupby("账龄分类")["欠款金额"].sum() / 10000
+
+# 仅正数欠款 —— 用于加权天数计算和风险客户
+df_debt_pos = df_debt[df_debt["欠款金额"] > 0].copy()
+df_debt_pos["欠款天数"] = pd.to_numeric(df_debt_pos["欠款天数"], errors="coerce").fillna(0)
+df_debt_pos["账龄分类"] = df_debt_pos["欠款天数"].apply(classify_days)
 
 # 全部欠款（正负相抵）按部门汇总 —— 用于KPI和回款周期
 debt_net_by_dept = df_debt.groupby("三级部门")["欠款金额"].sum() / 10000
