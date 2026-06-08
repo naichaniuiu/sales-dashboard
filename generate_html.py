@@ -141,11 +141,9 @@ def generate_html(data, sales_detail):
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
         body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #0a0e27; color: #fff; line-height: 1.6; min-height: 100vh; }}
         .container {{ max-width: 1400px; margin: 0 auto; padding: 30px 20px; }}
-        .header {{ text-align: center; margin-bottom: 40px; position: relative; }}
+        .header {{ text-align: center; margin-bottom: 40px; }}
         .header h1 {{ font-size: 2.2em; background: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; }}
         .header p {{ color: #8892b0; font-size: 1.1em; }}
-        .open-folder-btn {{ position: absolute; top: 0; right: 0; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 6px 12px; color: #8892b0; font-size: 0.9em; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: background 0.2s; }}
-        .open-folder-btn:hover {{ background: rgba(255,255,255,0.12); color: #ccd6f6; }}
 
         .kpi-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }}
         .kpi-card {{ background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%); border-radius: 16px; padding: 24px; text-align: center; border: 1px solid rgba(255,255,255,0.1); transition: transform 0.3s, box-shadow 0.3s; }}
@@ -212,7 +210,6 @@ def generate_html(data, sales_detail):
 <body>
 <div class="container">
     <div class="header">
-        <a class="open-folder-btn" onclick="openFolder()" title="打开文件夹">📂 打开文件夹</a>
         <h1>中西部大区 26财年Q1 数据看板</h1>
         <p>数据截止：{yesterday} &nbsp;|&nbsp; 统计基日：{today} &nbsp;|&nbsp; 生成于：{today}</p>
     </div>
@@ -462,12 +459,6 @@ def generate_html(data, sales_detail):
 </div>
 
 <script>
-// ===== 打开工作目录文件夹 =====
-function openFolder() {{
-    const a = document.createElement('a');
-    a.href = 'file:///C:/Users/wm881/WorkBuddy/20260513090923/';
-    a.click();
-}}
 // ===== 数据 =====
 const deptData = [
     {dept_js_str}

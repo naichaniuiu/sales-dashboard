@@ -31,7 +31,7 @@ echo [Token] 已保存
 git remote set-url origin https://naichaniuiu:!GH_TOKEN!@github.com/naichaniuiu/sales-dashboard.git >nul 2>&1
 
 echo.
-set PYTHON=C:\Users\wm881\.workbuddy\binaries\python\versions\3.13.12\python.exe
+set PYTHON=C:\Users\wm881\.workbuddy\binaries\python\envs\default\Scripts\python.exe
 
 echo [1/6] 从Excel提取数据并计算...
 %PYTHON% generate_dashboard.py
