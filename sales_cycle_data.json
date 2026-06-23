@@ -4,67 +4,59 @@
       "name": "白雨",
       "debt_amt": 3557.42,
       "rec_amt": 5640.0,
-      "cycle": 199.6,
-      "debt_weighted": 901528.6,
+      "cycle": 201.2,
+      "debt_weighted": 915758.28,
       "rec_weighted": 934320.0
     },
     {
       "name": "李国栋",
       "debt_amt": 2096.16,
-      "rec_amt": 21161.61,
-      "cycle": 108.5,
-      "debt_weighted": 231380.16,
-      "rec_weighted": 2291944.01
+      "rec_amt": 21249.61,
+      "cycle": 108.4,
+      "debt_weighted": 239764.8,
+      "rec_weighted": 2292032.01
     },
     {
       "name": "吴晗",
-      "debt_amt": 299639.52,
-      "rec_amt": 69319.73,
-      "cycle": 41.1,
-      "debt_weighted": 10322027.91,
-      "rec_weighted": 4848015.88
-    },
-    {
-      "name": "刘传凤",
-      "debt_amt": 0.0,
-      "rec_amt": 3339.0,
-      "cycle": 2.3,
-      "debt_weighted": 0.0,
-      "rec_weighted": 7791.0
+      "debt_amt": 308160.21,
+      "rec_amt": 77549.77,
+      "cycle": 42.5,
+      "debt_weighted": 11536205.53,
+      "rec_weighted": 4864475.96
     }
   ],
   "成都站": [
     {
       "name": "陈钰",
-      "debt_amt": 9842.27,
+      "debt_amt": 9806.27,
       "rec_amt": 73678.7,
-      "cycle": 572.5,
-      "debt_weighted": 3350947.38,
+      "cycle": 573.0,
+      "debt_weighted": 3368428.46,
       "rec_weighted": 44465848.0
     },
     {
       "name": "杨程",
       "debt_amt": 900.0,
       "rec_amt": 9929.74,
-      "cycle": 261.7,
-      "debt_weighted": 358200.0,
+      "cycle": 262.1,
+      "debt_weighted": 361800.0,
       "rec_weighted": 2476417.86
     },
     {
       "name": "席亚雄",
       "debt_amt": 78634.43,
       "rec_amt": 55361.97,
-      "cycle": 109.6,
-      "debt_weighted": 6660515.05,
+      "cycle": 112.0,
+      "debt_weighted": 6975052.77,
       "rec_weighted": 8029094.23
     },
     {
       "name": "樊文",
-      "debt_amt": 1336302.35,
-      "rec_amt": 166960.85,
-      "cycle": 104.8,
-      "debt_weighted": 146966897.89,
-      "rec_weighted": 10504455.92
+      "debt_amt": 1300247.15,
+      "rec_amt": 203016.05,
+      "cycle": 108.2,
+      "debt_weighted": 147317753.81,
+      "rec_weighted": 15354588.6
     },
     {
       "name": "曾语嫣",
@@ -78,8 +70,8 @@
       "name": "谢晓宇",
       "debt_amt": 279214.99,
       "rec_amt": 242606.5,
-      "cycle": 78.4,
-      "debt_weighted": 32363022.71,
+      "cycle": 80.6,
+      "debt_weighted": 33479882.67,
       "rec_weighted": 8559094.0
     },
     {
@@ -94,105 +86,105 @@
       "name": "巨晨逸",
       "debt_amt": 35473.76,
       "rec_amt": 77818.88,
-      "cycle": 68.9,
-      "debt_weighted": 1016869.4,
+      "cycle": 70.2,
+      "debt_weighted": 1158764.44,
       "rec_weighted": 6791775.95
     },
     {
       "name": "郑波",
       "debt_amt": 45366.66,
       "rec_amt": 266475.61,
-      "cycle": 68.6,
-      "debt_weighted": 1022792.42,
+      "cycle": 69.2,
+      "debt_weighted": 1204259.06,
       "rec_weighted": 20377824.7
     },
     {
-      "name": "蒋君霞",
-      "debt_amt": 156354.43,
-      "rec_amt": 147368.2,
-      "cycle": 67.4,
-      "debt_weighted": 15823281.82,
-      "rec_weighted": 4640341.58
-    },
-    {
       "name": "吴晓波",
-      "debt_amt": 1095476.59,
+      "debt_amt": 1095876.59,
       "rec_amt": 918947.06,
-      "cycle": 64.9,
-      "debt_weighted": 53496402.0,
+      "cycle": 67.1,
+      "debt_weighted": 57861508.36,
       "rec_weighted": 77295689.68
     },
     {
+      "name": "蒋君霞",
+      "debt_amt": 168376.43,
+      "rec_amt": 150904.2,
+      "cycle": 66.2,
+      "debt_weighted": 16019427.54,
+      "rec_weighted": 5117701.58
+    },
+    {
       "name": "司马净瑜",
-      "debt_amt": 226911.88,
-      "rec_amt": 131226.7,
-      "cycle": 52.6,
-      "debt_weighted": 9913538.88,
-      "rec_weighted": 8929154.19
-    },
-    {
-      "name": "唐天宁",
-      "debt_amt": 33605.58,
-      "rec_amt": 63845.16,
-      "cycle": 47.5,
-      "debt_weighted": 617629.24,
-      "rec_weighted": 4006684.92
-    },
-    {
-      "name": "卓毓涛",
-      "debt_amt": 310498.74,
-      "rec_amt": 895532.17,
-      "cycle": 43.0,
-      "debt_weighted": 6985822.72,
-      "rec_weighted": 44859774.36
+      "debt_amt": 195405.5,
+      "rec_amt": 162733.08,
+      "cycle": 54.8,
+      "debt_weighted": 6720967.0,
+      "rec_weighted": 12903348.07
     },
     {
       "name": "李浩铭",
       "debt_amt": 55674.0,
       "rec_amt": 126730.0,
-      "cycle": 43.0,
-      "debt_weighted": 1880286.0,
+      "cycle": 44.2,
+      "debt_weighted": 2102982.0,
       "rec_weighted": 5963573.0
+    },
+    {
+      "name": "卓毓涛",
+      "debt_amt": 310498.74,
+      "rec_amt": 895532.17,
+      "cycle": 44.0,
+      "debt_weighted": 8227817.68,
+      "rec_weighted": 44859774.36
     },
     {
       "name": "王俊",
       "debt_amt": 122.0,
       "rec_amt": 0.0,
-      "cycle": 38.0,
-      "debt_weighted": 4636.0,
+      "cycle": 42.0,
+      "debt_weighted": 5124.0,
       "rec_weighted": 0.0
+    },
+    {
+      "name": "唐天宁",
+      "debt_amt": 55063.58,
+      "rec_amt": 63845.16,
+      "cycle": 40.7,
+      "debt_weighted": 837883.56,
+      "rec_weighted": 4006684.92
     },
     {
       "name": "杨莉萍",
       "debt_amt": 117133.52,
-      "rec_amt": 88720.42,
-      "cycle": 37.3,
-      "debt_weighted": 2932344.96,
-      "rec_weighted": 4742768.34
+      "rec_amt": 91558.42,
+      "cycle": 39.0,
+      "debt_weighted": 3400879.04,
+      "rec_weighted": 4745606.34
     },
     {
       "name": "徐晓荣",
-      "debt_amt": 464235.42,
+      "debt_amt": 464275.42,
       "rec_amt": 102247.15,
-      "cycle": 21.7,
-      "debt_weighted": 9519678.77,
+      "cycle": 25.0,
+      "debt_weighted": 11376660.45,
       "rec_weighted": 2788685.29
     },
     {
-      "name": "张鹏成",
-      "debt_amt": 461198.48,
-      "rec_amt": 159475.73,
-      "cycle": 19.6,
-      "debt_weighted": 8395597.93,
-      "rec_weighted": 3762587.53
+      "name": "何光耀",
+      "debt_amt": 666720.97,
+      "rec_amt": 148947.09,
+      "cycle": 21.8,
+      "debt_weighted": 7676208.24,
+      "rec_weighted": 10112474.75
     },
     {
-      "name": "何光耀",
-      "debt_amt": 660629.09,
-      "rec_amt": 148947.09,
-      "cycle": 18.7,
-      "debt_weighted": 5016577.34,
-      "rec_weighted": 10112474.75
+      "name": "张鹏成",
+      "debt_amt": 497500.48,
+      "rec_amt": 159475.73,
+      "cycle": 21.5,
+      "debt_weighted": 10385599.85,
+      "rec_weighted": 3762587.53
     }
   ],
   "武汉基建制造行业组": [
@@ -200,65 +192,65 @@
       "name": "陈鹏",
       "debt_amt": 687.06,
       "rec_amt": 169544.36,
-      "cycle": 105.2,
-      "debt_weighted": 12367.08,
+      "cycle": 105.3,
+      "debt_weighted": 15115.32,
       "rec_weighted": 17901847.8
     },
     {
       "name": "任重",
       "debt_amt": 62215.2,
       "rec_amt": 536382.99,
-      "cycle": 97.5,
-      "debt_weighted": 174979.8,
+      "cycle": 97.9,
+      "debt_weighted": 423840.6,
       "rec_weighted": 58163049.84
     },
     {
       "name": "程双清",
-      "debt_amt": 429000.0,
+      "debt_amt": 429455.0,
       "rec_amt": 2566320.0,
-      "cycle": 53.2,
-      "debt_weighted": 5805102.5,
+      "cycle": 53.8,
+      "debt_weighted": 7522922.5,
       "rec_weighted": 153541683.0
     },
     {
       "name": "张轩",
       "debt_amt": 543056.93,
       "rec_amt": 211459.37,
-      "cycle": 49.1,
-      "debt_weighted": 25096296.33,
+      "cycle": 52.0,
+      "debt_weighted": 27268524.05,
       "rec_weighted": 11972986.78
     },
     {
       "name": "别勇",
-      "debt_amt": 1162068.27,
+      "debt_amt": 1165065.77,
       "rec_amt": 1511910.73,
-      "cycle": 44.9,
-      "debt_weighted": 25395105.97,
+      "cycle": 46.6,
+      "debt_weighted": 30046568.55,
       "rec_weighted": 94619619.21
     },
     {
-      "name": "胡松",
-      "debt_amt": 2817427.26,
-      "rec_amt": 1814667.89,
-      "cycle": 41.3,
-      "debt_weighted": 73716292.59,
-      "rec_weighted": 117504252.27
-    },
-    {
       "name": "罗贝",
-      "debt_amt": 962357.56,
+      "debt_amt": 962673.56,
       "rec_amt": 483081.16,
-      "cycle": 41.2,
-      "debt_weighted": 21195306.05,
+      "cycle": 43.9,
+      "debt_weighted": 25046000.29,
       "rec_weighted": 38376682.64
     },
     {
+      "name": "胡松",
+      "debt_amt": 2792913.26,
+      "rec_amt": 1857747.89,
+      "cycle": 43.5,
+      "debt_weighted": 82697569.63,
+      "rec_weighted": 119689452.27
+    },
+    {
       "name": "陶迪",
-      "debt_amt": 137433.0,
-      "rec_amt": 35720.0,
-      "cycle": 13.1,
-      "debt_weighted": 770392.0,
-      "rec_weighted": 1491496.0
+      "debt_amt": 141563.0,
+      "rec_amt": 42770.0,
+      "cycle": 15.3,
+      "debt_weighted": 1320993.0,
+      "rec_weighted": 1507147.0
     }
   ],
   "武汉能源交通行业组": [
@@ -289,73 +281,73 @@
     {
       "name": "陈绪涛",
       "debt_amt": 624475.07,
-      "rec_amt": 1960125.83,
-      "cycle": 76.4,
-      "debt_weighted": 26484283.62,
-      "rec_weighted": 171020209.51
+      "rec_amt": 1962525.83,
+      "cycle": 77.3,
+      "debt_weighted": 28655783.9,
+      "rec_weighted": 171346609.51
     },
     {
       "name": "林茹",
-      "debt_amt": 541174.2,
-      "rec_amt": 518670.7,
-      "cycle": 48.9,
-      "debt_weighted": 7338843.5,
-      "rec_weighted": 44525845.05
+      "debt_amt": 545437.0,
+      "rec_amt": 520850.7,
+      "cycle": 50.7,
+      "debt_weighted": 9518024.5,
+      "rec_weighted": 44529325.05
     },
     {
       "name": "魏欣蓓",
       "debt_amt": 220366.97,
       "rec_amt": 274537.76,
-      "cycle": 46.0,
-      "debt_weighted": 4162514.76,
+      "cycle": 47.7,
+      "debt_weighted": 5043982.64,
       "rec_weighted": 18584614.18
     },
     {
       "name": "石翔瑜",
-      "debt_amt": 658553.2,
-      "rec_amt": 660180.98,
-      "cycle": 45.5,
-      "debt_weighted": 14569946.8,
-      "rec_weighted": 45388469.16
+      "debt_amt": 596348.2,
+      "rec_amt": 722385.98,
+      "cycle": 47.3,
+      "debt_weighted": 13867334.6,
+      "rec_weighted": 48476474.16
     },
     {
       "name": "徐聪",
-      "debt_amt": 578465.49,
-      "rec_amt": 726952.86,
-      "cycle": 37.9,
-      "debt_weighted": 7366779.72,
-      "rec_weighted": 42063099.96
+      "debt_amt": 573125.49,
+      "rec_amt": 732906.86,
+      "cycle": 39.6,
+      "debt_weighted": 9643061.68,
+      "rec_weighted": 42096567.96
     },
     {
       "name": "黄佩文",
-      "debt_amt": 244705.0,
-      "rec_amt": 95945.61,
-      "cycle": 34.7,
-      "debt_weighted": 6765268.5,
-      "rec_weighted": 5060034.59
+      "debt_amt": 244822.0,
+      "rec_amt": 97545.61,
+      "cycle": 37.4,
+      "debt_weighted": 7501356.5,
+      "rec_weighted": 5303234.59
     },
     {
       "name": "周靓",
-      "debt_amt": 153795.83,
+      "debt_amt": 153874.83,
       "rec_amt": 353328.71,
-      "cycle": 14.4,
-      "debt_weighted": 2069965.09,
+      "cycle": 15.6,
+      "debt_weighted": 2685227.41,
       "rec_weighted": 5242027.53
     },
     {
       "name": "汤腾",
       "debt_amt": 129032.3,
       "rec_amt": 96005.0,
-      "cycle": 11.9,
-      "debt_weighted": 1381793.7,
+      "cycle": 14.2,
+      "debt_weighted": 1897922.9,
       "rec_weighted": 1296380.0
     },
     {
       "name": "胡帅帅",
       "debt_amt": 56775.0,
       "rec_amt": 14786.36,
-      "cycle": 9.6,
-      "debt_weighted": 249996.0,
+      "cycle": 12.8,
+      "debt_weighted": 477096.0,
       "rec_weighted": 438615.42
     },
     {
@@ -370,43 +362,43 @@
   "武汉金融行业组": [
     {
       "name": "张颖",
-      "debt_amt": 854473.87,
-      "rec_amt": 167449.91,
-      "cycle": 149.9,
-      "debt_weighted": 144922352.48,
-      "rec_weighted": 8285734.88
+      "debt_amt": 862439.9,
+      "rec_amt": 171875.24,
+      "cycle": 151.5,
+      "debt_weighted": 148285349.36,
+      "rec_weighted": 8372297.44
     },
     {
       "name": "杨勇",
       "debt_amt": 1183633.99,
       "rec_amt": 286138.0,
-      "cycle": 113.7,
-      "debt_weighted": 146825655.42,
+      "cycle": 116.9,
+      "debt_weighted": 151560191.38,
       "rec_weighted": 20226784.01
     },
     {
       "name": "常明君",
-      "debt_amt": 1477583.31,
-      "rec_amt": 882284.07,
-      "cycle": 45.4,
-      "debt_weighted": 14561216.64,
-      "rec_weighted": 92579643.35
+      "debt_amt": 1466306.31,
+      "rec_amt": 888054.07,
+      "cycle": 47.9,
+      "debt_weighted": 20183892.88,
+      "rec_weighted": 92651913.35
     },
     {
       "name": "康哲飞",
-      "debt_amt": 2321013.54,
-      "rec_amt": 1176284.93,
-      "cycle": 39.2,
-      "debt_weighted": 44461552.62,
-      "rec_weighted": 92789939.46
+      "debt_amt": 2330904.54,
+      "rec_amt": 1176679.93,
+      "cycle": 41.8,
+      "debt_weighted": 53781770.78,
+      "rec_weighted": 92790334.46
     },
     {
       "name": "黄薇",
-      "debt_amt": 1357891.47,
-      "rec_amt": 788722.33,
-      "cycle": 32.9,
-      "debt_weighted": 17447272.76,
-      "rec_weighted": 53216178.37
+      "debt_amt": 1332644.08,
+      "rec_amt": 825826.16,
+      "cycle": 35.2,
+      "debt_weighted": 22293510.52,
+      "rec_weighted": 53696316.29
     }
   ],
   "西安站": [
@@ -414,48 +406,48 @@
       "name": "王淑涵",
       "debt_amt": 614.88,
       "rec_amt": 255.01,
-      "cycle": 249.6,
-      "debt_weighted": 154518.84,
+      "cycle": 252.4,
+      "debt_weighted": 156978.36,
       "rec_weighted": 62609.15
     },
     {
       "name": "康帅奇",
       "debt_amt": 377731.42,
       "rec_amt": 175827.34,
-      "cycle": 133.1,
-      "debt_weighted": 44782068.2,
+      "cycle": 135.8,
+      "debt_weighted": 46292993.88,
       "rec_weighted": 28875630.58
     },
     {
       "name": "张宸睿",
       "debt_amt": 112349.05,
       "rec_amt": 958913.27,
-      "cycle": 129.2,
-      "debt_weighted": 25142039.5,
+      "cycle": 129.6,
+      "debt_weighted": 25591435.7,
       "rec_weighted": 113243663.1
     },
     {
       "name": "李佳伟",
       "debt_amt": 223293.0,
       "rec_amt": 113617.1,
-      "cycle": 94.0,
-      "debt_weighted": 24824289.7,
+      "cycle": 96.6,
+      "debt_weighted": 25717461.7,
       "rec_weighted": 6841607.8
     },
     {
       "name": "贺玲",
       "debt_amt": 1509821.73,
       "rec_amt": 1710808.91,
-      "cycle": 87.7,
-      "debt_weighted": 100838759.68,
+      "cycle": 89.6,
+      "debt_weighted": 106878046.6,
       "rec_weighted": 181685159.62
     },
     {
       "name": "刘江",
-      "debt_amt": 717992.56,
+      "debt_amt": 718608.56,
       "rec_amt": 344454.4,
-      "cycle": 80.6,
-      "debt_weighted": 64369443.6,
+      "cycle": 83.3,
+      "debt_weighted": 67243877.84,
       "rec_weighted": 21264708.5
     },
     {
@@ -470,50 +462,50 @@
       "name": "赵婷",
       "debt_amt": 198093.4,
       "rec_amt": 63113.0,
-      "cycle": 35.5,
-      "debt_weighted": 7271402.2,
+      "cycle": 38.5,
+      "debt_weighted": 8063775.8,
       "rec_weighted": 1997483.0
     },
     {
       "name": "欧丽娟",
       "debt_amt": 265125.0,
       "rec_amt": 23846.0,
-      "cycle": 13.6,
-      "debt_weighted": 3877196.0,
+      "cycle": 17.3,
+      "debt_weighted": 4937696.0,
       "rec_weighted": 50833.0
     }
   ],
   "郑州站": [
     {
-      "name": "黄英浩",
-      "debt_amt": 491371.41,
-      "rec_amt": 55646.76,
-      "cycle": 126.9,
-      "debt_weighted": 56255634.52,
-      "rec_weighted": 13171437.57
-    },
-    {
       "name": "张垚",
       "debt_amt": 46740.0,
       "rec_amt": 0.0,
-      "cycle": 126.5,
-      "debt_weighted": 5910900.0,
+      "cycle": 130.5,
+      "debt_weighted": 6097860.0,
       "rec_weighted": 0.0
+    },
+    {
+      "name": "黄英浩",
+      "debt_amt": 407065.41,
+      "rec_amt": 140081.76,
+      "cycle": 129.9,
+      "debt_weighted": 48819738.16,
+      "rec_weighted": 22237559.57
     },
     {
       "name": "李国强",
       "debt_amt": 1671.77,
       "rec_amt": 47616.08,
-      "cycle": 93.4,
-      "debt_weighted": 170847.48,
+      "cycle": 93.6,
+      "debt_weighted": 177534.56,
       "rec_weighted": 4433513.38
     },
     {
       "name": "韩森",
       "debt_amt": 176899.88,
       "rec_amt": 811145.62,
-      "cycle": 91.4,
-      "debt_weighted": 4507929.16,
+      "cycle": 92.1,
+      "debt_weighted": 5215528.68,
       "rec_weighted": 85791313.33
     },
     {
@@ -526,51 +518,51 @@
     },
     {
       "name": "宋运美",
-      "debt_amt": 138988.9,
+      "debt_amt": 139092.9,
       "rec_amt": 118973.35,
-      "cycle": 51.8,
-      "debt_weighted": 6262708.6,
+      "cycle": 53.9,
+      "debt_weighted": 6818003.2,
       "rec_weighted": 7099180.65
     },
     {
       "name": "刘莉",
-      "debt_amt": 662395.5,
+      "debt_amt": 665110.5,
       "rec_amt": 148401.93,
-      "cycle": 29.5,
-      "debt_weighted": 20146082.12,
+      "cycle": 32.6,
+      "debt_weighted": 22806457.62,
       "rec_weighted": 3735349.29
     },
     {
       "name": "刘静玲",
-      "debt_amt": 491136.7,
-      "rec_amt": 255360.0,
-      "cycle": 27.9,
-      "debt_weighted": 1260427.2,
-      "rec_weighted": 19595036.8
-    },
-    {
-      "name": "王伟明",
-      "debt_amt": 20279.46,
-      "rec_amt": 42682.05,
-      "cycle": 26.5,
-      "debt_weighted": 327559.42,
-      "rec_weighted": 1341399.95
+      "debt_amt": 491887.7,
+      "rec_amt": 255464.0,
+      "cycle": 30.5,
+      "debt_weighted": 3219317.5,
+      "rec_weighted": 19603668.8
     },
     {
       "name": "刘婵",
-      "debt_amt": 835525.2,
-      "rec_amt": 64259.5,
-      "cycle": 21.9,
-      "debt_weighted": 17898251.8,
-      "rec_weighted": 1841557.2
+      "debt_amt": 835080.4,
+      "rec_amt": 65031.5,
+      "cycle": 25.6,
+      "debt_weighted": 21233474.2,
+      "rec_weighted": 1846189.2
     },
     {
       "name": "孙潇潇",
       "debt_amt": 7778.2,
       "rec_amt": 13059.8,
-      "cycle": 20.0,
-      "debt_weighted": 147199.6,
+      "cycle": 21.5,
+      "debt_weighted": 178312.4,
       "rec_weighted": 270220.6
+    },
+    {
+      "name": "王伟明",
+      "debt_amt": 81816.46,
+      "rec_amt": 43011.05,
+      "cycle": 16.0,
+      "debt_weighted": 654496.26,
+      "rec_weighted": 1341728.95
     }
   ],
   "重庆站": [
@@ -578,40 +570,40 @@
       "name": "周纤纤",
       "debt_amt": 2558.93,
       "rec_amt": 0.0,
-      "cycle": 239.5,
-      "debt_weighted": 612789.67,
+      "cycle": 243.5,
+      "debt_weighted": 623025.39,
       "rec_weighted": 0.0
     },
     {
       "name": "刘美希",
       "debt_amt": 43976.33,
       "rec_amt": 5328.47,
-      "cycle": 175.1,
-      "debt_weighted": 8559460.2,
+      "cycle": 178.7,
+      "debt_weighted": 8735365.52,
       "rec_weighted": 74333.6
     },
     {
       "name": "林萍",
-      "debt_amt": 84367.33,
-      "rec_amt": 19717.47,
-      "cycle": 125.8,
-      "debt_weighted": 12185996.7,
-      "rec_weighted": 911461.6
+      "debt_amt": 81967.33,
+      "rec_amt": 22117.47,
+      "cycle": 129.0,
+      "debt_weighted": 12473066.02,
+      "rec_weighted": 954661.6
     },
     {
       "name": "耿晓伟",
       "debt_amt": 366301.3,
       "rec_amt": 207721.7,
-      "cycle": 120.1,
-      "debt_weighted": 66043239.62,
+      "cycle": 122.6,
+      "debt_weighted": 67508444.82,
       "rec_weighted": 2879990.16
     },
     {
       "name": "李倩",
       "debt_amt": 69632.93,
       "rec_amt": 25125.62,
-      "cycle": 117.4,
-      "debt_weighted": 9593083.97,
+      "cycle": 120.3,
+      "debt_weighted": 9871615.69,
       "rec_weighted": 1529946.88
     },
     {
@@ -627,39 +619,39 @@
       "debt_amt": 39.68,
       "rec_amt": 23880.0,
       "cycle": 79.9,
-      "debt_weighted": 1507.84,
+      "debt_weighted": 1666.56,
       "rec_weighted": 1910400.0
     },
     {
       "name": "杨彦祥",
-      "debt_amt": 205155.66,
-      "rec_amt": 116264.51,
-      "cycle": 70.7,
-      "debt_weighted": 15596119.47,
-      "rec_weighted": 7141329.06
+      "debt_amt": 205408.16,
+      "rec_amt": 116612.01,
+      "cycle": 73.2,
+      "debt_weighted": 16394122.11,
+      "rec_weighted": 7164959.06
     },
     {
       "name": "廖佳晖",
-      "debt_amt": 282051.52,
-      "rec_amt": 1138995.0,
-      "cycle": 57.5,
-      "debt_weighted": 864877.36,
-      "rec_weighted": 80812540.5
+      "debt_amt": 278751.52,
+      "rec_amt": 1144095.0,
+      "cycle": 58.2,
+      "debt_weighted": 1902583.44,
+      "rec_weighted": 80889040.5
     },
     {
       "name": "陈磊",
-      "debt_amt": 125994.5,
-      "rec_amt": 197902.2,
-      "cycle": 44.0,
-      "debt_weighted": 3706104.75,
-      "rec_weighted": 10561535.1
+      "debt_amt": 132192.0,
+      "rec_amt": 197554.7,
+      "cycle": 44.9,
+      "debt_weighted": 4073252.75,
+      "rec_weighted": 10723155.1
     },
     {
       "name": "危昶",
-      "debt_amt": 357808.23,
+      "debt_amt": 358608.23,
       "rec_amt": 106477.3,
-      "cycle": 40.0,
-      "debt_weighted": 14201530.75,
+      "cycle": 43.0,
+      "debt_weighted": 15635163.67,
       "rec_weighted": 4382505.16
     }
   ],
@@ -681,68 +673,68 @@
       "rec_weighted": 2534.4
     },
     {
-      "name": "邓梅丽",
-      "debt_amt": 121352.62,
-      "rec_amt": 691390.78,
-      "cycle": 58.1,
-      "debt_weighted": 2584385.52,
-      "rec_weighted": 44626169.6
-    },
-    {
       "name": "王涛",
-      "debt_amt": 383344.29,
+      "debt_amt": 384904.29,
       "rec_amt": 625689.03,
-      "cycle": 57.9,
-      "debt_weighted": 8502479.53,
+      "cycle": 59.3,
+      "debt_weighted": 10042096.69,
       "rec_weighted": 49907454.84
     },
     {
+      "name": "邓梅丽",
+      "debt_amt": 85087.86,
+      "rec_amt": 729591.99,
+      "cycle": 58.4,
+      "debt_weighted": 2240834.32,
+      "rec_weighted": 45310277.24
+    },
+    {
       "name": "张婉莹",
-      "debt_amt": 339403.61,
+      "debt_amt": 373090.81,
       "rec_amt": 372363.52,
-      "cycle": 56.6,
-      "debt_weighted": 4752900.46,
+      "cycle": 56.0,
+      "debt_weighted": 6230882.9,
       "rec_weighted": 35544263.15
     },
     {
       "name": "彭勋",
-      "debt_amt": 18532.86,
-      "rec_amt": 710378.85,
-      "cycle": 54.0,
-      "debt_weighted": 254367.92,
-      "rec_weighted": 39140772.83
+      "debt_amt": 18020.58,
+      "rec_amt": 710891.13,
+      "cycle": 54.1,
+      "debt_weighted": 304934.48,
+      "rec_weighted": 39162288.59
     },
     {
       "name": "蒋小花",
-      "debt_amt": 32578.8,
+      "debt_amt": 34428.8,
       "rec_amt": 164445.83,
-      "cycle": 42.4,
-      "debt_weighted": 458170.6,
+      "cycle": 42.7,
+      "debt_weighted": 590335.8,
       "rec_weighted": 7900740.19
     },
     {
       "name": "曾敏",
-      "debt_amt": 429309.0,
-      "rec_amt": 182875.94,
-      "cycle": 33.5,
-      "debt_weighted": 11277708.0,
-      "rec_weighted": 9235059.6
+      "debt_amt": 384395.0,
+      "rec_amt": 227789.94,
+      "cycle": 36.0,
+      "debt_weighted": 9095447.0,
+      "rec_weighted": 12954900.6
     },
     {
       "name": "陈蓉",
-      "debt_amt": 240366.55,
+      "debt_amt": 257249.35,
       "rec_amt": 246761.06,
-      "cycle": 33.2,
-      "debt_weighted": 4885193.1,
+      "cycle": 34.1,
+      "debt_weighted": 5901104.3,
       "rec_weighted": 11287018.86
     },
     {
       "name": "谢顶峰",
-      "debt_amt": 223497.28,
-      "rec_amt": 450755.23,
-      "cycle": 30.4,
-      "debt_weighted": 4738083.49,
-      "rec_weighted": 15773775.15
+      "debt_amt": 190210.77,
+      "rec_amt": 490611.74,
+      "cycle": 31.2,
+      "debt_weighted": 4687014.59,
+      "rec_weighted": 16585687.13
     },
     {
       "name": "张辉",

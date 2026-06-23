@@ -2,8 +2,8 @@
   "其他": [
     {
       "name": "吴晗",
-      "total": 20.72,
-      "collect": 2.24,
+      "total": 22.39,
+      "collect": 3.07,
       "cust_count": 11,
       "custs": [
         {
@@ -20,15 +20,15 @@
         },
         {
           "name": "国药集团武汉生物制药有限公司工会委员",
-          "perf": 4.52,
+          "perf": 5.0,
           "collect": 0.0,
-          "orders": 9
+          "orders": 10
         },
         {
           "name": "科力普科技集团股份有限公司",
-          "perf": 2.14,
-          "collect": 1.31,
-          "orders": 35
+          "perf": 3.35,
+          "collect": 2.14,
+          "orders": 43
         },
         {
           "name": "张钰鑫",
@@ -116,7 +116,7 @@
   "成都站": [
     {
       "name": "吴晓波",
-      "total": 114.24,
+      "total": 114.28,
       "collect": 18.39,
       "cust_count": 6,
       "custs": [
@@ -134,15 +134,15 @@
         },
         {
           "name": "成都京东方光电科技有限公司工会委员会",
-          "perf": 16.53,
+          "perf": 16.55,
           "collect": 0.0,
-          "orders": 3
+          "orders": 4
         },
         {
           "name": "西藏林芝南迦巴瓦实业有限公司",
-          "perf": 15.16,
+          "perf": 15.18,
           "collect": 0.0,
-          "orders": 5
+          "orders": 6
         },
         {
           "name": "四川品默律师事务所",
@@ -160,15 +160,15 @@
     },
     {
       "name": "何光耀",
-      "total": 71.53,
+      "total": 72.14,
       "collect": 8.53,
       "cust_count": 13,
       "custs": [
         {
           "name": "四川宁江山川机械有限责任公司工会委员会",
-          "perf": 35.98,
+          "perf": 36.58,
           "collect": 0.0,
-          "orders": 12
+          "orders": 14
         },
         {
           "name": "中建三局第一建设工程有限责任公司",
@@ -202,9 +202,9 @@
         },
         {
           "name": "四川省第十六建筑工程有限公司",
-          "perf": 0.16,
+          "perf": 0.17,
           "collect": 0.0,
-          "orders": 14
+          "orders": 16
         },
         {
           "name": "中国石油天然气股份有限公司四川销售非油品分公司",
@@ -246,7 +246,7 @@
     },
     {
       "name": "张鹏成",
-      "total": 48.86,
+      "total": 52.49,
       "collect": 4.12,
       "cust_count": 14,
       "custs": [
@@ -281,6 +281,12 @@
           "orders": 1
         },
         {
+          "name": "四川骄子优品电子商务有限公司",
+          "perf": 3.98,
+          "collect": 0.31,
+          "orders": 4
+        },
+        {
           "name": "四川才投人力资源发展有限公司",
           "perf": 1.44,
           "collect": 0.0,
@@ -296,12 +302,6 @@
           "name": "成都芮丰鼎润商贸有限公司",
           "perf": 1.39,
           "collect": 1.35,
-          "orders": 2
-        },
-        {
-          "name": "四川骄子优品电子商务有限公司",
-          "perf": 0.35,
-          "collect": 0.31,
           "orders": 2
         },
         {
@@ -338,7 +338,7 @@
     },
     {
       "name": "徐晓荣",
-      "total": 47.63,
+      "total": 47.64,
       "collect": 1.24,
       "cust_count": 19,
       "custs": [
@@ -442,7 +442,7 @@
           "name": "四川广旺物资产业有限责任公司",
           "perf": 0.05,
           "collect": 0.0,
-          "orders": 4
+          "orders": 5
         },
         {
           "name": "宝石花产业运营服务有限公司南充分公司",
@@ -726,8 +726,8 @@
     },
     {
       "name": "杨莉萍",
-      "total": 16.96,
-      "collect": 5.34,
+      "total": 17.23,
+      "collect": 5.61,
       "cust_count": 12,
       "custs": [
         {
@@ -756,9 +756,9 @@
         },
         {
           "name": "陈巍",
-          "perf": 1.26,
-          "collect": 1.26,
-          "orders": 8
+          "perf": 1.53,
+          "collect": 1.53,
+          "orders": 10
         },
         {
           "name": "平安健康保险股份有限公司四川分公司工会委员会",
@@ -806,7 +806,7 @@
     },
     {
       "name": "蒋君霞",
-      "total": 14.67,
+      "total": 16.23,
       "collect": 12.38,
       "cust_count": 8,
       "custs": [
@@ -815,6 +815,12 @@
           "perf": 11.45,
           "collect": 11.44,
           "orders": 1
+        },
+        {
+          "name": "四川骄子优品电子商务有限公司",
+          "perf": 1.64,
+          "collect": 0.08,
+          "orders": 4
         },
         {
           "name": "中科海高（成都）电子技术有限公司",
@@ -851,12 +857,6 @@
           "perf": 0.12,
           "collect": 0.0,
           "orders": 1
-        },
-        {
-          "name": "四川骄子优品电子商务有限公司",
-          "perf": 0.09,
-          "collect": 0.08,
-          "orders": 2
         }
       ]
     },
@@ -888,21 +888,21 @@
     },
     {
       "name": "唐天宁",
-      "total": 5.48,
+      "total": 7.62,
       "collect": 2.4,
       "cust_count": 6,
       "custs": [
+        {
+          "name": "通威食品有限公司",
+          "perf": 4.13,
+          "collect": 0.0,
+          "orders": 4
+        },
         {
           "name": "成都通威全农惠电子商务有限公司",
           "perf": 2.27,
           "collect": 1.17,
           "orders": 3
-        },
-        {
-          "name": "通威食品有限公司",
-          "perf": 1.98,
-          "collect": 0.0,
-          "orders": 2
         },
         {
           "name": "四川川谷消防技术咨询服务有限公司",
@@ -1068,8 +1068,8 @@
   "武汉基建制造行业组": [
     {
       "name": "胡松",
-      "total": 303.68,
-      "collect": 28.26,
+      "total": 303.86,
+      "collect": 32.58,
       "cust_count": 24,
       "custs": [
         {
@@ -1086,9 +1086,9 @@
         },
         {
           "name": "中国铁路工会中铁十一局集团城市轨道工程有限公司委员会",
-          "perf": 48.09,
+          "perf": 49.11,
           "collect": 1.62,
-          "orders": 60
+          "orders": 70
         },
         {
           "name": "汉江国家实验室工会委员会",
@@ -1098,9 +1098,9 @@
         },
         {
           "name": "中国铁路工会中铁建电气化局集团南方工程有限公司委员会",
-          "perf": 18.6,
+          "perf": 17.76,
           "collect": 0.0,
-          "orders": 1
+          "orders": 2
         },
         {
           "name": "武汉帝尔激光科技股份有限公司",
@@ -1123,7 +1123,7 @@
         {
           "name": "武汉光谷航天三江激光产业技术研究院有限公司工会委员会",
           "perf": 4.47,
-          "collect": 0.0,
+          "collect": 4.32,
           "orders": 1
         },
         {
@@ -1220,7 +1220,7 @@
     },
     {
       "name": "别勇",
-      "total": 173.92,
+      "total": 174.22,
       "collect": 58.02,
       "cust_count": 16,
       "custs": [
@@ -1228,13 +1228,13 @@
           "name": "中建三局第一建设工程有限责任公司",
           "perf": 70.45,
           "collect": 49.69,
-          "orders": 4
+          "orders": 6
         },
         {
           "name": "东风汽车集团股份有限公司猛士汽车科技公司",
-          "perf": 48.78,
+          "perf": 49.08,
           "collect": 0.0,
-          "orders": 15
+          "orders": 18
         },
         {
           "name": "中交特种工程有限公司工会委员会",
@@ -1324,7 +1324,7 @@
     },
     {
       "name": "罗贝",
-      "total": 99.64,
+      "total": 99.61,
       "collect": 3.74,
       "cust_count": 18,
       "custs": [
@@ -1336,9 +1336,9 @@
         },
         {
           "name": "武汉启瑞科技发展有限公司",
-          "perf": 19.62,
+          "perf": 19.58,
           "collect": 0.0,
-          "orders": 2
+          "orders": 3
         },
         {
           "name": "东风汽车集团股份有限公司猛士汽车科技公司",
@@ -1532,7 +1532,7 @@
     },
     {
       "name": "程双清",
-      "total": 30.94,
+      "total": 30.99,
       "collect": -11.78,
       "cust_count": 11,
       "custs": [
@@ -1556,9 +1556,9 @@
         },
         {
           "name": "武汉长飞通用电缆有限公司",
-          "perf": 4.24,
+          "perf": 4.29,
           "collect": 0.0,
-          "orders": 2
+          "orders": 3
         },
         {
           "name": "武汉中科先进材料科技有限公司工会委员会",
@@ -1606,9 +1606,9 @@
     },
     {
       "name": "陶迪",
-      "total": 15.33,
-      "collect": 1.59,
-      "cust_count": 14,
+      "total": 16.45,
+      "collect": 2.3,
+      "cust_count": 16,
       "custs": [
         {
           "name": "华中科技大学工会委员会",
@@ -1655,8 +1655,14 @@
         {
           "name": "硅来半导体（武汉）有限公司",
           "perf": 0.71,
-          "collect": 0.0,
+          "collect": 0.71,
           "orders": 2
+        },
+        {
+          "name": "武汉森木磊石科技有限公司",
+          "perf": 0.65,
+          "collect": 0.0,
+          "orders": 1
         },
         {
           "name": "深圳创维数字技术有限公司武汉分公司",
@@ -1673,6 +1679,12 @@
         {
           "name": "中国铁路工会中铁武汉电气化局集团有限公司委员会",
           "perf": 0.5,
+          "collect": 0.0,
+          "orders": 1
+        },
+        {
+          "name": "长沙天华建筑设计有限公司",
+          "perf": 0.47,
           "collect": 0.0,
           "orders": 1
         },
@@ -1733,7 +1745,7 @@
     {
       "name": "石翔瑜",
       "total": 76.01,
-      "collect": 15.35,
+      "collect": 21.57,
       "cust_count": 17,
       "custs": [
         {
@@ -1745,7 +1757,7 @@
         {
           "name": "中国葛洲坝集团股份有限公司直属机关工会委员会",
           "perf": 13.87,
-          "collect": 0.0,
+          "collect": 5.64,
           "orders": 7
         },
         {
@@ -1805,7 +1817,7 @@
         {
           "name": "爱中和汽车技术（上海）有限公司",
           "perf": 0.58,
-          "collect": 0.0,
+          "collect": 0.58,
           "orders": 1
         },
         {
@@ -1842,9 +1854,9 @@
     },
     {
       "name": "林茹",
-      "total": 58.39,
-      "collect": 6.06,
-      "cust_count": 19,
+      "total": 59.03,
+      "collect": 6.28,
+      "cust_count": 20,
       "custs": [
         {
           "name": "中国船舶集团有限公司第七二二研究所",
@@ -1866,9 +1878,9 @@
         },
         {
           "name": "国药集团武汉生物制药有限公司工会委员",
-          "perf": 3.11,
+          "perf": 3.43,
           "collect": 0.0,
-          "orders": 9
+          "orders": 10
         },
         {
           "name": "湖北华益润生大药房连锁有限公司仓储店",
@@ -1943,16 +1955,22 @@
           "orders": 1
         },
         {
+          "name": "康永腾大药房连锁（湖北）有限公司",
+          "perf": 0.35,
+          "collect": -0.16,
+          "orders": 14
+        },
+        {
           "name": "李乖点",
           "perf": 0.2,
-          "collect": 0.11,
+          "collect": 0.2,
           "orders": 7
         },
         {
-          "name": "康永腾大药房连锁（湖北）有限公司",
-          "perf": 0.15,
-          "collect": -0.16,
-          "orders": 10
+          "name": "武汉隽才管理咨询有限公司",
+          "perf": 0.13,
+          "collect": 0.13,
+          "orders": 1
         },
         {
           "name": "大唐互联科技（武汉）有限公司",
@@ -1964,15 +1982,15 @@
     },
     {
       "name": "徐聪",
-      "total": 56.38,
-      "collect": 2.09,
-      "cust_count": 7,
+      "total": 56.44,
+      "collect": 2.69,
+      "cust_count": 8,
       "custs": [
         {
           "name": "中国电信集团工会江西公司直属委员会",
-          "perf": 26.02,
+          "perf": 26.03,
           "collect": 0.0,
-          "orders": 12
+          "orders": 13
         },
         {
           "name": "中国民生银行股份有限公司南昌分行工会委员会",
@@ -1983,7 +2001,7 @@
         {
           "name": "江西唐王科技有限公司",
           "perf": 5.3,
-          "collect": 0.0,
+          "collect": 0.54,
           "orders": 2
         },
         {
@@ -2009,12 +2027,18 @@
           "perf": 0.1,
           "collect": 0.1,
           "orders": 3
+        },
+        {
+          "name": "江西璋然实业有限公司",
+          "perf": 0.06,
+          "collect": 0.06,
+          "orders": 1
         }
       ]
     },
     {
       "name": "陈绪涛",
-      "total": 45.14,
+      "total": 45.38,
       "collect": 0.41,
       "cust_count": 6,
       "custs": [
@@ -2032,9 +2056,9 @@
         },
         {
           "name": "中国核工业第二二建设有限公司投资发展事业部工会委员会",
-          "perf": 2.31,
+          "perf": 2.55,
           "collect": 0.0,
-          "orders": 1
+          "orders": 2
         },
         {
           "name": "采招云（湖北）信息科技有限公司",
@@ -2064,9 +2088,9 @@
       "custs": [
         {
           "name": "沃秀信息技术（福州）有限公司",
-          "perf": 16.53,
+          "perf": 16.52,
           "collect": 15.86,
-          "orders": 15
+          "orders": 16
         },
         {
           "name": "湖北省新华书店（集团）有限公司",
@@ -2138,7 +2162,7 @@
     },
     {
       "name": "黄佩文",
-      "total": 26.07,
+      "total": 26.25,
       "collect": 2.68,
       "cust_count": 17,
       "custs": [
@@ -2185,16 +2209,16 @@
           "orders": 2
         },
         {
+          "name": "康永腾大药房连锁（湖北）有限公司",
+          "perf": 0.48,
+          "collect": 0.0,
+          "orders": 6
+        },
+        {
           "name": "湖北省锦兔供应链有限公司",
           "perf": 0.43,
           "collect": 0.43,
           "orders": 1
-        },
-        {
-          "name": "康永腾大药房连锁（湖北）有限公司",
-          "perf": 0.31,
-          "collect": 0.0,
-          "orders": 2
         },
         {
           "name": "万卓（上海）新材料有限公司",
@@ -2454,7 +2478,7 @@
   "武汉金融行业组": [
     {
       "name": "康哲飞",
-      "total": 233.09,
+      "total": 234.2,
       "collect": 3.78,
       "cust_count": 16,
       "custs": [
@@ -2466,9 +2490,9 @@
         },
         {
           "name": "武汉市第三医院工会委员会",
-          "perf": 70.15,
+          "perf": 71.25,
           "collect": -0.03,
-          "orders": 44
+          "orders": 54
         },
         {
           "name": "中国建设银行股份有限公司湖北省分行机关工会委员会",
@@ -2558,15 +2582,15 @@
     },
     {
       "name": "黄薇",
-      "total": 144.06,
-      "collect": 8.66,
+      "total": 145.33,
+      "collect": 12.37,
       "cust_count": 12,
       "custs": [
         {
           "name": "武汉市第三医院工会委员会",
-          "perf": 70.15,
+          "perf": 71.25,
           "collect": -0.03,
-          "orders": 44
+          "orders": 54
         },
         {
           "name": "武汉市驿宝通网络科技有限公司",
@@ -2582,26 +2606,26 @@
         },
         {
           "name": "武汉健康养老集团有限公司商业运营分公司",
-          "perf": 6.06,
-          "collect": 2.49,
-          "orders": 17
+          "perf": 6.21,
+          "collect": 4.26,
+          "orders": 20
         },
         {
           "name": "中国银行股份有限公司湖北省分行机关工会委员会",
           "perf": 2.27,
-          "collect": 0.0,
+          "collect": 0.47,
           "orders": 3
         },
         {
           "name": "武汉创现科技有限公司",
           "perf": 1.3,
-          "collect": 0.0,
+          "collect": 1.3,
           "orders": 3
         },
         {
           "name": "武汉奥绿新生物科技股份有限公司",
           "perf": 0.33,
-          "collect": 0.0,
+          "collect": 0.16,
           "orders": 1
         },
         {
@@ -2638,9 +2662,9 @@
     },
     {
       "name": "常明君",
-      "total": 141.53,
-      "collect": 0.64,
-      "cust_count": 23,
+      "total": 141.04,
+      "collect": 1.22,
+      "cust_count": 24,
       "custs": [
         {
           "name": "武汉市中医医院工会委员会",
@@ -2673,28 +2697,28 @@
           "orders": 1
         },
         {
-          "name": "武汉市汉阳区江堤街社区卫生服务中心工会委员会",
-          "perf": 2.4,
-          "collect": 0.0,
-          "orders": 1
-        },
-        {
           "name": "中国银行股份有限公司湖北省分行机关工会委员会",
           "perf": 2.27,
-          "collect": 0.0,
+          "collect": 0.47,
           "orders": 3
         },
         {
           "name": "上药控股湖北有限公司工会委员会",
-          "perf": 1.99,
+          "perf": 2.1,
           "collect": 0.0,
-          "orders": 8
+          "orders": 12
         },
         {
           "name": "中国东方资产管理股份有限公司湖北省分公司",
           "perf": 1.5,
           "collect": 0.0,
           "orders": 1
+        },
+        {
+          "name": "上药康德乐（湖北）医药有限公司工会委员会",
+          "perf": 1.4,
+          "collect": 0.0,
+          "orders": 12
         },
         {
           "name": "武汉起点人力资源股份有限公司",
@@ -2709,16 +2733,16 @@
           "orders": 4
         },
         {
-          "name": "上药康德乐（湖北）医药有限公司工会委员会",
-          "perf": 1.27,
+          "name": "武汉市汉阳区江堤街社区卫生服务中心工会委员会",
+          "perf": 1.2,
           "collect": 0.0,
-          "orders": 9
+          "orders": 3
         },
         {
           "name": "武汉科海园大药房连锁有限公司工会委员会",
           "perf": 1.12,
           "collect": 0.0,
-          "orders": 8
+          "orders": 9
         },
         {
           "name": "湖北芊金文化传媒有限公司",
@@ -2739,6 +2763,12 @@
           "orders": 1
         },
         {
+          "name": "熊雨景",
+          "perf": 0.46,
+          "collect": 0.0,
+          "orders": 3
+        },
+        {
           "name": "中国银行股份有限公司湖北自贸试验区武汉片区分行工会委员会",
           "perf": 0.1,
           "collect": 0.0,
@@ -2747,7 +2777,7 @@
         {
           "name": "喻迟",
           "perf": 0.1,
-          "collect": 0.0,
+          "collect": 0.1,
           "orders": 1
         },
         {
@@ -2834,9 +2864,9 @@
     },
     {
       "name": "张颖",
-      "total": 21.52,
-      "collect": 5.36,
-      "cust_count": 14,
+      "total": 22.76,
+      "collect": 5.81,
+      "cust_count": 15,
       "custs": [
         {
           "name": "武汉惠码通科技有限公司",
@@ -2858,9 +2888,15 @@
         },
         {
           "name": "武汉健康养老集团有限公司商业运营分公司",
-          "perf": 1.51,
-          "collect": 0.62,
-          "orders": 17
+          "perf": 1.55,
+          "collect": 1.06,
+          "orders": 20
+        },
+        {
+          "name": "武汉市汉阳区江堤街社区卫生服务中心工会委员会",
+          "perf": 1.2,
+          "collect": 0.0,
+          "orders": 1
         },
         {
           "name": "湖北飞轮储能科技有限公司",
@@ -3002,15 +3038,15 @@
     },
     {
       "name": "刘江",
-      "total": 32.25,
+      "total": 32.31,
       "collect": 4.62,
       "cust_count": 11,
       "custs": [
         {
           "name": "陕西交控物产管理有限公司",
-          "perf": 7.08,
+          "perf": 7.14,
           "collect": -0.02,
-          "orders": 10
+          "orders": 11
         },
         {
           "name": "陕西水务发展清洁能源集团有限公司工会委员会",
@@ -3258,14 +3294,14 @@
   "郑州站": [
     {
       "name": "刘婵",
-      "total": 85.36,
-      "collect": 1.81,
+      "total": 85.39,
+      "collect": 1.89,
       "cust_count": 8,
       "custs": [
         {
           "name": "国机金刚石（河南）有限公司工会委员会",
           "perf": 82.14,
-          "collect": 0.32,
+          "collect": 0.39,
           "orders": 6
         },
         {
@@ -3276,9 +3312,9 @@
         },
         {
           "name": "河南内森商贸有限公司",
-          "perf": 0.72,
+          "perf": 0.75,
           "collect": 0.5,
-          "orders": 55
+          "orders": 58
         },
         {
           "name": "精工锐意科技 (河南)有限公司工会委员会",
@@ -3314,7 +3350,7 @@
     },
     {
       "name": "刘静玲",
-      "total": 64.08,
+      "total": 64.16,
       "collect": 15.07,
       "cust_count": 8,
       "custs": [
@@ -3332,9 +3368,9 @@
         },
         {
           "name": "郑州银行股份有限公司工会委员会",
-          "perf": 6.61,
+          "perf": 6.69,
           "collect": 0.0,
-          "orders": 14
+          "orders": 16
         },
         {
           "name": "郑州银行股份有限公司工会委员会安阳分行分工会",
@@ -3370,21 +3406,21 @@
     },
     {
       "name": "刘莉",
-      "total": 59.79,
+      "total": 60.06,
       "collect": 5.54,
       "cust_count": 13,
       "custs": [
         {
           "name": "郑州银行股份有限公司工会委员会",
-          "perf": 15.41,
+          "perf": 15.61,
           "collect": 0.0,
-          "orders": 14
+          "orders": 16
         },
         {
           "name": "中国移动通信集团河南有限公司郑州分公司",
-          "perf": 13.69,
+          "perf": 13.76,
           "collect": 0.0,
-          "orders": 2
+          "orders": 3
         },
         {
           "name": "郑州聚味香餐饮服务有限公司",
@@ -3506,20 +3542,20 @@
     },
     {
       "name": "黄英浩",
-      "total": 10.01,
-      "collect": -0.45,
+      "total": 10.02,
+      "collect": 2.57,
       "cust_count": 7,
       "custs": [
         {
           "name": "郑州捷安高科股份有限公司",
-          "perf": 6.92,
+          "perf": 6.93,
           "collect": 0.0,
-          "orders": 4
+          "orders": 6
         },
         {
           "name": "中建八局河南建设有限公司工会委员会",
           "perf": 3.38,
-          "collect": 0.0,
+          "collect": 3.02,
           "orders": 5
         },
         {
@@ -3556,10 +3592,16 @@
     },
     {
       "name": "王伟明",
-      "total": 2.19,
-      "collect": 0.16,
-      "cust_count": 6,
+      "total": 8.38,
+      "collect": 0.2,
+      "cust_count": 11,
       "custs": [
+        {
+          "name": "河南四方达超硬材料股份有限公司工会委员会",
+          "perf": 3.23,
+          "collect": 0.0,
+          "orders": 1
+        },
         {
           "name": "河南省郑州市新华书店有限公司",
           "perf": 1.91,
@@ -3567,9 +3609,33 @@
           "orders": 14
         },
         {
+          "name": "郑州天璇新材料有限公司工会委员会",
+          "perf": 1.24,
+          "collect": 0.0,
+          "orders": 1
+        },
+        {
+          "name": "河南天璇半导体科技有限责任公司工会委员会",
+          "perf": 0.71,
+          "collect": 0.0,
+          "orders": 1
+        },
+        {
+          "name": "河南璨然珠宝有限公司",
+          "perf": 0.57,
+          "collect": 0.0,
+          "orders": 1
+        },
+        {
+          "name": "河南晶研智造科技有限公司",
+          "perf": 0.43,
+          "collect": 0.0,
+          "orders": 1
+        },
+        {
           "name": "王伟明",
           "perf": 0.17,
-          "collect": 0.14,
+          "collect": 0.17,
           "orders": 5
         },
         {
@@ -3632,7 +3698,7 @@
     },
     {
       "name": "宋运美",
-      "total": 0.43,
+      "total": 0.44,
       "collect": -8.66,
       "cust_count": 8,
       "custs": [
@@ -3644,9 +3710,9 @@
         },
         {
           "name": "河南农播网络科技有限公司",
-          "perf": 0.64,
+          "perf": 0.65,
           "collect": 0.0,
-          "orders": 60
+          "orders": 62
         },
         {
           "name": "宋运美",
@@ -3690,7 +3756,7 @@
   "重庆站": [
     {
       "name": "危昶",
-      "total": 44.21,
+      "total": 44.29,
       "collect": 10.17,
       "cust_count": 5,
       "custs": [
@@ -3702,9 +3768,9 @@
         },
         {
           "name": "中广核新能源发电重庆有限公司",
-          "perf": 12.66,
+          "perf": 12.74,
           "collect": 8.9,
-          "orders": 5
+          "orders": 6
         },
         {
           "name": "中国工商银行重庆市北碚区支行工会委员会",
@@ -3728,8 +3794,8 @@
     },
     {
       "name": "廖佳晖",
-      "total": 28.6,
-      "collect": 0.39,
+      "total": 28.78,
+      "collect": 0.9,
       "cust_count": 8,
       "custs": [
         {
@@ -3740,9 +3806,9 @@
         },
         {
           "name": "辰致科技有限公司工会委员会",
-          "perf": 12.06,
+          "perf": 12.24,
           "collect": 0.0,
-          "orders": 7
+          "orders": 9
         },
         {
           "name": "辰致（重庆）制动系统有限公司南京分公司工会委员会",
@@ -3765,7 +3831,7 @@
         {
           "name": "重庆航空有限责任公司工会委员会",
           "perf": 0.51,
-          "collect": 0.0,
+          "collect": 0.51,
           "orders": 1
         },
         {
@@ -3846,8 +3912,8 @@
     },
     {
       "name": "陈磊",
-      "total": 11.0,
-      "collect": 0.97,
+      "total": 11.58,
+      "collect": 0.94,
       "cust_count": 6,
       "custs": [
         {
@@ -3858,21 +3924,21 @@
         },
         {
           "name": "中国移动通信集团工会重庆大足分公司委员会",
-          "perf": 2.05,
+          "perf": 2.59,
           "collect": 0.0,
-          "orders": 3
+          "orders": 4
         },
         {
           "name": "中国移动通信集团重庆有限公司",
           "perf": 0.97,
-          "collect": 0.66,
+          "collect": 0.63,
           "orders": 6
         },
         {
           "name": "陈磊",
-          "perf": 0.45,
+          "perf": 0.49,
           "collect": 0.45,
-          "orders": 10
+          "orders": 11
         },
         {
           "name": "麦斯特人力资源有限公司",
@@ -3890,8 +3956,8 @@
     },
     {
       "name": "杨彦祥",
-      "total": 10.42,
-      "collect": 1.14,
+      "total": 10.48,
+      "collect": 1.18,
       "cust_count": 9,
       "custs": [
         {
@@ -3908,9 +3974,9 @@
         },
         {
           "name": "中国移动通信集团工会重庆大足分公司委员会",
-          "perf": 0.23,
+          "perf": 0.29,
           "collect": 0.0,
-          "orders": 3
+          "orders": 4
         },
         {
           "name": "麦斯特人力资源有限公司",
@@ -3927,7 +3993,7 @@
         {
           "name": "中国移动通信集团重庆有限公司",
           "perf": 0.07,
-          "collect": 0.03,
+          "collect": 0.07,
           "orders": 4
         },
         {
@@ -3953,7 +4019,7 @@
     {
       "name": "林萍",
       "total": 2.01,
-      "collect": 0.69,
+      "collect": 0.93,
       "cust_count": 5,
       "custs": [
         {
@@ -3972,12 +4038,12 @@
           "name": "赋刻（重庆）科技有限公司",
           "perf": 0.35,
           "collect": 0.35,
-          "orders": 3
+          "orders": 5
         },
         {
           "name": "中国工商银行股份有限公司重庆自由贸易试验区分行工会委员会",
           "perf": 0.24,
-          "collect": 0.0,
+          "collect": 0.24,
           "orders": 1
         },
         {
@@ -4026,7 +4092,7 @@
   "长沙站": [
     {
       "name": "王涛",
-      "total": 51.12,
+      "total": 51.27,
       "collect": 13.92,
       "cust_count": 16,
       "custs": [
@@ -4074,9 +4140,9 @@
         },
         {
           "name": "上海致象文化艺术有限公司",
-          "perf": 1.21,
+          "perf": 1.36,
           "collect": 1.21,
-          "orders": 1
+          "orders": 2
         },
         {
           "name": "长沙王瑞敏",
@@ -4130,14 +4196,14 @@
     },
     {
       "name": "谢顶峰",
-      "total": 45.65,
-      "collect": 23.71,
+      "total": 46.3,
+      "collect": 27.56,
       "cust_count": 16,
       "custs": [
         {
           "name": "长沙市博湘源餐饮管理有限公司",
           "perf": 24.05,
-          "collect": 20.07,
+          "collect": 23.92,
           "orders": 54
         },
         {
@@ -4154,9 +4220,9 @@
         },
         {
           "name": "中国能源建设集团湖南火电建设有限公司",
-          "perf": 1.73,
+          "perf": 2.39,
           "collect": 0.08,
-          "orders": 9
+          "orders": 10
         },
         {
           "name": "中南大学工会委员会",
@@ -4235,7 +4301,7 @@
     {
       "name": "曾敏",
       "total": 45.64,
-      "collect": 4.91,
+      "collect": 7.2,
       "cust_count": 7,
       "custs": [
         {
@@ -4259,7 +4325,7 @@
         {
           "name": "衡阳合力工业车辆有限公司工会委员会",
           "perf": 2.29,
-          "collect": 0.0,
+          "collect": 2.29,
           "orders": 8
         },
         {
@@ -4284,15 +4350,21 @@
     },
     {
       "name": "张婉莹",
-      "total": 33.89,
+      "total": 37.26,
       "collect": 0.76,
       "cust_count": 16,
       "custs": [
         {
           "name": "长沙银行股份有限公司",
-          "perf": 10.02,
+          "perf": 11.42,
           "collect": 0.0,
-          "orders": 60
+          "orders": 73
+        },
+        {
+          "name": "中国能源建设集团湖南火电建设有限公司",
+          "perf": 5.58,
+          "collect": 0.19,
+          "orders": 10
         },
         {
           "name": "中国太平洋财产保险股份有限公司长沙中心支公司",
@@ -4301,16 +4373,10 @@
           "orders": 2
         },
         {
-          "name": "中国能源建设集团湖南火电建设有限公司",
-          "perf": 4.04,
-          "collect": 0.19,
-          "orders": 9
-        },
-        {
           "name": "湖南长银五八消费金融股份有限公司",
-          "perf": 3.39,
+          "perf": 3.68,
           "collect": 0.0,
-          "orders": 21
+          "orders": 33
         },
         {
           "name": "长沙银行股份有限公司南城支行",
@@ -4338,15 +4404,15 @@
         },
         {
           "name": "长沙银行股份有限公司宁乡支行",
-          "perf": 0.78,
+          "perf": 0.87,
           "collect": 0.0,
-          "orders": 19
+          "orders": 22
         },
         {
           "name": "长沙银行股份有限公司开福支行",
-          "perf": 0.68,
+          "perf": 0.75,
           "collect": 0.0,
-          "orders": 12
+          "orders": 16
         },
         {
           "name": "湖南省肿瘤医院工会委员会",
@@ -4388,15 +4454,15 @@
     },
     {
       "name": "陈蓉",
-      "total": 31.92,
+      "total": 33.61,
       "collect": 10.06,
       "cust_count": 11,
       "custs": [
         {
           "name": "长沙银行股份有限公司",
-          "perf": 7.85,
+          "perf": 9.01,
           "collect": 0.0,
-          "orders": 60
+          "orders": 73
         },
         {
           "name": "上海在心礼信息科技有限公司",
@@ -4406,9 +4472,9 @@
         },
         {
           "name": "湖南长银五八消费金融股份有限公司",
-          "perf": 5.09,
+          "perf": 5.52,
           "collect": 0.0,
-          "orders": 21
+          "orders": 33
         },
         {
           "name": "长沙银行股份有限公司南城支行",
@@ -4436,15 +4502,15 @@
         },
         {
           "name": "长沙银行股份有限公司宁乡支行",
-          "perf": 0.51,
+          "perf": 0.56,
           "collect": 0.0,
-          "orders": 16
+          "orders": 18
         },
         {
           "name": "长沙银行股份有限公司开福支行",
-          "perf": 0.45,
+          "perf": 0.5,
           "collect": 0.0,
-          "orders": 12
+          "orders": 16
         },
         {
           "name": "王育丰",
@@ -4463,13 +4529,13 @@
     {
       "name": "彭勋",
       "total": 22.56,
-      "collect": 20.73,
+      "collect": 20.78,
       "cust_count": 8,
       "custs": [
         {
           "name": "长沙市博湘源餐饮管理有限公司",
           "perf": 20.18,
-          "collect": 20.0,
+          "collect": 20.05,
           "orders": 50
         },
         {
@@ -4518,20 +4584,20 @@
     },
     {
       "name": "邓梅丽",
-      "total": 16.43,
-      "collect": 4.3,
+      "total": 16.61,
+      "collect": 8.1,
       "cust_count": 12,
       "custs": [
         {
           "name": "深圳丰赞科技有限公司",
-          "perf": 6.3,
+          "perf": 6.47,
           "collect": 2.24,
-          "orders": 50
+          "orders": 53
         },
         {
           "name": "长沙市博湘源餐饮管理有限公司",
           "perf": 3.8,
-          "collect": 0.0,
+          "collect": 3.8,
           "orders": 2
         },
         {
@@ -4598,7 +4664,7 @@
     },
     {
       "name": "蒋小花",
-      "total": 11.14,
+      "total": 11.33,
       "collect": 7.88,
       "cust_count": 11,
       "custs": [
@@ -4628,9 +4694,9 @@
         },
         {
           "name": "岳阳新智餐饮有限公司",
-          "perf": 0.67,
+          "perf": 0.86,
           "collect": 0.49,
-          "orders": 4
+          "orders": 6
         },
         {
           "name": "盐源魏丫丫电子商务有限公司",
