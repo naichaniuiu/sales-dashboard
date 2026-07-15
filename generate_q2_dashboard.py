@@ -126,13 +126,11 @@ debt_weighted_by_dept = df_debt_pos.groupby("三级部门").apply(
 
 def calc_cycle(dept):
     debt_w = float(debt_weighted_by_dept.get(dept, 0))
-    debt_total = float(df_debt[df_debt["三级部门"] == dept]["欠款金额"].sum())
     rec_w = float(rec_weighted_by_dept.get(dept, 0))
     rec_total = float(df_collect_w[df_collect_w["三级部门"] == dept]["认款协同金额"].sum())
     total_w = debt_w + rec_w
-    total_a = debt_total + rec_total
-    if total_a == 0: return 0
-    return round(total_w / total_a, 1)
+    if rec_total == 0: return 0
+    return round(total_w / rec_total, 1)
 
 # ===================== 汇总部门数据 =====================
 all_depts = sorted(set(list(sum26.index) + list(sum25.index)))
@@ -343,6 +341,7 @@ for _, row in df_rec.iterrows():
     rec_map[dept][sales]['client_map'][client]['total_amt'] += amt
 
 all_depts_cyc = sorted(set(str(k) for k in list(debt_map.keys()) + list(rec_map.keys()) if pd.notna(k)))
+
 sales_cycle_data = {}
 for dept in all_depts_cyc:
     all_sales = sorted(set(str(k) for k in list(debt_map[dept].keys()) + list(rec_map[dept].keys()) if pd.notna(k)))
@@ -350,8 +349,7 @@ for dept in all_depts_cyc:
     for sales_name in all_sales:
         d = debt_map[dept][sales_name]; rc = rec_map[dept][sales_name]
         total_w = d['weighted_days'] + rc['weighted_days']
-        total_a = d['total_amt'] + rc['total_amt']
-        cycle = round(total_w / total_a, 1) if total_a > 0 else 0
+        cycle = round(total_w / rc['total_amt'], 1) if rc['total_amt'] > 0 else 0
         dept_list.append({
             'name': sales_name, 'debt_amt': round(d['total_amt'], 2),
             'rec_amt': round(rc['total_amt'], 2), 'cycle': cycle,
@@ -372,8 +370,7 @@ for dept in all_depts_cyc:
         for cname in all_clients:
             dc = d_clients[cname]; rc = r_clients[cname]
             total_w = dc['weighted_days'] + rc['weighted_days']
-            total_a = dc['total_amt'] + rc['total_amt']
-            cycle = round(total_w / total_a, 1) if total_a > 0 else 0
+            cycle = round(total_w / rc['total_amt'], 1) if rc['total_amt'] > 0 else 0
             cust_list.append({'name': cname, 'debt_amt': round(dc['total_amt'], 2), 'rec_amt': round(rc['total_amt'], 2), 'cycle': cycle})
         cust_list.sort(key=lambda x: x['cycle'], reverse=True)
         dept_cust[sales_name] = cust_list
