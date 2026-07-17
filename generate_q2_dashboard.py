@@ -42,6 +42,10 @@ df_debt = df_debt_all[df_debt_all["一级部门"] == REGION].copy()
 df_collect = df_collect_all[df_collect_all["一级部门"] == REGION].copy()
 df_staff_raw = pd.read_excel(EXCEL, sheet_name="在职销售人数")
 
+# 强制转换数值列，防止Excel中混入日期等类型
+df_debt["欠款金额"] = pd.to_numeric(df_debt["欠款金额"], errors="coerce").fillna(0)
+df_collect["认款协同金额"] = pd.to_numeric(df_collect["认款协同金额"], errors="coerce").fillna(0)
+
 # ===================== 在职销售人数（从Excel表格读取）=====================
 staff_count_from_excel = {}
 for _, row in df_staff_raw.iterrows():
