@@ -4,7 +4,7 @@ import openpyxl
 from datetime import datetime, date
 
 DATA_FILE = 'D:/业绩 欠款看板 Q3.xlsx'
-TODAY = datetime(2026, 11, 18)
+TODAY = datetime(2026, 11, 19)
 Q3_START, Q3_END = datetime(2026, 10, 1), datetime(2026, 12, 31)
 Q3_START_25, Q3_END_25 = datetime(2025, 10, 1), datetime(2025, 12, 31)
 SELLER_EXCLUDE = {'石红银'}
